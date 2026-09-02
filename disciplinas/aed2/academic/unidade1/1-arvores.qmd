@@ -8,7 +8,7 @@ format:
   html:
     reference-location: margin
     css: ../styles/academic.css
-filters: 
+filters:
     - quizdown
 ---
 
@@ -35,7 +35,7 @@ flowchart TB
     B --> E & F & G
     C --> H
     D --> I & J
-   
+
 
 A:::WT
 B:::WT
@@ -59,9 +59,9 @@ No exemplo ao lado, o nó com chave C é pai do nó com chave H. Além disso, os
 :::
 
 
-Se um nó X está conectado com um nó Y (há uma aresta no sentido de X para Y), dizemos que X é um nó pai e Y um nó filho. Além disso, 
+Se um nó X está conectado com um nó Y (há uma aresta no sentido de X para Y), dizemos que X é um nó pai e Y um nó filho. Além disso,
 
-- Se dois nós possuem o mesmo pai, eles são ditos irmãos. 
+- Se dois nós possuem o mesmo pai, eles são ditos irmãos.
 - Cada nó só pode ter no máximo um pai.
 
 
@@ -80,7 +80,7 @@ Essa representação em árvore permite que linguagens de programação, princip
 </html>
 ```
 
-Dessa forma, você pode usar Javascript para mudar o texto do parágrafo, adicionar ou remover um elemento à página. Tudo isso de forma dinâmica, sem precisar recarregar a página inteira.
+Dessa forma, você pode usar Javascript para mudar o texto do parágrafo, adicionar elementos à página ou removê-los dela. Tudo isso de forma dinâmica, sem precisar recarregar a página inteira.
 
 ```{mermaid}
 flowchart TB
@@ -98,11 +98,11 @@ D:::WT
 E:::WT
 
 classDef WT fill:#FFFFFF
-```	
+```
 
 ::: {.callout-note}
 - A raiz é o nó que não possui pai. Ela é única.
-- As folhas, ou nós terminais, não possem filhos.
+- As folhas, ou nós terminais, não possuem filhos.
 - Os demais nós são chamados de intermediários ou internos
 :::
 
@@ -127,7 +127,7 @@ F:::WT
 
 classDef WT fill:#FFFFFF
 
-```	
+```
 
 Nota-se que o nó com chave F possui dois pais (A e C) e isso não é permitido.
 
@@ -148,7 +148,7 @@ E:::WT
 F:::WT
 
 classDef WT fill:#FFFFFF
-```	
+```
 
 Neste exemplo, temos o mesmo problema de dois pais (nó com chave C), mas também temos duas raízes (A e F).
 
@@ -167,7 +167,7 @@ D:::WT
 E:::WT
 
 classDef WT fill:#FFFFFF
-```	
+```
 
 
 Este caso é interessante, pois todos os nós possuem um pai. Ou seja, não existe raiz e isso não é permitido. A única árvore sem raiz é a árvore vazia.
@@ -225,19 +225,19 @@ Como o fluxo sempre é de cima para baixo, vamos remover o uso das setas.
 
 ### Subárvore
 
-Uma subárvore consiste em uma porção interconectada da árvore. Qualquer nó juntamente com seus descendentes constituem uma subárvore.
-Os nós destacados em $\mathcal{T}$ (B, D e E) formam um subárvore de $\mathcal{T}$, ou seja, trata-se de uma miniárvore dentro da árvore original. 
+Uma subárvore consiste em uma porção interconectada da árvore. Qualquer nó, juntamente com seus descendentes, constitui uma subárvore.
+Os nós destacados em $\mathcal{T}$ (B, D e E) formam uma subárvore de $\mathcal{T}$, ou seja, trata-se de uma miniárvore dentro da árvore original.
 
 ::: {.column-margin}
 **[Se liga!]{.text-warning}**
-A subárvore possui sua própria raiz, folhas e nós internos. 
+A subárvore possui sua própria raiz, folhas e nós internos.
 :::
 
 ::: {.callout-note}
 Uma árvore pode ser considerada uma subárvore de si mesma.
 :::
 
-Quando dizemos "a subárvore esquerda do nó A" estamos nos referindo ao filho esquerdo de A e todos os seus descendentes. Mesmo raciocínio para a subárvore direita. Geralmente, indicamos com um triângulos essas subárvores. Por exemplo, a árvore abaixo representa a árvore $\mathcal{T}$.
+Quando dizemos "a subárvore esquerda do nó A" estamos nos referindo ao filho esquerdo de A e todos os seus descendentes. Mesmo raciocínio para a subárvore direita. Geralmente, indicamos com um triângulo essas subárvores. Por exemplo, a árvore abaixo representa a árvore $\mathcal{T}$.
 
 ```{mermaid}
 flowchart TB
@@ -253,8 +253,8 @@ flowchart TB
     E --- vermelho((" "))
     G --- azul((" "))
     G --- I3((" "))
-   
-   
+
+
 A:::WT
 B:::WT
 C:::WT
@@ -268,18 +268,18 @@ azul@{ shape: tri}
 
 classDef WT fill:#FFFFFF
 style verde fill:#00C853,stroke:none
-style vermelho fill:#D50000,stroke:none    
+style vermelho fill:#D50000,stroke:none
 style azul fill:#2962FF,stroke:none
-linkStyle 7 stroke:none,fill:none    
-linkStyle 8 stroke:none,fill:none    
-linkStyle 11 stroke:none,fill:none    
+linkStyle 7 stroke:none,fill:none
+linkStyle 8 stroke:none,fill:none
+linkStyle 11 stroke:none,fill:none
 
     style I1 stroke:none,fill:transparent
     style I2 stroke:none,fill:transparent
     style I3 stroke:none,fill:transparent
 ```
 
-O triângulo de cor verde representa a subárvore esquerda de D, ou seja, a subárvore com raiz H.  
+O triângulo de cor verde representa a subárvore esquerda de D, ou seja, a subárvore com raiz H.
 
 ### Tamanho
 
@@ -291,7 +291,7 @@ O tamanho da árvore é definido como o número total de nós. No nosso exemplo,
 
 ### Altura
 
-A altura de um nó é o comprimento do caminho mais longo dele até as folhas. Por comprimento queremos dizer o número de areastas. Já para calcular a altura da árvore, calculamos a altura do nó raiz. Geralmente se considera a altura de uma árvore vazia como zero.
+A altura de um nó é o comprimento do caminho mais longo dele até as folhas. Por comprimento queremos dizer o número de arestas. Já para calcular a altura da árvore, calculamos a altura do nó raiz. Geralmente se considera a altura de uma árvore vazia como zero.
 
 A altura de $\mathcal{T}$ é 4, ou seja, o número de arestas da raiz até a folha mais distante é quatro.
 
@@ -299,9 +299,9 @@ A altura de $\mathcal{T}$ é 4, ou seja, o número de arestas da raiz até a fol
 ### Profundidade
 
 A profundidade de um nó é o número de arestas no caminho da raiz até tal nó.
-Em $\mathcal{T}$, a profundidade do nó J é 3, pois há três arestas da raiz até J. Note que a profundidade da folha mais baixa é igual a altura da árvore.
+Em $\mathcal{T}$, a profundidade do nó J é 3, pois há três arestas da raiz até J. Note que a profundidade da folha mais baixa é igual à altura da árvore.
 
-A profundidade de um nó indica qual nível da árvore ele pertence. A raiz possui nível 0, o filhos da raiz nível 1, os netos da raiz nível 2 e assim sucessivamente. É fácil concluir que a altura está relacionada ao número de níveis.
+A profundidade de um nó indica a qual nível da árvore ele pertence. A raiz possui nível 0, os filhos da raiz nível 1, os netos da raiz nível 2 e assim sucessivamente. É fácil concluir que a altura está relacionada ao número de níveis.
 
 
 Observe a árvore abaixo
@@ -326,7 +326,7 @@ flowchart TB
     style F fill:#FFFFFF
     style G fill:#FFF9C4
     style H fill:#C8E6C9
-    style I fill:#FFFFFF    
+    style I fill:#FFFFFF
     style J fill:#C8E6C9
     style K fill:#FFFFFF
     linkStyle 1 stroke:#2962FF,fill:none
@@ -335,14 +335,14 @@ flowchart TB
     linkStyle 8 stroke:#00C853,fill:none
 ```
 
-Considerando o nó com chave G, sua altura é a distância até a folha mais baixa (arestas verdes). Já sua profundidade, é a distância da raiz até G (arestas azuis).
+Considerando o nó com chave G, sua altura é a distância até a folha mais baixa (arestas verdes). Já sua profundidade é a distância da raiz até G (arestas azuis).
 
 ### Grau
 
 O grau de um nó é o número de filhos que ele possui.
 Na árvore $\mathcal{T}$, o nó B tem grau 2. Já os nós H e F possuem grau 1 e 0, respectivamente.
 
-Quanto ao número de filhos, uma árvore onde todos os nós possuem somente um filho se comporta como uma lista. Se os nós possuem no máximo dois filhos, a árvore é chamada de binária. Se três filhos, chama-se ternária e assim por diante. Uma árvore em que os nós possuem no máximo $n$ filhos é chamada de $n$-ária.
+Quanto ao número de filhos, uma árvore em que todos os nós possuem somente um filho se comporta como uma lista. Se os nós possuem no máximo dois filhos, a árvore é chamada de binária. Se três filhos, chama-se ternária e assim por diante. Uma árvore em que os nós possuem no máximo $n$ filhos é chamada de $n$-ária.
 
 
 ## Resumo
@@ -351,7 +351,7 @@ Quanto ao número de filhos, uma árvore onde todos os nós possuem somente um f
 
 ### Elementos
 
-- **Raiz**: nó superior da árvore. É o único nó que não possui pai; 
+- **Raiz**: nó superior da árvore. É o único nó que não possui pai;
 - **Pai**: nó que tem sucessores conectados a ele;
 - **Filho**: nó que é sucessor de outro;
 - **Folha**: nós que não possuem filhos;
@@ -361,7 +361,7 @@ Quanto ao número de filhos, uma árvore onde todos os nós possuem somente um f
 ### Métricas (nós)
 
 - **Grau do nó**: número de filhos que um nó possui;
-- **Altura do nó**: número de arestas no caminho mais longo de um nó até uma folha; 
+- **Altura do nó**: número de arestas no caminho mais longo de um nó até uma folha;
 - **Profundidade do nó**: número de arestas da raiz até o nó. A raiz tem profundidade 0;
 
 ### Métricas (árvore)
@@ -372,7 +372,7 @@ Quanto ao número de filhos, uma árvore onde todos os nós possuem somente um f
 
 ---
 
-Nesta seção, estudamos a estrutura de dados árvore do forma generalizada. Em particular, estudamos
+Nesta seção, estudamos a estrutura de dados árvore de forma generalizada. Em particular, estudamos
 
 ✅ o que é uma árvore e seus componentes (raiz, nó, folha etc);
 
@@ -391,9 +391,9 @@ No próximo capítulo da nossa jornada, iremos estudar um tipo especial de árvo
 
 > Considere a definição formal apresentada no texto.
 
-1. [ ] É uma estrutura linear composta apenas por nós sequenciais  
-1. [ ] É uma estrutura em que cada nó pode ter vários pais  
-1. [x] É uma estrutura hierárquica, geralmente não linear, composta por nós e arestas  
+1. [ ] É uma estrutura linear composta apenas por nós sequenciais
+1. [ ] É uma estrutura em que cada nó pode ter vários pais
+1. [x] É uma estrutura hierárquica, geralmente não linear, composta por nós e arestas
 1. [ ] É uma estrutura em que todos os nós possuem exatamente dois filhos
 
 
@@ -401,21 +401,21 @@ No próximo capítulo da nossa jornada, iremos estudar um tipo especial de árvo
 
 > Marque todas as afirmações corretas.
 
-- [x] Dois nós com o mesmo pai são chamados de irmãos  
-- [x] Cada nó pode ter no máximo um pai  
-- [ ] Um nó pode pertencer a mais de uma árvore simultaneamente  
-- [x] O nó raiz não possui pai  
+- [x] Dois nós com o mesmo pai são chamados de irmãos
+- [x] Cada nó pode ter no máximo um pai
+- [ ] Um nó pode pertencer a mais de uma árvore simultaneamente
+- [x] O nó raiz não possui pai
 - [ ] Toda árvore possui exatamente duas raízes
 
 
 
-# O DOM (Document Object Model) é um exemplo de árvore porque ?
+# O DOM (Document Object Model) é um exemplo de árvore por quê?
 
 > Relacione o conceito de árvore com o desenvolvimento web.
 
-1. [ ] Representa uma lista encadeada de elementos HTML  
-1. [x] Organiza elementos HTML em uma estrutura hierárquica  
-1. [ ] Armazena apenas folhas, sem nós intermediários  
+1. [ ] Representa uma lista encadeada de elementos HTML
+1. [x] Organiza elementos HTML em uma estrutura hierárquica
+1. [ ] Armazena apenas folhas, sem nós intermediários
 1. [ ] É composto exclusivamente por nós folhas
 
 
@@ -423,10 +423,10 @@ No próximo capítulo da nossa jornada, iremos estudar um tipo especial de árvo
 
 > Baseie-se nas definições apresentadas.
 
-- [x] A raiz é o único nó que não possui pai  
-- [x] As folhas são nós que não possuem filhos  
-- [ ] Toda árvore possui pelo menos uma folha e nenhuma raiz  
-- [ ] Nós internos não podem ter filhos  
+- [x] A raiz é o único nó que não possui pai
+- [x] As folhas são nós que não possuem filhos
+- [ ] Toda árvore possui pelo menos uma folha e nenhuma raiz
+- [ ] Nós internos não podem ter filhos
 - [x] Uma árvore vazia é a única árvore sem raiz
 
 
@@ -434,9 +434,9 @@ No próximo capítulo da nossa jornada, iremos estudar um tipo especial de árvo
 
 > Considere os exemplos de "falsas árvores".
 
-1. [ ] Um nó com dois filhos  
-1. [x] Um nó com dois pais  
-1. [ ] Um nó folha  
+1. [ ] Um nó com dois filhos
+1. [x] Um nó com dois pais
+1. [ ] Um nó folha
 1. [ ] Um nó interno com apenas um filho
 
 
@@ -444,9 +444,9 @@ No próximo capítulo da nossa jornada, iremos estudar um tipo especial de árvo
 
 > Considere a árvore 𝒯 apresentada no texto.
 
-1. [ ] Uma subárvore contém apenas folhas  
-1. [ ] Uma subárvore não possui raiz própria  
-1. [x] Um nó e todos os seus descendentes formam uma subárvore  
+1. [ ] Uma subárvore contém apenas folhas
+1. [ ] Uma subárvore não possui raiz própria
+1. [x] Um nó e todos os seus descendentes formam uma subárvore
 1. [ ] Uma árvore não pode ser subárvore de si mesma
 
 
@@ -454,9 +454,9 @@ No próximo capítulo da nossa jornada, iremos estudar um tipo especial de árvo
 
 > Use a definição formal apresentada.
 
-1. [ ] O número de folhas  
-1. [ ] O número de arestas  
-1. [x] O número total de nós  
+1. [ ] O número de folhas
+1. [ ] O número de arestas
+1. [x] O número total de nós
 1. [ ] A altura da árvore multiplicada pelo grau
 
 
@@ -464,10 +464,10 @@ No próximo capítulo da nossa jornada, iremos estudar um tipo especial de árvo
 
 > Marque todas as afirmações corretas.
 
-- [x] A altura de um nó é o comprimento do caminho mais longo até uma folha  
-- [x] A profundidade de um nó é o número de arestas da raiz até ele  
-- [ ] Altura e profundidade são sempre iguais para todos os nós  
-- [x] A profundidade da raiz é zero  
+- [x] A altura de um nó é o comprimento do caminho mais longo até uma folha
+- [x] A profundidade de um nó é o número de arestas da raiz até ele
+- [ ] Altura e profundidade são sempre iguais para todos os nós
+- [x] A profundidade da raiz é zero
 - [x] A altura da árvore é a altura do nó raiz
 
 
@@ -475,9 +475,9 @@ No próximo capítulo da nossa jornada, iremos estudar um tipo especial de árvo
 
 > Considere os níveis da árvore.
 
-1. Raiz  
-2. Filho da raiz  
-3. Neto da raiz  
+1. Raiz
+2. Filho da raiz
+3. Neto da raiz
 4. Folha
 
 
@@ -485,17 +485,17 @@ No próximo capítulo da nossa jornada, iremos estudar um tipo especial de árvo
 
 > Utilize a definição formal.
 
-1. [ ] Sua profundidade  
-1. [ ] Sua altura  
-1. [x] O número de filhos que ele possui  
+1. [ ] Sua profundidade
+1. [ ] Sua altura
+1. [x] O número de filhos que ele possui
 1. [ ] O número de seus irmãos
 
 
 # Uma árvore em que cada nó possui no máximo dois filhos é chamada de ?
 
-1. [ ] Lista  
-1. [ ] Árvore ternária  
-1. [x] Árvore binária  
+1. [ ] Lista
+1. [ ] Árvore ternária
+1. [x] Árvore binária
 1. [ ] Árvore n-ária
 ```
 

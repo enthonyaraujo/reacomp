@@ -3,10 +3,10 @@ title: "Implementações"
 toc-title: Conteúdo
 toc: false
 sidebar: false
-format: 
+format:
   html:
     reference-location: margin
-    css: ../styles/academic.css 
+    css: ../styles/academic.css
 ---
 
 ## Encadeamento Separado
@@ -18,7 +18,7 @@ format:
 // Definindo tamanho da tabela de dispersão
 #define TAMANHO_TABELA 10
 
-// As colisões serão tratadas com um lista encadeada
+// As colisões serão tratadas com uma lista encadeada
 typedef struct No {
     int chave;
     struct No *proximo;
@@ -35,7 +35,7 @@ No* create(int chave);
 // Função para imprimir uma lista
 void print_list(No* lista);
 
-// Função hash para calcular o indice na tabebla
+// Função hash para calcular o índice na tabela
 int hash (int chave);
 
 // Função para inicializar uma tabela de dispersão vazia
@@ -52,14 +52,14 @@ void delete_table(HashTable tabela);
 
 int main(){
     HashTable tabela = initialize();
-    
+
     insert_table(&tabela, 10);
     insert_table(&tabela, 20);
     insert_table(&tabela, 30);
     insert_table(&tabela, 25);
-    
+
     print_table(tabela);
-    delete_table(tabela);   
+    delete_table(tabela);
     return 0;
 }
 
@@ -68,7 +68,7 @@ No* create(int chave){
     No* no = (No*)malloc(sizeof(No));
     no->chave = chave;
     no->proximo = NULL;
-    
+
     return no;
 }
 
@@ -88,8 +88,8 @@ HashTable initialize(){
     HashTable tabela;
     for(int i = 0; i < TAMANHO_TABELA; i++)
         tabela.buckets[i] = NULL;
-    return tabela;    
-}    
+    return tabela;
+}
 
 void insert_table(HashTable *tabela, int chave){
      No* no = create(chave);
@@ -97,20 +97,20 @@ void insert_table(HashTable *tabela, int chave){
      No* head = tabela->buckets[indice];
      // inserção na cabeça da lista
      no->proximo = head;
-     tabela->buckets[indice] = no;      
+     tabela->buckets[indice] = no;
 }
 
 void print_table(HashTable tabela){
     for (int i = 0; i < TAMANHO_TABELA; i++){
         printf("[%d]: ", i);
         print_list(tabela.buckets[i]);
-    }    
+    }
 }
 
 void delete_table(HashTable tabela){
     for (int i = 0; i < TAMANHO_TABELA; i++){
         free(tabela.buckets[i]);
-    }    
+    }
 }
 ```
 

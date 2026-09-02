@@ -24,7 +24,7 @@ A estrutura de um `for` pode ser escrita assim:
 
 ```pseudocode
 for (inicialização; condição; incremento){
-    // código que será executado repeditamente
+    // código que será executado repetidamente
 }
 ```
 
@@ -33,7 +33,7 @@ Já o mesmo comportamento pode ser obtido com um `while`:
 ```pseudocode
 inicialização
 while (condição){
-    // código que será executado repeditamente
+    // código que será executado repetidamente
     incremento
 }
 ```
@@ -45,8 +45,8 @@ A seguir, veja um exemplo simples que imprime uma frase 42 vezes usando `for`:
 
 ```c
 for (int i = 0; i < 42; i++){
-    puts("Volta o cão arrependido, 
-          com orelhas fartas, seu osso roido 
+    puts("Volta o cão arrependido,
+          com orelhas fartas, seu osso roído
           e o rabo entre as patas");
 }
 ```
@@ -56,10 +56,10 @@ O mesmo comportamento pode ser obtido com `while`:
 ```c
 int i = 0;
 while (i < 42){
-    puts("Volta o cão arrependido, 
-          com orelhas fartas, seu osso roido 
+    puts("Volta o cão arrependido,
+          com orelhas fartas, seu osso roído
           e o rabo entre as patas");
-    i++;      
+    i++;
 }
 ```
 
@@ -100,7 +100,7 @@ Esse é o equivalente exato ao `while(1)`. O compilador entende que não há ini
 
 ⚠️ Cuidados importantes
 
-Cuidado com _loops_ sem saída, pois se não houver um `break` ou uma condição de parada dentro do _loop_, o programa pode travar ou consumir muito processamento.
+Cuidado com _loops_ sem saída, pois, se não houver um `break` ou uma condição de parada dentro do _loop_, o programa pode travar ou consumir muito processamento.
 
 Use `break` para encerrar o _loop_ quando uma condição interna for atendida:
 
@@ -123,8 +123,8 @@ Tente modificar o exemplo anterior do “Cão arrependido” para rodar infinita
 
 ---
 
-Nesta tutorial, você aprendeu
+Neste tutorial, você aprendeu:
 
 ✅ a transformar um laço `for` em `while` e vice-versa
 
-✅ como criar lações infinitos
+✅ como criar laços infinitos.

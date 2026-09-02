@@ -8,25 +8,25 @@ format:
   html:
     reference-location: margin
 execute:
-  eval: true 
+  eval: true
   daemon: true
-  cache: true 
+  cache: true
 ---
 
 
-Julia conta com um série de operações matemáticas básicas como potênciação, multiplicação, soma, subtração e divisão.
+Julia conta com uma série de operações matemáticas básicas, como potenciação, multiplicação, soma, subtração e divisão.
 
 ```{julia}
 #| code-line-numbers: false
 (2^2)*(5 + 3 - 1)/14
 ```
 
-A operação de divisão sempre retorna um valor do tipo `Float64`. Também temos a divisão inteira (`÷`) e resto de divisão (`%`):
+A operação de divisão sempre retorna um valor do tipo `Float64`. Também temos a divisão inteira (`÷`) e o resto da divisão (`%`):
 
 
 ```{julia}
 #| code-line-numbers: false
-(10 ÷ 3) % 2 
+(10 ÷ 3) % 2
 ```
 
 
@@ -39,7 +39,7 @@ Outras operações básicas:
 | `x - y`	    | subtração        |
 | `x * y`	    | multiplicação    |
 | `x / y`	    | divisão          |
-| `x ÷ y`	    | divisão inteira  |	
+| `x ÷ y`	    | divisão inteira  |
 | `x \ y`	    | divisão inversa	 |
 | `x ^ y`	    | potenciação	     |
 | `x % y`	    | resto da divisão |
@@ -60,20 +60,20 @@ println("x = ", x)
 
 Para arredondamento usamos a função `round`:
 
-```{julia} 
+```{julia}
 println("Arredondar pi: ", round(pi))
 println("Arredondar pi com duas casas: ", round(pi; digits=2))
-println("Arredondar pi dois digitos significativos: ", round(pi; sigdigits=2))
+println("Arredondar pi com dois dígitos significativos: ", round(pi; sigdigits=2))
 ```
 
 
 ## Comparações numéricas
 
-Para verificar se duas variáveis guardam o mesmo valor, usamos operador de comparação `==`:
+Para verificar se duas variáveis guardam o mesmo valor, usamos o operador de comparação `==`:
 
 ```{julia}
 eixo_x = 10
-eixo_y = 5 
+eixo_y = 5
 println("eixo_x == eixo_y: ", eixo_x == eixo_y)
 println("eixo_x == eixo_y: ", eixo_x == eixo_y + 5)
 ```
@@ -104,26 +104,26 @@ Os tipos booleanos suportam três operações: negação, conjunção e disjunç
 A negação modifica `true` para `false` e vice-versa.
 
 ```{julia}
-println("!true: ", !true) 
-println("!false: ", !false) 
+println("!true: ", !true)
+println("!false: ", !false)
 ```
 
 A conjunção é uma operação que retorna `true` se ambos os argumentos são `true`.
 
 ```{julia}
-println("true && true: ", true && true) 
-println("true && false: ", true && false) 
-println("false && true: ", false && true) 
-println("false && false: ", false && false)  
+println("true && true: ", true && true)
+println("true && false: ", true && false)
+println("false && true: ", false && true)
+println("false && false: ", false && false)
 ```
 
 Por fim, a disjunção é uma operação que retorna `false` se ambos os argumentos são `false`.
 
 ```{julia}
-println("true || true: ", true || true) 
-println("true || false: ", true || false) 
-println("false || true: ", false || true) 
-println("false || false: ", false || false)  
+println("true || true: ", true || true)
+println("true || false: ", true || false)
+println("false || true: ", false || true)
+println("false || false: ", false || false)
 ```
 
 
@@ -133,7 +133,7 @@ Podemos resumir com a seguinte tabela:
 | Expressão	| Descrição |
 |-----------|-----------|
 | `!x`	    | negação (not)  |
-| `x && y`	| conjunção (and) | 
+| `x && y`	| conjunção (and) |
 | `x || y`	| disjunção (or) |
 :::
 
@@ -146,7 +146,7 @@ Podemos resumir com a seguinte tabela:
 | Expressão	| Descrição |
 |-----------|-----------|
 | `~x` |	negação (not) |
-| `x & y` |	conjução (and) |
+| `x & y` |	conjunção (and) |
 | `x | y` |	disjunção (or) |
 | `x ⊻ y` |	disjunção exclusiva (xor) |
 | `x ⊼ y` |	negação da conjunção (nand) |
@@ -161,5 +161,5 @@ Podemos resumir com a seguinte tabela:
 | `x >>> y` |	deslocamento lógico para a direita |
 | `x >> y` |	deslocamento aritmético para a direita |
 | `x << y` |	deslocamento lógico/aritmético para a esquerda |
-Os tipos em Julia são dividos em abstratos e concretos. Abaixo, o diagrama representa uma pequena parte da hierarquia de tipos numéricos.
+Os tipos em Julia são divididos em abstratos e concretos. Abaixo, o diagrama representa uma pequena parte da hierarquia de tipos numéricos.
 -->

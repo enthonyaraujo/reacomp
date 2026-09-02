@@ -8,9 +8,9 @@ format:
   html:
     reference-location: margin
 execute:
-  eval: true 
+  eval: true
   daemon: true
-  cache: true 
+  cache: true
 ---
 
 Os caracteres em Julia são escritos usando aspas simples.
@@ -41,7 +41,7 @@ str4 = str1 * str2 * str3 * "!"
 println(str4)
 ```
 
-Podemos extrair caracteres da string por meio de indices:
+Podemos extrair caracteres da string por meio de índices:
 
 ```{julia}
 println("primeiro = ", str4[begin])
@@ -49,7 +49,7 @@ println("terceiro = ", str4[3])
 println("último = ", str4[end])
 ```
 
-Tambem podemos extrair _substrings_ usando um _range_:
+Também podemos extrair _substrings_ usando um _range_:
 
 ```{julia}
 println("substantivo = ", str4[begin:6])
@@ -62,26 +62,26 @@ println("predicado = ", str4[7:end])
 Comparação de strings usando a ordem lexicográfica (do dicionário).
 
 ```{julia}
-println("Julia < Pyhon: ", "Julia" < "Pyhon")
+println("Julia < Python: ", "Julia" < "Python")
 println("Julia == julia: ", "Julia" == "julia")
 println("Julia != Rust: ", "Julia" != "Rust")
 ```
 
-Buscar por indice em particular:
+Buscar por índice em particular:
 
 ```{julia}
 println("O primeiro 'a': ", findfirst('a', "Juliana"))
-println("O ultimo 'a': ", findlast('a', "Juliana"))
+println("O último 'a': ", findlast('a', "Juliana"))
 ```
 
 
-Descobrir se um substring ocorre em uma string:
+Descobrir se uma substring ocorre em uma string:
 
 ```{julia}
 println("occursin(\"é legal\", str4): ", occursin("é legal", str4))
 ```
 
-Outrs funções úteis:
+Outras funções úteis:
 
 ```{julia}
 str5 = repeat(".gol.", 10)

@@ -1,5 +1,5 @@
 ---
-title: "Introdução aos Grafos"
+title: "Caminhos e Ciclos"
 lang: pt
 toc-title: Conteúdo
 toc: false
@@ -8,22 +8,22 @@ format:
   html:
     reference-location: margin
     css: ../styles/academic.css
-filters: 
+filters:
     - quizdown
 execute:
-  eval: true  
----  
+  eval: true
+---
 
 
 ## Representações
 
-Além do desenho e conjuntos de arestas e vértices, um grafo pode ser representado por matrizes. 
+Além do desenho e conjuntos de arestas e vértices, um grafo pode ser representado por matrizes.
 
 ### Matriz de Adjacência
-  
+
 Dado o grafo com $n$ vértices, a matriz de adjacência é uma matriz quadrada de ordem $n$ em que as linhas e colunas são os vértices, e o valor na interseção $(i, j)$ indica se existe aresta entre o vértice $i$ e o vértice $j$. Usamos $1$ para existência e $0$ para ausência.
 
-Vamos usar os grafos A do início do capítulo e o grafo da sec-dir como exemplos.  
+Vamos usar os grafos A do início do capítulo e o grafo da sec-dir como exemplos.
 
 ::: {style="width: 60%; margin: auto;"}
 |   | A | B | C | D |
@@ -47,7 +47,7 @@ Note que a matriz é simétrica para grafos não-direcionados.
 : Matriz de adjacência do grafo da sec-dir
 :::
 
-Note que as linhas representam de onde as arestas partem. Já as colunas, representam onde elas incidem.
+Note que as linhas representam de onde as arestas partem. Já as colunas representam onde elas incidem.
 
 
 ### Lista de Adjacência
@@ -58,12 +58,12 @@ A lista de adjacência é praticamente uma lista de vizinhos para cada vértice.
 
 Usando os mesmos exemplos anteriores:
 
-- vizinhos de A: {B, C}  
-- vizinhos de B: {A, C, D} 
-- vizinhos de C: {A, B}  
-- vizinhos de D: {B}  
+- vizinhos de A: {B, C}
+- vizinhos de B: {A, C, D}
+- vizinhos de C: {A, B}
+- vizinhos de D: {B}
 
-Já para grafos direcionados, a noção de vizinho não é única. Nesse caso, temos a vizinhaça de entrada e a de saída.
+Já para grafos direcionados, a noção de vizinho não é única. Nesse caso, temos a vizinhança de entrada e a de saída.
 
 ::: {.callout-note}
 A vizinhança de saída de $v$ é conjunto dos vértices alcançáveis diretamente a partir de $v$.
@@ -71,10 +71,10 @@ A vizinhança de saída de $v$ é conjunto dos vértices alcançáveis diretamen
 
 Portanto, para o grafo direcionado que estudamos:
 
-- vizinhos de saída de A: {B}  
-- vizinhos de saída de B: {C} 
-- vizinhos de saída de C: {D}  
-- vizinhos de saída de D: {A}  
+- vizinhos de saída de A: {B}
+- vizinhos de saída de B: {C}
+- vizinhos de saída de C: {D}
+- vizinhos de saída de D: {A}
 
 
 ::: {.callout-note}
@@ -83,10 +83,10 @@ A vizinhança de entrada de $v$ é conjunto dos vértices que apontam para $v$.
 
 Novamente,
 
-- vizinhos de entrada de A: {D}  
-- vizinhos de entrada de B: {A} 
-- vizinhos de entrada de C: {B}  
-- vizinhos de entrada de D: {C}  
+- vizinhos de entrada de A: {D}
+- vizinhos de entrada de B: {A}
+- vizinhos de entrada de C: {B}
+- vizinhos de entrada de D: {C}
 
 ::: {.column-margin}
 **[Se liga!]{.text-warning}**
@@ -136,7 +136,7 @@ Neste caso, estamos procurando pelos vizinhos de cada vértice.
 
 <!--
 ::: {.callout-tip title="Solução (clique para ver)" collapse="true"}
-::: 
+:::
 -->
 
 
@@ -157,7 +157,7 @@ O grafo ilustrado possui cinco nós, logo $$V=\{A,B,C,D,E\}.$$ As arestas são a
 
 2. Construa a matriz de adjacências.
 
-Se um aresta parte de $v$ e incide em $u$, então marcamos a interseção com $1$.
+Se uma aresta parte de $v$ e incide em $u$, então marcamos a interseção com $1$.
 
 ::: {style="width: 30%; margin: auto;"}
 |   | A | B | C | D | E |
@@ -169,7 +169,7 @@ Se um aresta parte de $v$ e incide em $u$, então marcamos a interseção com $1
 | E | 0 | 0 | 0 | 0 | 0 |
 :::
 
-3. Construa as lista de antecessores e sucessores.
+3. Construa as listas de antecessores e sucessores.
 
 Os antecessores e sucessores são os vizinhos de entrada e saída, respectivamente.
 
@@ -187,7 +187,7 @@ Os antecessores e sucessores são os vizinhos de entrada e saída, respectivamen
 
 ## Matriz de Incidência
 
-Dado o grafo com $n$ vértices e $m$ arestas, a matriz de incidência é uma matriz $n\times m$ em que as linhas são os vértices, as colunas são as arestas e o valor na interseção indica se a aresta incide sobre o vértice. 
+Dado o grafo com $n$ vértices e $m$ arestas, a matriz de incidência é uma matriz $n\times m$ em que as linhas são os vértices, as colunas são as arestas e o valor na interseção indica se a aresta incide sobre o vértice.
 
 ::: {style="width: 60%; margin: auto;"}
 |   | (A,B) | (A,C) | (B,C) | (B,D) |
@@ -247,20 +247,20 @@ Matriz de incidência para o grafo direcionado.
 
 ## Grau
 
-O grau de um vértice 
+O grau de um vértice
 
 ```{mermaid}
 graph LR
   subgraph s1["Grafo A"]
-    A((2)) 
+    A((2))
     B((3))
     C((2))
     D((1))
   end
 
   subgraph s2["Grafo B"]
-    direction LR 
-    A1((2)) 
+    direction LR
+    A1((2))
     B1((2))
     C1((2))
     D1((1))
@@ -292,7 +292,7 @@ style s1 stroke:none,fill:transparent
 style s2 stroke:none,fill:transparent
 
 ```
-  
+
 
 
 Considere o grafo $G=(V,E)$
@@ -302,16 +302,16 @@ Considere o grafo $G=(V,E)$
 Dados dois vértices $v$ (inicial) e $u$ (final), um caminho é uma sequência de vértices conectados por arestas.
 
 Formalmente, um caminho 𝑃 de $v$ até $u$ é uma sequência:
-$$P = (v_0, v_1, v_2, \dots, v_k)$$ 
+$$P = (v_0, v_1, v_2, \dots, v_k)$$
 
 tal que:
 
-- $v_0 = v$ e $v_k = u$ 
+- $v_0 = v$ e $v_k = u$
 - Para todo $i=1,\ldots,k$, o par $(v_{i-1}, v_{i})\in E$ é uma aresta do grafo.
 
 ::: {.column-margin}
 **[Se liga!]{.text-warning}**
-Em grafos não-direcionados, usamos $\{v_{i-1}, v_{i}\}$ ao invés de $(v_{i-1}, v_{i})$
+Em grafos não-direcionados, usamos $\{v_{i-1}, v_{i}\}$ em vez de $(v_{i-1}, v_{i})$
 :::
 
 
@@ -328,7 +328,7 @@ $$v_0 \to v_1 \to \dots \to v_k \to v_0$$Onde todos os $v_i$ são distintos para
 
 onde:
 
-- todos os vértice $v_0, v_1, \dots, v_k, v_0$ 
+- todos os vértices $v_0, v_1, \dots, v_k, v_0$
 - $k\geq 2$
 
 ### Tipos especiais de ciclos
@@ -457,7 +457,7 @@ Neste caso, estamos procurando pelos vizinhos de cada vértice.
 
 <!--
 ::: {.callout-tip title="Solução (clique para ver)" collapse="true"}
-::: 
+:::
 -->
 
 
@@ -478,7 +478,7 @@ O grafo ilustrado possui cinco nós, logo $$V=\{A,B,C,D,E\}.$$ As arestas são a
 
 2. Construa a matriz de adjacências.
 
-Se um aresta parte de $v$ e incide em $u$, então marcamos a interseção com $1$.
+Se uma aresta parte de $v$ e incide em $u$, então marcamos a interseção com $1$.
 
 ::: {style="width: 30%; margin: auto;"}
 |   | A | B | C | D | E |
@@ -490,7 +490,7 @@ Se um aresta parte de $v$ e incide em $u$, então marcamos a interseção com $1
 | E | 0 | 0 | 0 | 0 | 0 |
 :::
 
-3. Construa as lista de antecessores e sucessores.
+3. Construa as listas de antecessores e sucessores.
 
 Os antecessores e sucessores são os vizinhos de entrada e saída, respectivamente.
 
@@ -508,20 +508,20 @@ Os antecessores e sucessores são os vizinhos de entrada e saída, respectivamen
 
 ## Grau
 
-O grau de um vértice 
+O grau de um vértice
 
 ```{mermaid}
 graph LR
   subgraph s1["Grafo A"]
-    A((2)) 
+    A((2))
     B((3))
     C((2))
     D((1))
   end
 
   subgraph s2["Grafo B"]
-    direction LR 
-    A1((2)) 
+    direction LR
+    A1((2))
     B1((2))
     C1((2))
     D1((1))
@@ -553,7 +553,7 @@ style s1 stroke:none,fill:transparent
 style s2 stroke:none,fill:transparent
 
 ```
-  
+
 
 
 Considere o grafo $G=(V,E)$
@@ -563,16 +563,16 @@ Considere o grafo $G=(V,E)$
 Dados dois vértices $v$ (inicial) e $u$ (final), um caminho é uma sequência de vértices conectados por arestas.
 
 Formalmente, um caminho 𝑃 de $v$ até $u$ é uma sequência:
-$$P = (v_0, v_1, v_2, \dots, v_k)$$ 
+$$P = (v_0, v_1, v_2, \dots, v_k)$$
 
 tal que:
 
-- $v_0 = v$ e $v_k = u$ 
+- $v_0 = v$ e $v_k = u$
 - Para todo $i=1,\ldots,k$, o par $(v_{i-1}, v_{i})\in E$ é uma aresta do grafo.
 
 ::: {.column-margin}
 **[Se liga!]{.text-warning}**
-Em grafos não-direcionados, usamos $\{v_{i-1}, v_{i}\}$ ao invés de $(v_{i-1}, v_{i})$
+Em grafos não-direcionados, usamos $\{v_{i-1}, v_{i}\}$ em vez de $(v_{i-1}, v_{i})$
 :::
 
 
@@ -589,7 +589,7 @@ $$v_0 \to v_1 \to \dots \to v_k \to v_0$$Onde todos os $v_i$ são distintos para
 
 onde:
 
-- todos os vértice $v_0, v_1, \dots, v_k, v_0$ 
+- todos os vértices $v_0, v_1, \dots, v_k, v_0$
 - $k\geq 2$
 
 ### Tipos especiais de ciclos

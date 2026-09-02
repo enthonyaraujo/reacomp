@@ -3,11 +3,11 @@ title: "Tratamento de Colisões"
 toc-title: Conteúdo
 toc: false
 sidebar: false
-format: 
+format:
   html:
     reference-location: margin
-    css: ../styles/academic.css 
-filters: 
+    css: ../styles/academic.css
+filters:
     - quizdown
 ---
 
@@ -73,7 +73,7 @@ Como a posição 4 está vazia, a chave 81 será alocada lá.
 
 ### Sondagem quadrática
 
-A sondagem quadrática procura pela próxima posição vazia usando uma função quadrática. 
+A sondagem quadrática procura pela próxima posição vazia usando uma função quadrática.
 $$h(k,i) = (h'(k)+c_1i+c_2i^2)\bmod m$$
 onde $c_1 e c_2$ são constantes escolhidas e $i=0,1,2,3,\ldots$
 
@@ -94,12 +94,12 @@ Como a posição 5 está vazia, a chave 81 será alocada lá.
 
 ### Duplo hash
 
-Como o nome sugere, o tratamento de colisão usa duas funções hash ($h_1$ e $h_2$). 
+Como o nome sugere, o tratamento de colisão usa duas funções hash ($h_1$ e $h_2$).
 $$h(k,i) = (h_1(k) + i\cdot h_2(k)) \bmod m$$
 onde $i=0,1,2,3,\ldots$
 
 Por exemplo, suponha
-$h_1(k) = k \bmod 10$ e $h_2(k) = 5 − (k \bmod 5)$. 
+$h_1(k) = k \bmod 10$ e $h_2(k) = 5 − (k \bmod 5)$.
 
 No exemplo anterior teremos:
 
@@ -170,7 +170,7 @@ $$h(k,i)=(h'(k)+i) \bmod 7$$
 Resultado:
 
 ::: {style="width: 60%; margin: auto;"}
-|slot | 0   | 1    |  2   | 3  | 4  | 5   | 6   | 
+|slot | 0   | 1    |  2   | 3  | 4  | 5   | 6   |
 |-----| :----: | :-----: | :-----: | :---: | :---: | :----: | :----: |
 | chave  | 7 | 15  | 22  | 14 | 25 | ❌ | 13 |
 :::
@@ -223,8 +223,8 @@ $$h(k,i)=(h'(k)+i+i^2) \bmod 7$$
 Resultado:
 
 ::: {style="width: 60%; margin: auto;"}
-|slot | 0   | 1    |  2   | 3  | 4  | 5   | 6   |  
-|-----| :----: | :-----: | :-----: | :---: | :---: | :----: | :----: | 
+|slot | 0   | 1    |  2   | 3  | 4  | 5   | 6   |
+|-----| :----: | :-----: | :-----: | :---: | :---: | :----: | :----: |
 | chave  | 7 | 15  | 14  | 22 | 25 | ❌ | 13 |
 :::
 
@@ -240,7 +240,7 @@ $$h(k,i)=(h_1(k)+ih_2(k)) \bmod 7$$
 
 ---
 
-**Chave 22** $\rightarrow h_1(22)=22 \bmod 7=1$ e $h_2(22)=1+(22 \bmod 6)=5$ 
+**Chave 22** $\rightarrow h_1(22)=22 \bmod 7=1$ e $h_2(22)=1+(22 \bmod 6)=5$
 
 - $h(22,0)=(h_1(22)+0\cdot h_2(22)) \bmod 7=(1+0) \bmod 7=1$, ocupado
 - $h(22,1)=(h_1(22)+1\cdot h_2(22)) \bmod 7=(1+5) \bmod 7=6$
@@ -279,8 +279,8 @@ $$h(k,i)=(h_1(k)+ih_2(k)) \bmod 7$$
 Resultado:
 
 ::: {style="width: 60%; margin: auto;"}
-|slot | 0   | 1    |  2   | 3  | 4  | 5   | 6   |  
-|-----| :----: | :-----: | :-----: | :---: | :---: | :----: | :----: | 
+|slot | 0   | 1    |  2   | 3  | 4  | 5   | 6   |
+|-----| :----: | :-----: | :-----: | :---: | :---: | :----: | :----: |
 | chave  | 7 | 15  | 14  | 13 | 25 | ❌ | 22 |
 :::
 
@@ -289,7 +289,7 @@ Resultado:
 
 ## Encadeamento separado
 
-A técnica de encadeamento separado é bastante simples. Ao invés de tratar a colisão procurando um lugar vazio, iremos colocar as colisões em uma lista encadeada. Logo, não teremos um vetor de chaves, mas sim um vetor de ponteiros que apontam para listas encadeadas separadamente. 
+A técnica de encadeamento separado é bastante simples. Em vez de tratar a colisão procurando um lugar vazio, iremos colocar as colisões em uma lista encadeada. Logo, não teremos um vetor de chaves, mas sim um vetor de ponteiros que apontam para listas encadeadas separadamente.
 
 ```{mermaid}
 flowchart LR
@@ -389,8 +389,8 @@ No exemplo anterior, quando houve a colisão da chave 81 com 21, a posição 1 i
 ```{mermaid}
 %%| label: fig-mermaid
 %%| fig-cap: |
-%%|   Ilustração de tratamento de colisão usando listas ligadas. 
-%%|   Cada slot aponta para a cabeça de uma lista.  
+%%|   Ilustração de tratamento de colisão usando listas ligadas.
+%%|   Cada slot aponta para a cabeça de uma lista.
 %%|   Quando uma colisão ocorre, o elemento é adicionado à lista correspondente.
 flowchart TD
  subgraph s1["Array"]
@@ -436,8 +436,8 @@ Use a abordagem de encadeamento separado para criar uma tabela _hash_ com as cha
 :::
 
 
-<!-- mermaid não renderiza dentro deum callout collapsable -->
-<!-- A solução consiste em instalar o chromium para tranformar em um figura
+<!-- mermaid não renderiza dentro de um callout retrátil -->
+<!-- A solução consiste em instalar o chromium para transformar em uma figura
      quarto install tool chromium -->
 <!-- Não é possível fazer isso no WSL, então a solução foi fazer:
      - cd /tmp
@@ -463,37 +463,37 @@ flowchart TD
     K14 --> K21[21]
     K21 --> K28[28]
     K28 --> n0["Filled Circle"]
-   
+
 
     A1 -.-> K15[15]
     K15 --> K22[22]
     K22 --> K1[01]
     K1 --> K8[08]
     K8 --> n1["Filled Circle"]
-   
+
 
     A2 -.-> K2[02]
     K2 --> K9[09]
     K9 --> n2["Filled Circle"]
-   
+
 
     A3 -.-> K3[03]
     K3 --> K10[10]
     K10 --> n3["Filled Circle"]
-   
+
     A4 -.-> K25[25]
     K25 --> K4[04]
     K4 --> K11[11]
     K11 --> n4["Filled Circle"]
-   
+
     A5 -.-> K5[05]
     K5 --> n5["Filled Circle"]
-   
+
     A6 -.-> K13[13]
     K13 --> K6[06]
     K6 --> K20[20]
     K20 --> n6["Filled Circle"]
-   
+
     n0@{ shape: f-circ}
     n1@{ shape: f-circ}
     n2@{ shape: f-circ}
@@ -509,10 +509,10 @@ flowchart TD
 
 Nesta unidade, você aprendeu
 
-✅ a identificar quando uma colisão ocorre 
+✅ a identificar quando uma colisão ocorre
 
-✅ os principais metódos para tratar colisões
- 
+✅ os principais métodos para tratar colisões
+
 
 ```quizdown
 
@@ -520,73 +520,73 @@ Nesta unidade, você aprendeu
 
 > Pense no resultado da função hash para chaves diferentes.
 
-1. [ ] Quando duas chaves são idênticas.  
-1. [x] Quando duas chaves diferentes produzem o mesmo valor hash.  
-1. [ ] Quando o vetor está totalmente vazio.  
-1. [ ] Quando a função hash retorna sempre zero.  
+1. [ ] Quando duas chaves são idênticas.
+1. [x] Quando duas chaves diferentes produzem o mesmo valor hash.
+1. [ ] Quando o vetor está totalmente vazio.
+1. [ ] Quando a função hash retorna sempre zero.
 
 
 # Quais são as principais técnicas para tratamento de colisões?
 
 > Existem duas abordagens gerais descritas no texto.
 
-- [x] Endereçamento aberto  
-- [x] Encadeamento separado  
-- [ ] Sondagem aleatória  
-- [ ] Redimensionamento dinâmico  
+- [x] Endereçamento aberto
+- [x] Encadeamento separado
+- [ ] Sondagem aleatória
+- [ ] Redimensionamento dinâmico
 
 
 # Complete a ordem correta das sondagens no endereçamento aberto!
 
 > Considere o modo como o algoritmo busca novas posições vazias.
 
-1. Sondagem linear  
-2. Sondagem quadrática  
-3. Duplo hash  
+1. Sondagem linear
+2. Sondagem quadrática
+3. Duplo hash
 
 # Como funciona a sondagem linear?
 
 > Veja a fórmula $h(k,i) = (h'(k) + i) \bmod m$.
 
-1. [ ] Utiliza duas funções hash diferentes.  
-1. [x] Incrementa o índice em uma unidade até encontrar posição vazia.  
-1. [ ] Usa potências de $i$ para procurar posições.  
-1. [ ] Usa listas encadeadas para armazenar colisões.  
+1. [ ] Utiliza duas funções hash diferentes.
+1. [x] Incrementa o índice em uma unidade até encontrar posição vazia.
+1. [ ] Usa potências de $i$ para procurar posições.
+1. [ ] Usa listas encadeadas para armazenar colisões.
 
 # Na sondagem quadrática, a função hash usa quais termos?
 
 > Observe a fórmula $h(k,i) = (h'(k) + c_1 i + c_2 i^2) \bmod m$.
 
-- [x] Um termo linear ($c_1 i$)  
-- [x] Um termo quadrático ($c_2 i^2$)  
-- [ ] Um termo cúbico ($c_3 i^3$)  
-- [ ] Um termo logarítmico ($\log i$)  
+- [x] Um termo linear ($c_1 i$)
+- [x] Um termo quadrático ($c_2 i^2$)
+- [ ] Um termo cúbico ($c_3 i^3$)
+- [ ] Um termo logarítmico ($\log i$)
 
 # No duplo hash, o cálculo depende de duas funções hash. Quais delas são usadas?
 
 > Elas aparecem como $h_1(k)$ e $h_2(k)$.
 
-- [x] $h_1(k)$  
-- [x] $h_2(k)$  
-- [ ] $h_3(k)$  
-- [ ] Nenhuma, é uma sondagem linear disfarçada  
+- [x] $h_1(k)$
+- [x] $h_2(k)$
+- [ ] $h_3(k)$
+- [ ] Nenhuma, é uma sondagem linear disfarçada
 
 # Coloque em ordem os três métodos de endereçamento aberto apresentados!
 
 > Do mais simples ao mais sofisticado.
 
-1. Sondagem linear  
-2. Sondagem quadrática  
-3. Duplo hash  
+1. Sondagem linear
+2. Sondagem quadrática
+3. Duplo hash
 
 # Qual é a ideia principal do encadeamento separado?
 
 > Considere o uso de ponteiros e listas encadeadas.
 
-1. [ ] Procurar um slot vazio no vetor.  
-1. [ ] Remover elementos duplicados automaticamente.  
-1. [x] Manter listas encadeadas separadas para cada posição da tabela.  
-1. [ ] Usar funções hash aleatórias para evitar colisões.  
+1. [ ] Procurar um slot vazio no vetor.
+1. [ ] Remover elementos duplicados automaticamente.
+1. [x] Manter listas encadeadas separadas para cada posição da tabela.
+1. [ ] Usar funções hash aleatórias para evitar colisões.
 ```
 
 {{< include /_includes/progress-bar.qmd >}}

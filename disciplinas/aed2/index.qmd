@@ -10,7 +10,7 @@ Bem-vindo ao portal de REA sobre **{{< meta title >}}**. Aqui você encontrará 
 
 ::: {.g-col-6}
 ::: {.card .bg-success .text-white .text-center .p-4}
-<i class="bi bi-mortarboard"></i>  
+<i class="bi bi-mortarboard"></i>
 **[Acadêmico](academic/index.qmd){.stretched-link .text-white}**
 :::
 :::
@@ -18,7 +18,7 @@ Bem-vindo ao portal de REA sobre **{{< meta title >}}**. Aqui você encontrará 
 
 ::: {.g-col-6}
 ::: {.card .bg-primary .text-white .text-center .p-4}
-<i class="bi bi-controller"></i>  
+<i class="bi bi-controller"></i>
 **[Gamificado](gaming/index.qmd){.stretched-link .text-white}**
 :::
 :::
@@ -31,7 +31,7 @@ Bem-vindo ao portal de REA sobre **{{< meta title >}}**. Aqui você encontrará 
 Os exercícios propostos estão divididos em três categorias:
 
 - **Questões Objetivas**: questões de concursos ou adaptadas para fixação dos conceitos.
-- **Trilha de Exercícios**: são os exercícios propiamente ditos da disciplina.
+- **Trilha de Exercícios**: são os exercícios propriamente ditos da disciplina.
 - **Desafios de Programação**: voltados à prática em linguagem C.
 
 Além disso, há um conjunto de exercícios interativos, onde você pode aprender de forma descontraída o funcionamento das mais diversas estruturas como árvores, filas de prioridade, heaps, tabelas hash e grafos.

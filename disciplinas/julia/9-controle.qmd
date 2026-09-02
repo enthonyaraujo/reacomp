@@ -8,9 +8,9 @@ format:
   html:
     reference-location: margin
 execute:
-  eval: true 
+  eval: true
   daemon: true
-  cache: true 
+  cache: true
 ---
 
 Nesta unidade, aprenderemos sobre como estruturar o fluxo de nossos programas.
@@ -61,7 +61,7 @@ Note que foi criado um novo escopo local quando usamos `let...end`, ao contrári
 # Avaliação condicional
 
 
-Na avaliação condicional, analisamos expressões booleanas para decidir qual fluxo seguir no programa. Usamos a sintaxe `if-elseif-else`. 
+Na avaliação condicional, analisamos expressões booleanas para decidir qual fluxo seguir no programa. Usamos a sintaxe `if-elseif-else`.
 
 ```{julia}
 idade = 17
@@ -116,7 +116,7 @@ println("!(x > 15): ", !(x > 15))  # NOT
 ```
 
 ::: {.callout-important}
-As operações funcionam em modo _short-circuiting_ (curto-circuito). Isso significa que elas não necessariamente avaliam o segundo argumento. 
+As operações funcionam em modo _short-circuiting_ (curto-circuito). Isso significa que elas não necessariamente avaliam o segundo argumento.
 
 ```{julia}
 val = true
@@ -124,7 +124,7 @@ val || println("Acesso Negado")
 val && println("Acesso Liberado")
 ```
 
-No exemplo acima, como `val` é `true`, na operação `or` não é necessário avaliar o segundo argumento, pois o valor da expressão não depende mais deste argumento. Já na segundo operação `and`, é preciso avaliar o segundo argumento.
+No exemplo acima, como `val` é `true`, na operação `or` não é necessário avaliar o segundo argumento, pois o valor da expressão não depende mais deste argumento. Já na segunda operação `and`, é preciso avaliar o segundo argumento.
 
 Na expressão `x && y`, a subexpressão `y` somente é avaliada se `x` for `true`. Já na expressão `x || y`, a subexpressão `y` somente é avaliada se `x` for `false`. Este comportamento é frequentemente usado como alternativa a pequenos controles de fluxo que usam `if`.
 :::

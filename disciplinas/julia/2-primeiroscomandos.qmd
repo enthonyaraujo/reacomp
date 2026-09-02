@@ -8,9 +8,9 @@ format:
   html:
     reference-location: margin
 execute:
-  eval: true 
+  eval: true
   daemon: true
-  cache: true 
+  cache: true
 ---
 
 ## Exibir mensagens simples
@@ -23,7 +23,7 @@ end
 @show x
 ```
 
-Para exibir mensagens usamos a função `print` ou `println`. A diferença é que esta última insere uma quebra de linha no final .
+Para exibir mensagens usamos a função `print` ou `println`. A diferença é que esta última insere uma quebra de linha no final.
 
 ```{julia}
 print("Olá, ")
@@ -35,7 +35,7 @@ O caractere especial de escape de nova linha é `\n`.
 
 ## Operações básicas
 
-Julia conta com um série de operações matemáticas básicas.
+Julia conta com uma série de operações matemáticas básicas.
 
 ```{julia}
 println("Adição: ", 5 + 3)
@@ -63,7 +63,7 @@ Exemplos:
 
 ## Funções matemáticas básicas
 
-Avançando um pouco mais na parte matemática, Julia nos fornece uma série de função muito simples de usar.
+Avançando um pouco mais na parte matemática, Julia nos fornece uma série de funções muito simples de usar.
 
 ```{julia}
 println("sqrt(16) = ", sqrt(16))
@@ -79,8 +79,8 @@ println("trunc(3.9) = ", trunc(3.9))
 - A função `sqrt`, _square root_, calcula a raiz quadrada
 - A função `cbrt`, _cube root_, calcula a raiz cúbica
 - A função `round` aplica um arredondamento
-- A função `floor` calcula a piso de um número real
+- A função `floor` calcula o piso de um número real.
 - A função `ceil` calcula o teto de um número real
-- A função `trunc` aplica um truncamaento
+- A função `trunc` aplica um truncamento.
 
 

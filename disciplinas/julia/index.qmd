@@ -8,7 +8,7 @@ toc: false
 Bem-vindo(a) ao curso de **{{< meta title >}}**!
 
 <!--
-> Este módulo está dividido em cinco temas centrais. 
+> Este módulo está dividido em cinco temas centrais.
 > Clique em qualquer um deles para expandir o conteúdo e navegar pelos subtópicos específicos.
 
 
@@ -43,8 +43,8 @@ Bem-vindo(a) ao curso de **{{< meta title >}}**!
 [2. Dicionários](8-dicionarios.qmd){.list-group-item .list-group-item-action .text-body .border-0}
 [3. Controle](9-controle.qmd){.list-group-item .list-group-item-action .text-body .border-0}
 [4. Laços](10-lacos.qmd){.list-group-item .list-group-item-action .text-body .border-0}
-[5. Funcoes](11-funcoes.qmd){.list-group-item .list-group-item-action .text-body .border-0}
-[6. Struct](12-structs.qmd){.list-group-item .list-group-item-action .text-body .border-0}
+[5. Funções](11-funcoes.qmd){.list-group-item .list-group-item-action .text-body .border-0}
+[6. Structs](12-structs.qmd){.list-group-item .list-group-item-action .text-body .border-0}
 
 
 

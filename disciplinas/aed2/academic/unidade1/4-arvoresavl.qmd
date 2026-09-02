@@ -8,12 +8,12 @@ format:
   html:
     reference-location: margin
     css: ../styles/academic.css
-filters: 
+filters:
     - quizdown
 ---
 
 
-Um dos problemas das BSTs são que elas pode ficar desbalanceadas, no pior caso, degeneradas. A árvore AVL busca remover esse problema rebalanceado a árvore sem perder as propriedades de uma BST.
+Um dos problemas das BSTs é que elas podem ficar desbalanceadas e, no pior caso, degeneradas. A árvore AVL busca resolver esse problema rebalanceando a árvore sem perder as propriedades de uma BST.
 
 Definição
 AVL
@@ -25,7 +25,7 @@ Isso garante que operações como inserção, remoção e busca sejam eficientes
 Definição
 Fator de Balanceamento
 O fator de balanceamento (fb) de um nó é a diferença entre as alturas de suas subárvores esquerda e direita. Um nó com fator de balanceamento de -1, 0 ou +1 é considerado balanceado.
-Para calcular o fator, basta fazer a diferença entre a quantidade de níveis da subárvore esquerda e a quantidade de níveis da subárvore direta. O fator de balanceamento das folhas é sempre zero.
+Para calcular o fator, basta fazer a diferença entre a quantidade de níveis da subárvore esquerda e a quantidade de níveis da subárvore direita. O fator de balanceamento das folhas é sempre zero.
 
 Significado
 Os valores do fb nos dizem o estado de balanceamento de um nó:
@@ -36,7 +36,7 @@ fb = -1: A subárvore direita é uma aresta mais alta que a subárvore esquerda.
 Em qualquer outro caso, será necessário um rebalanceamento.
 
 Exemplo
-Neste exemplo, cada nó, além da chave, possui o fator de balanceamento. Onde não há indicação significa que o fb é zero.
+Neste exemplo, cada nó, além da chave, possui o fator de balanceamento. A ausência de indicação significa que o fb é zero.
 Como todos os nós estão com fator de balanceamento dentro do limite permitido ([-1,1]), esta árvore é AVL.
 
 
@@ -65,7 +65,7 @@ linkStyle 5 stroke:none,fill:none
 linkStyle 7 stroke:none,fill:none
 classDef WT fill:#FFFFFF
 classDef BL fill:#BBDEFB
-```	
+```
 
 
 Neste caso, temos o nó com chave 8 desbalanceado. Além dele, a raiz também está desbalanceada. Por essa razão, a árvore ilustrada não é AVL.
@@ -82,7 +82,7 @@ flowchart TB
 	D --- H(("07"))
     G --- I(("02"))
     G --- I2((" "))
-	
+
 
 A:::RE
 B:::RE
@@ -101,7 +101,7 @@ linkStyle 9 stroke:none,fill:none
 classDef WT fill:#FFFFFF
 classDef BL fill:#BBDEFB
 classDef RE fill:#FFCDD2
-```	
+```
 
 ## Rotações
 Rotação
@@ -116,7 +116,7 @@ Atualização:
 A altura e o fator de balanceamento de todos os nós afetados pela rotação são atualizados.
 
 Tipos de Rotações
-As rotações podem ser divididas em simples ou duplas, além da direção esquerda ou direita. Como fb é a diferença entra as alturas das subárvores esquerda e direita, se
+As rotações podem ser divididas em simples ou duplas, além da direção esquerda ou direita. Como fb é a diferença entre as alturas das subárvores esquerda e direita, se
 
 fb > 1: deve-se rotacionar para a direita;
 fb < 1: deve-se rotacionar para a esquerda;
@@ -171,14 +171,14 @@ D1@{ shape: tri}
 E1@{ shape: tri}
 style C fill:#2962FF,stroke:none
 style D fill:#00C853,stroke:none
-style E fill:#D50000,stroke:none    
+style E fill:#D50000,stroke:none
 style C1 fill:#2962FF,stroke:none
 style D1 fill:#00C853,stroke:none
-style E1 fill:#D50000,stroke:none    
+style E1 fill:#D50000,stroke:none
 classDef WT fill:#FFFFFF
 style s1 stroke:none,fill:transparent
-style s2 stroke:none,fill:transparent       
-```	
+style s2 stroke:none,fill:transparent
+```
 
 Exemplo
 Claramente, o nó C está desbalanceado com um fator igual a +2. É necessário que seja realizada uma rotação para a direita. Desse modo, o nó B funciona como um pivô.
@@ -221,9 +221,9 @@ style s1 stroke:none,fill:transparent
 style s2 stroke:none,fill:transparent
 style I1 stroke:none,fill:transparent
 style I2 stroke:none,fill:transparent
-linkStyle 1 stroke:none,fill:none    
-linkStyle 3 stroke:none,fill:none    
-```	
+linkStyle 1 stroke:none,fill:none
+linkStyle 3 stroke:none,fill:none
+```
 
 
 Claramente, o nó A está desbalanceado com um fator igual a +2. É necessário que seja realizada uma rotação para a direita. Como A deve se tornar filho da direita de B, devemos realocar D como filho da esquerda de A.
@@ -271,12 +271,12 @@ style s1 stroke:none,fill:transparent
 style s2 stroke:none,fill:transparent
 style I1 stroke:none,fill:transparent
 style I2 stroke:none,fill:transparent
-linkStyle 1 stroke:none,fill:none    
-linkStyle 7 stroke:none,fill:none    
-```	
+linkStyle 1 stroke:none,fill:none
+linkStyle 7 stroke:none,fill:none
+```
 
 Rotação à Esquerda
-A rotação à esquerda é dual à direta.
+A rotação à esquerda é dual à direita.
 
 ```{mermaid}
 flowchart LR
@@ -321,14 +321,14 @@ D1@{ shape: tri}
 E1@{ shape: tri}
 style C fill:#2962FF,stroke:none
 style D fill:#00C853,stroke:none
-style E fill:#D50000,stroke:none    
+style E fill:#D50000,stroke:none
 style C1 fill:#2962FF,stroke:none
 style D1 fill:#00C853,stroke:none
-style E1 fill:#D50000,stroke:none    
+style E1 fill:#D50000,stroke:none
 classDef WT fill:#FFFFFF
 style s1 stroke:none,fill:transparent
-style s2 stroke:none,fill:transparent       
-```	
+style s2 stroke:none,fill:transparent
+```
 
 Exemplo
 Qual nó está desbalanceado?
@@ -365,8 +365,8 @@ F:::WT
 classDef WT fill:#FFFFFF
 style s1 stroke:none,fill:transparent
 style I1 stroke:none,fill:transparent
-linkStyle 4 stroke:none,fill:none    
-```	
+linkStyle 4 stroke:none,fill:none
+```
 
 ```{mermaid}
 flowchart LR
@@ -396,7 +396,7 @@ flowchart LR
 	D --- E
     E --- I1
     E --- F
-    
+
 	D1 --- B1
 	D1 --- E1
 	B1 --- A1
@@ -423,12 +423,12 @@ style s1 stroke:none,fill:transparent
 style s2 stroke:none,fill:transparent
 style I1 stroke:none,fill:transparent
 style I2 stroke:none,fill:transparent
-linkStyle 4 stroke:none,fill:none    
-linkStyle 10 stroke:none,fill:none    
-```	
+linkStyle 4 stroke:none,fill:none
+linkStyle 10 stroke:none,fill:none
+```
 
 Nota
-Você irá perceber que, teoricamente, só precisamos de uma rotação. Primeiro, porque as rotações à esquerda e direita são espelhadas. Segundo, como você notará, as rotações duplas pode ser divididas em simples.
+Você irá perceber que, teoricamente, só precisamos de uma rotação. Primeiro, porque as rotações à esquerda e direita são espelhadas. Segundo, como você notará, as rotações duplas podem ser divididas em simples.
 
 Uma rotação dupla à esquerda, por exemplo, não significa duas rotações à esquerda, mas uma para a direita na subárvore seguida de uma para a esquerda. Todavia, para diminuir o número de operações, podemos fazer tudo em um passo só.
 
@@ -490,7 +490,7 @@ flowchart LR
     A2 --- vermelho2
     C2 --- azul2
     C2 --- amarelo2
-  
+
 
    s1 ---> s2
    s2 ---> s3
@@ -519,25 +519,25 @@ azul2@{ shape: tri}
 amarelo2@{ shape: tri}
 
 style verde fill:#00C853,stroke:none
-style vermelho fill:#D50000,stroke:none    
+style vermelho fill:#D50000,stroke:none
 style azul fill:#2962FF,stroke:none
 style amarelo fill:#FFD600,stroke:none
 
 style verde1 fill:#00C853,stroke:none
-style vermelho1 fill:#D50000,stroke:none    
+style vermelho1 fill:#D50000,stroke:none
 style azul1 fill:#2962FF,stroke:none
 style amarelo1 fill:#FFD600,stroke:none
 
 style verde2 fill:#00C853,stroke:none
-style vermelho2 fill:#D50000,stroke:none    
+style vermelho2 fill:#D50000,stroke:none
 style azul2 fill:#2962FF,stroke:none
 style amarelo2 fill:#FFD600,stroke:none
 
 classDef WT fill:#FFFFFF
 style s1 stroke:none,fill:transparent
-style s2 stroke:none,fill:transparent       
-style s3 stroke:none,fill:transparent       
-```	
+style s2 stroke:none,fill:transparent
+style s3 stroke:none,fill:transparent
+```
 
 Em um único passo. Considere $fb(A) > 1$ e $fb(B) < 0$.
 
@@ -576,7 +576,7 @@ flowchart LR
     A2 --- vermelho2
     C2 --- azul2
     C2 --- amarelo2
-  
+
 
    s1 ---> s3
 
@@ -597,19 +597,19 @@ azul2@{ shape: tri}
 amarelo2@{ shape: tri}
 
 style verde fill:#00C853,stroke:none
-style vermelho fill:#D50000,stroke:none    
+style vermelho fill:#D50000,stroke:none
 style azul fill:#2962FF,stroke:none
 style amarelo fill:#FFD600,stroke:none
 
 style verde2 fill:#00C853,stroke:none
-style vermelho2 fill:#D50000,stroke:none    
+style vermelho2 fill:#D50000,stroke:none
 style azul2 fill:#2962FF,stroke:none
 style amarelo2 fill:#FFD600,stroke:none
 
 classDef WT fill:#FFFFFF
 style s1 stroke:none,fill:transparent
-style s3 stroke:none,fill:transparent       
-```	
+style s3 stroke:none,fill:transparent
+```
 
 Rotação à Esquerda
 Em dois passos. Rotação para a direita em B, depois para a esquerda em A.
@@ -667,7 +667,7 @@ flowchart LR
     A2 --- vermelho2
     C2 --- azul2
     C2 --- amarelo2
-  
+
 
    s1 ---> s2
    s2 ---> s3
@@ -696,25 +696,25 @@ azul2@{ shape: tri}
 amarelo2@{ shape: tri}
 
 style verde fill:#00C853,stroke:none
-style vermelho fill:#D50000,stroke:none    
+style vermelho fill:#D50000,stroke:none
 style azul fill:#2962FF,stroke:none
 style amarelo fill:#FFD600,stroke:none
 
 style verde1 fill:#00C853,stroke:none
-style vermelho1 fill:#D50000,stroke:none    
+style vermelho1 fill:#D50000,stroke:none
 style azul1 fill:#2962FF,stroke:none
 style amarelo1 fill:#FFD600,stroke:none
 
 style verde2 fill:#00C853,stroke:none
-style vermelho2 fill:#D50000,stroke:none    
+style vermelho2 fill:#D50000,stroke:none
 style azul2 fill:#2962FF,stroke:none
 style amarelo2 fill:#FFD600,stroke:none
 
 classDef WT fill:#FFFFFF
 style s1 stroke:none,fill:transparent
-style s2 stroke:none,fill:transparent       
-style s3 stroke:none,fill:transparent       
-```	
+style s2 stroke:none,fill:transparent
+style s3 stroke:none,fill:transparent
+```
 
 Em um único passo. Considere $fb(A) < -1$ e $fb(B) > 0$
 
@@ -755,7 +755,7 @@ flowchart LR
     A2 --- vermelho2
     C2 --- azul2
     C2 --- amarelo2
-  
+
 
    s1 ---> s3
 
@@ -776,19 +776,19 @@ azul2@{ shape: tri}
 amarelo2@{ shape: tri}
 
 style verde fill:#00C853,stroke:none
-style vermelho fill:#D50000,stroke:none    
+style vermelho fill:#D50000,stroke:none
 style azul fill:#2962FF,stroke:none
 style amarelo fill:#FFD600,stroke:none
 
 style verde2 fill:#00C853,stroke:none
-style vermelho2 fill:#D50000,stroke:none    
+style vermelho2 fill:#D50000,stroke:none
 style azul2 fill:#2962FF,stroke:none
 style amarelo2 fill:#FFD600,stroke:none
 
 classDef WT fill:#FFFFFF
 style s1 stroke:none,fill:transparent
-style s3 stroke:none,fill:transparent       
-```	
+style s3 stroke:none,fill:transparent
+```
 
 ---
 
@@ -798,7 +798,7 @@ Nesta aula, estudamos a estrutura de dados árvore AVL:
 
 ✅ definimos o fator de balanceamento de um nó;
 
-✅ estudamos as rotações: simples e dupla
+✅ estudamos as rotações: simples e duplas
 
 Na próxima aula, iremos abordar as operações de inserção, busca e remoção em AVL e como as rotações são aplicadas nessas operações.
 
@@ -807,124 +807,124 @@ Na próxima aula, iremos abordar as operações de inserção, busca e remoção
 
 > Considere o pior caso discutido no texto.
 
-1. [ ] O alto custo de inserção em média  
-1. [ ] A impossibilidade de remoção de nós  
-1. [x] O desbalanceamento que pode levar à degeneração  
-1. [ ] A ausência de funções de comparação  
+1. [ ] O alto custo de inserção em média
+1. [ ] A impossibilidade de remoção de nós
+1. [x] O desbalanceamento que pode levar à degeneração
+1. [ ] A ausência de funções de comparação
 
 
 # Definição de Árvore AVL
 
 > Baseie-se na definição formal apresentada.
 
-1. [ ] Uma árvore binária completa  
-1. [ ] Uma árvore binária sem ordenação  
-1. [x] Uma BST balanceada com diferença de altura máxima de 1  
-1. [ ] Uma árvore com fator de balanceamento sempre zero  
+1. [ ] Uma árvore binária completa
+1. [ ] Uma árvore binária sem ordenação
+1. [x] Uma BST balanceada com diferença de altura máxima de 1
+1. [ ] Uma árvore com fator de balanceamento sempre zero
 
 
 
 # Como é definido o fator de balanceamento de um nó?
 
-1. [ ] Soma das alturas das subárvores  
-1. [x] Diferença entre as alturas da subárvore esquerda e direita  
-1. [ ] Altura total da árvore  
-1. [ ] Número de filhos do nó  
+1. [ ] Soma das alturas das subárvores
+1. [x] Diferença entre as alturas da subárvore esquerda e direita
+1. [ ] Altura total da árvore
+1. [ ] Número de filhos do nó
 
 
 # Quando um nó é considerado balanceado?
 
-- [x] fb = -1  
-- [x] fb = 0  
-- [x] fb = +1  
-- [ ] fb = +2  
+- [x] fb = -1
+- [x] fb = 0
+- [x] fb = +1
+- [ ] fb = +2
 
 
-# Fator de balanceamento das folhas 
+# Fator de balanceamento das folhas
 
 > Considere a definição apresentada.
 
-1. [ ] Sempre +1  
-1. [ ] Sempre -1  
-1. [x] Sempre 0  
-1. [ ] Depende da altura da árvore  
+1. [ ] Sempre +1
+1. [ ] Sempre -1
+1. [x] Sempre 0
+1. [ ] Depende da altura da árvore
 
 
 # Interpretação de fb = +1
 
 > Analise o significado do fator.
 
-1. [ ] A subárvore direita é mais alta  
-1. [x] A subárvore esquerda é uma aresta mais alta  
-1. [ ] O nó está desbalanceado  
-1. [ ] O nó precisa de rotação dupla  
+1. [ ] A subárvore direita é mais alta
+1. [x] A subárvore esquerda é uma aresta mais alta
+1. [ ] O nó está desbalanceado
+1. [ ] O nó precisa de rotação dupla
 
 
 # Em qual situação uma rotação é necessária?
 
-1. [ ] Sempre após uma inserção  
-1. [ ] Sempre após uma remoção  
-1. [x] Quando o fator de balanceamento sai do intervalo [-1, 1]  
-1. [ ] Quando o nó é folha  
+1. [ ] Sempre após uma inserção
+1. [ ] Sempre após uma remoção
+1. [x] Quando o fator de balanceamento sai do intervalo [-1, 1]
+1. [ ] Quando o nó é folha
 
 
 # Qual a finalidade das rotações?
 
-- [x] Restaurar o balanceamento da árvore  
-- [x] Preservar as propriedades de uma BST  
-- [ ] Eliminar a necessidade de comparações  
-- [ ] Reduzir o número de nós da árvore  
+- [x] Restaurar o balanceamento da árvore
+- [x] Preservar as propriedades de uma BST
+- [ ] Eliminar a necessidade de comparações
+- [ ] Reduzir o número de nós da árvore
 
 
 # Segundo o texto, a rotação à esquerda é:
 
-1. [ ] Independente da rotação à direita  
-1. [ ] Aplicada quando fb > 1  
-1. [x] Dual (espelhada) da rotação à direita  
-1. [ ] Exclusiva para rotações duplas  
+1. [ ] Independente da rotação à direita
+1. [ ] Aplicada quando fb > 1
+1. [x] Dual (espelhada) da rotação à direita
+1. [ ] Exclusiva para rotações duplas
 
 
 # Como pode ser interpretada uma rotação dupla?
 
-1. [ ] Duas rotações na mesma direção  
-1. [x] Uma combinação de rotações simples em direções opostas  
-1. [ ] Uma rotação aplicada apenas na raiz  
-1. [ ] Uma rotação sem atualização de fatores  
+1. [ ] Duas rotações na mesma direção
+1. [x] Uma combinação de rotações simples em direções opostas
+1. [ ] Uma rotação aplicada apenas na raiz
+1. [ ] Uma rotação sem atualização de fatores
 
 
 # O que deve ser atualizado após uma rotação?
 
-- [x] Altura dos nós afetados  
-- [x] Fator de balanceamento dos nós afetados  
-- [ ] As chaves armazenadas  
-- [ ] A ordem de comparação das chaves  
+- [x] Altura dos nós afetados
+- [x] Fator de balanceamento dos nós afetados
+- [ ] As chaves armazenadas
+- [ ] A ordem de comparação das chaves
 
 
 # Ordem lógica após inserção ou remoção.
 
-1. Verificação do fator de balanceamento  
-2. Identificação do tipo de desbalanceamento  
-3. Aplicação da rotação adequada  
-4. Atualização das alturas e fatores  
+1. Verificação do fator de balanceamento
+2. Identificação do tipo de desbalanceamento
+3. Aplicação da rotação adequada
+4. Atualização das alturas e fatores
 
 # Principal vantagem da AVL sobre a BST
 
 > Conforme discutido na conclusão.
 
-1. [ ] Menor uso de memória  
-1. [x] Garantia de altura logarítmica  
-1. [ ] Eliminação de rotações  
-1. [ ] Inserções mais simples  
+1. [ ] Menor uso de memória
+1. [x] Garantia de altura logarítmica
+1. [ ] Eliminação de rotações
+1. [ ] Inserções mais simples
 
 
 # Custo adicional das AVL
 
 > Qual o trade-off apresentado?
 
-1. [ ] Maior tempo de busca  
-1. [ ] Maior uso de chaves  
-1. [x] Mais computações devido às rotações  
-1. [ ] Menor eficiência em média  
+1. [ ] Maior tempo de busca
+1. [ ] Maior uso de chaves
+1. [x] Mais computações devido às rotações
+1. [ ] Menor eficiência em média
 ```
 
 

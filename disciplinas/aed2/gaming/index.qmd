@@ -39,7 +39,7 @@ Bem-vindo ao portal de REA sobre **{{< meta title >}}**. Aqui você encontrará 
 
 <div class="chat-line shell">
  <img src="../img/avatars/shell_avatar.png" class="chat-avatar" alt="ShellSort">
-  <div class="chat-bubble">É verdade Hashy, a gente se completa. Nossa missão é simples: mostrar que, com paciência e método, até os conceitos mais complexos se tornam fáceis de dominar.<br><em>“Devagar e sempre avante, esse é o meu algoritmo!”</em></div>
+  <div class="chat-bubble">É verdade, Hashy, a gente se completa. Nossa missão é simples: mostrar que, com paciência e método, até os conceitos mais complexos se tornam fáceis de dominar.<br><em>“Devagar e sempre avante, esse é o meu algoritmo!”</em></div>
 </div>
 
 
@@ -56,7 +56,7 @@ Bem-vindo ao portal de REA sobre **{{< meta title >}}**. Aqui você encontrará 
 
 </div>
 
-Juntos com Shell e Hashy, vamos explorar o mundo das estruturas de dados e seus algoritmos. Prepare-se para um jornada desafiadora e divertida enfrentando os diversos desafios que nos tornarão melhores programadores.
+Juntos com Shell e Hashy, vamos explorar o mundo das estruturas de dados e seus algoritmos. Prepare-se para uma jornada desafiadora e divertida enfrentando os diversos desafios que nos tornarão melhores programadores.
 
 ## Portal dos Mundos
 

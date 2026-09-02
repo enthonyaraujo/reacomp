@@ -8,11 +8,11 @@ format:
   html:
     reference-location: margin
     css: ../styles/academic.css
-filters: 
+filters:
     - quizdown
 ---
 
-Nossa jornada pelos ponteiros ainda não acabou. Nesta unidade vamos estudar o uso de ponteiros com funções. Isso mesmo, uma função também possui um endereço de memória. Poderemos chamar funções indiretamente e passar funções como paramêtros para outras funções. 
+Nossa jornada pelos ponteiros ainda não acabou. Nesta unidade, vamos estudar o uso de ponteiros com funções. Isso mesmo, uma função também possui um endereço de memória. Poderemos chamar funções indiretamente e passar funções como parâmetros para outras funções.
 
 
 ## Ponteiros de Funções {#sec-fun}
@@ -35,7 +35,7 @@ double (*media_ptr)(double, double);
 media_ptr = media;
 ```
 
-A sintaxe de declaração do ponteiro `media_prt` deve ser lida da seguinte forma:
+A sintaxe de declaração do ponteiro `media_ptr` deve ser lida da seguinte forma:
 
 - `double`: é o tipo de retorno;
 - `(*media_ptr)`: indica que `media_ptr` é um ponteiro para função. Os parênteses são obrigatórios para diferenciá-lo de uma função que retorna um ponteiro;
@@ -45,7 +45,7 @@ A sintaxe de declaração do ponteiro `media_prt` deve ser lida da seguinte form
 Diferentemente das variáveis, ao atribuir o endereço de uma função a um ponteiro de função, não é necessário usar o operador & (o nome da função sozinho já representa seu endereço).
 :::
 
-Note que a função `media` obedece a assinatura (ou contrato) estabelecido pelo ponteiro de função `media_ptr`, ou seja, possui o mesmo tipo de retorno e os mesmos tipos de parâmetros de entrada (`double, double`). Portanto, devemos manter a compatibilidade de tipos, como fizemos com as variáveis na seção anterior.
+Note que a função `media` obedece à assinatura (ou contrato) estabelecido pelo ponteiro de função `media_ptr`, ou seja, possui o mesmo tipo de retorno e os mesmos tipos de parâmetros de entrada (`double, double`). Portanto, devemos manter a compatibilidade de tipos, como fizemos com as variáveis na seção anterior.
 
 ::: {.callout-note icon="false" title="Exercício de Fixação"}
 Crie ponteiros para as seguintes funções
@@ -68,7 +68,7 @@ void aponta_para(int **p, int *q) {
 ::: {.callout-tip title="Solução (clique para ver)" collapse="true"}
 ```c
 float (*media_ptr) (float, float, float) = media;
-void (*aniversario_ptr) (int *) = aniversario; 
+void (*aniversario_ptr) (int *) = aniversario;
 void (*aponta_para_ptr)(int **, int *) = aponta_para;
 ```
 :::
@@ -101,12 +101,12 @@ int main(){
 
   int n1 = 10;
   int n2 = 2;
-  
+
   printf("Soma:      %d\n", calcular(n1, n2, soma));
   printf("Subtração: %d\n", calcular(n1, n2, subtracao));
   printf("Produto:   %d\n", calcular(n1, n2, produto));
-  printf("Divisão:   %d\n", calcular(n1, n2, divisao));  
-  
+  printf("Divisão:   %d\n", calcular(n1, n2, divisao));
+
   return 0;
 }
 ```
@@ -124,7 +124,7 @@ A saída desse programa será
   Soma:      12
   Subtração: 8
   Produto:   20
-  Divisão:   5 
+  Divisão:   5
 ```
 Ao **passar a função como parâmetro**, tornamos o código de C extremamente **poderoso e reutilizável**. A função `calcular` não se importa como o cálculo é feito, apenas que a função fornecida (o _callback_) respeite o contrato de tipos (`int` para retorno, e `int`, `int` para parâmetros).
 
@@ -135,7 +135,7 @@ Podemos ir além nessa reutilização? Sim, mas atingimos o limite do **{{< glos
 double somad (double a, double b) { return a + b; }
 ```
 
-O problema é que não podemos passar `somad` para a função `calcular` e nem a usar para operar com `double`, pois o _callback_ `int (*operacao)(int, int)` e os parâmetros fixos em `calcular(int a, int b, ...)` tornam essa função totalmente incompatível com o tipo `double`.
+O problema é que não podemos passar `somad` para a função `calcular` nem usá-la para operar com `double`, pois o _callback_ `int (*operacao)(int, int)` e os parâmetros fixos em `calcular(int a, int b, ...)` tornam essa função totalmente incompatível com o tipo `double`.
 
 Para resolver esse problema e criar uma única função verdadeiramente genérica que aceite qualquer tipo de dado, precisamos abandonar os tipos concretos (`int`, `double`) e generalizar usando o ponteiro sem tipo (`void*`).
 
@@ -152,9 +152,9 @@ Ao definir o tipo do _callback_, tornamos a função `calcular` muito mais limpa
 // que retorna int e aceita dois int como parâmetros.
 typedef int (*Operacao)(int, int);
 
-// A função 'calcular' agora usa o tipo 'Operacao', 
+// A função 'calcular' agora usa o tipo 'Operacao',
 // simplificando sua assinatura.
-int calcular(int a, int b, Operacao operacao); 
+int calcular(int a, int b, Operacao operacao);
 ```
 O código final ficaria assim:
 
@@ -177,18 +177,18 @@ int main(){
 
   int n1 = 10;
   int n2 = 2;
-  
+
   printf("Soma: %d\n", calcular(n1, n2, soma));
-  
+
   return 0;
 }
 ```
 ::: {.column-margin}
 **[Se liga!]{.text-warning}**
-Com `typedef`, ganhamos mais clareza no código. A função `calcular` se torna muito mais limpa e legível. 
+Com `typedef`, ganhamos mais clareza no código. A função `calcular` se torna muito mais limpa e legível.
 :::
 
-Com essa abrodardagem, ganhamos:
+Com essa abordagem, ganhamos:
 
 - **Reutilização**: A função `calcular` é reutilizada para todas as operações.
 - **Fácil extensão**:	Para adicionar uma nova operação, basta criar a função e passá-la para `calcular`. Não precisamos de blocos `if/else` ou `switch` dentro de `calcular`.
@@ -201,12 +201,12 @@ Uma das grandes vantagens de usar ponteiros para funções é a possibilidade de
 
 ```c
 Operacao escolha(){
-  printf("Esolha a Operação Desejada\n");
+  printf("Escolha a Operação Desejada\n");
   printf("1 - Soma\n");
   printf("2 - Subtração\n");
   printf("3 - Multiplicação\n");
   printf("4 - Divisão\n");
-    
+
   int s = 0;
   scanf("%d", &s);
 
@@ -214,12 +214,12 @@ Operacao escolha(){
   if (s == 2) return subtracao;
   if (s == 3) return produto;
   if (s == 4) return divisao;
-  
+
   return NULL;  // Retorna NULL se a escolha for inválida
 }
 ```
 
-Na versão acima, a possibilidade de repetir o menu, em caso de entrada inválida, não está implementado. Todavia, podemos modificar para um problema específico. O que notamos de mais problemático é que a função `escolha` possui duas responsabilidades e devemos evitar isso no futuro para deixar o código mais modular e facilitar a manutenção.
+Na versão acima, a possibilidade de repetir o menu, em caso de entrada inválida, não está implementada. Todavia, podemos modificar para um problema específico. O que notamos de mais problemático é que a função `escolha` possui duas responsabilidades e devemos evitar isso no futuro para deixar o código mais modular e facilitar a manutenção.
 
 ## Ponteiro genérico {#sec-gen}
 
@@ -272,7 +272,7 @@ int main() {
     printf("sizeof(double): %zu bytes\n", sizeof(double));
 
     void *ptr = malloc(sizeof(double));
-    printf("Alocado %zu bytes em %p\n", sizeof(double), ptr);
+    printf("Alocados %zu bytes em %p\n", sizeof(double), ptr);
 
     free(ptr);
     return 0;
@@ -291,19 +291,19 @@ Saída típica:
 ```{.console code-line-numbers="false"}
 sizeof(int)   : 4 bytes
 sizeof(double): 8 bytes
-Alocado 8 bytes em 0x7ffee1
+Alocados 8 bytes em 0x7ffee1
 ```
 
 A combinação de `void *` e `size_t` é fundamental para criar estruturas genéricas, pois usaremos `void *` para representar o dado, independentemente de tipo e `size_t` para indicar o tamanho desse dado, permitindo cópia, alocação e manipulação seguras.
 
 ::: {.callout-note icon="false" title="🎯 Desafio de Código"}
-Crie uma função `aplicar` que recebe um vetor de inteiros e uma função _callback_ que é aplicada a cada elemento do vetor. Para as funções de callback, implemente: 
+Crie uma função `aplicar` que recebe um vetor de inteiros e uma função _callback_ que é aplicada a cada elemento do vetor. Para as funções de callback, implemente:
 
 - `dobra`: dobra o valor de cada elemento do vetor
 - `zerar`: Define cada elemento como zero
 - `incrementar`: soma um a cada elemento do vetor
 
-Segue a declação da funções de callback e ordem superior, além de um exemplo de uso.
+Seguem a declaração das funções de callback e de ordem superior, além de um exemplo de uso.
 
 ```c
 #include <stdio.h>
@@ -338,7 +338,7 @@ void incrementar(int *x){ *x = *x + 1; }
 void aplicar(int *vetor, int tamanho, void (*funcao)(int *)){
   for (int i = 0; i < tamanho; i++)
         funcao(&vetor[i]);
-}    
+}
 
 ```
 :::
@@ -353,7 +353,7 @@ Nesta unidade, você aprendeu
 
 ✅ a usar ponteiros sem tipo (`void *`)
 
-✅ a usar `site_t` para designar tamanho ou quantidade de _bytes_
+✅ a usar `size_t` para designar tamanho ou quantidade de _bytes_
 
 
 Falta pouco para criarmos nossas estruturas genéricas com comportamentos também genéricos. Porém, ainda precisamos pontuar algumas questões sobre o gerenciamento de memória.
@@ -440,7 +440,7 @@ Falta pouco para criarmos nossas estruturas genéricas com comportamentos també
 - [ ] Armazena sempre um número inteiro, não um endereço.
 
 
-# O que o tipo `size_t` representa em C? 
+# O que o tipo `size_t` representa em C?
 
 > Ele é usado para representar quantidades de bytes.
 

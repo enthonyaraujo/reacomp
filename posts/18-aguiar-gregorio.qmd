@@ -12,20 +12,20 @@ categories:
 ---
 
 
-# Introdução 
-
-    
-Sabe-se que funções em programação possuem uma lista de parâmetros e pelo menos um retorno. Em C, os parametros são separados por vírgulas e as funções só possuem uma saída, isto é, o valor que ela retorna. Neste contexto, existem alguns mecanismos de passagem dos argumentos para as funções, os quais podemos citar a passagem por valor e a passagem por referência.
+# Introdução
 
 
-Na passagem por valor (_pass-by-value_ ou _call-by-value_) o parâmetro age na função como uma nova variável local incializada com o valor do argumento passado. Já na passagem por referência (_call-by-reference_), a variável passada como argumento pode ser modificada pela função chamada porque acessa o endereço original. 
+Sabe-se que funções em programação possuem uma lista de parâmetros e pelo menos um retorno. Em C, os parâmetros são separados por vírgulas e as funções só possuem uma saída, isto é, o valor que elas retornam. Neste contexto, existem alguns mecanismos de passagem dos argumentos para as funções, entre os quais podemos citar a passagem por valor e a passagem por referência.
+
+
+Na passagem por valor (_pass-by-value_ ou _call-by-value_), o parâmetro age na função como uma nova variável local inicializada com o valor do argumento passado. Já na passagem por referência (_call-by-reference_), a variável passada como argumento pode ser modificada pela função chamada porque esta acessa o endereço original.
 
 
 # Passagem por valor
 
 A linguagem C adota estritamente a semântica de passagem por valor (_pass-by-value_) para todos os argumentos de função. Quando uma função é chamada, o valor de cada argumento na chamada é avaliado e uma **cópia** desse valor é criada e armazenada em uma nova variável local (o parâmetro) dentro do escopo da função.
 
-Dessa maneira, as funções trabalham de forma isolada, elas operam exclusivamente em suas cópias locais. Quaisquer modificações feitas nos parâmetros durante a execução da função não têm efeito sobre as variáveis originais na função chamadora. 
+Dessa maneira, as funções trabalham de forma isolada: elas operam exclusivamente em suas cópias locais. Quaisquer modificações feitas nos parâmetros durante a execução da função não têm efeito sobre as variáveis originais na função chamadora.
 
 ## Exemplo 1
 
@@ -34,20 +34,20 @@ Vamos analisar o que acontece com os dados durante a chamada de uma função.
 ```c
 #include <stdio.h>
 
-// Declação da função 
+// Declaração da função
 void tentar_modificar(int x);
 
 int main() {
     int valor = 10;
-    
+
     printf("1. Valor ANTES da função: %d\n", valor);
-    
+
     /* 1. Chamada da função */
     tentar_modificar(valor);
-    
+
     /* 3. Verificação pós-função */
     printf("3. Valor DEPOIS da função: %d\n", valor);
-    
+
     return 0;
 }
 
@@ -68,14 +68,14 @@ $ 1. Valor ANTES da função: 10
   3. Valor DEPOIS da função: 10
 ```
 
-Nota-se que a variavel `valor` não foi modificada, pois quando passamos uma variável para uma função o programa não envia a variável original. Em vez disso, ele faz três coisas:
+Nota-se que a variável `valor` não foi modificada, pois, quando passamos uma variável para uma função, o programa não envia a variável original. Em vez disso, ele faz três coisas:
 
-- Criação da Cópia   
-   + É criada uma nova variável local dentro de `tentar_modificar` (chamada `x`) e copia o valor de `valor` (que é 10) para dentro de `x`.
-- Modificação da Cópia  
-   + Dentro da função, a linha `x = x + 100` está modificando apenas a cópia local `x`.  
-- Retorno ao `main`  
-   + Quando a função `tentar_modificar` termina, sua variável local `x` é completamente destruída e desaparece da memória.  
+- Criação da Cópia
+   + Cria-se uma nova variável local dentro de `tentar_modificar` (chamada `x`) e copia-se o valor de `valor` (que é 10) para dentro de `x`.
+- Modificação da Cópia
+   + Dentro da função, a linha `x = x + 100` está modificando apenas a cópia local `x`.
+- Retorno ao `main`
+   + Quando a função `tentar_modificar` termina, sua variável local `x` é completamente destruída e desaparece da memória.
 
 Na passagem por valor, as funções operam com cópias dos dados. Isso é um mecanismo de segurança: uma função não pode "acidentalmente" bagunçar as variáveis de outra função, no entanto, isso também nos traz uma limitação, como será analisado no próximo exemplo.
 
@@ -92,15 +92,15 @@ void trocar_falha(int x, int y);
 int main() {
     int a = 10;
     int b = 20;
-    
+
     printf("1. ANTES da troca: a = %d, b = %d\n", a, b);
-    
-    // 1. Chamada da função. 
+
+    // 1. Chamada da função.
     trocar_falha(a, b);
-    
-    // 3. Verificação pós-função 
+
+    // 3. Verificação pós-função
     printf("3. DEPOIS da troca: a = %d, b = %d\n", a, b);
-    
+
     return 0;
 }
 
@@ -110,7 +110,7 @@ void trocar_falha(int x, int y) {
     int temp = x;
     x = y;
     y = temp;
-    
+
     /* 2. As cópias 'x' e 'y' foram trocadas com sucesso. */
     printf("2. DENTRO da função: x = %d, y = %d\n", x, y);
 }
@@ -123,26 +123,26 @@ $ 1. ANTES da troca: a = 10, b = 20
   2. DENTRO da função: x = 20, y = 10
   3. DEPOIS da troca: a = 10, b = 20
 ```
- 
-Nosso objetivo no código acima é fazer com que a variável `a` (que vale 10) e `b` (que vale 20) troquem seus valores. Parece que nossa lógica está correta, mas o resultado não foi o que esperavamos. Os passos que a linguagem C tomou podem nos ajudar a entender esse mistério.
+
+Nosso objetivo no código acima é fazer com que as variáveis `a` (que vale 10) e `b` (que vale 20) troquem seus valores. Parece que nossa lógica está correta, mas o resultado não foi o que esperávamos. Os passos que a linguagem C tomou podem nos ajudar a entender esse mistério.
 
 Primeiramente, quando `trocar_falha(a, b)` é executada, o C segue o padrão de passagem por valor:
 
-   - Cria uma variável local `int x` e copia o valor de `a` (10) para ela.  
+   - Cria uma variável local `int x` e copia o valor de `a` (10) para ela.
    - Cria uma variável local `int y` e copia o valor de `b` (20) para ela.
 
-A lógica de troca usando a variável `temp` está perfeitamente correta, pois ela troca com sucesso os valores **das cópias**. Porém no momento em que a função `trocar_falha` termina, todas as suas variáveis locais (`x`, `y` e `temp`) são destruídas e liberadas da memória.  
+A lógica de troca usando a variável `temp` está perfeitamente correta, pois ela troca com sucesso os valores **das cópias**. Porém, no momento em que a função `trocar_falha` termina, todas as suas variáveis locais (`x`, `y` e `temp`) são destruídas e liberadas da memória.
 
 Finalmente, o `printf` final prova que as variáveis originais, `a` e `b`, nunca foram tocadas. Elas ainda valem 10 e 20, respectivamente.
 
-Portanto, este em mecanisco de passgem de parâmetros nos impede de escrever uma função que modifica seus argumentos de entrada.  
-Se a função precisa alterar permanentemente uma variável que pertence a quem a chamou (como no caso do acima), precisamos de um mecanismo diferente.
+Portanto, este mecanismo de passagem de parâmetros nos impede de escrever uma função que modifique seus argumentos de entrada.
+Se a função precisa alterar permanentemente uma variável que pertence a quem a chamou (como no caso acima), precisamos de um mecanismo diferente.
 
 Esse problema é a motivação direta para o próximo tópico.
 
 # Passagem por referência
 
-Na passagem por referência, o compilador não cria uma cópia do valor da variável, mas sim um apelido (alias) para a variável original. Infelizmente, C não permite a passagem por referência propriamente dita, ao invés fazemos a passagem por ponteiros para modificar um variável de entrada.
+Na passagem por referência, o compilador não cria uma cópia do valor da variável, mas sim um apelido (alias) para a variável original. Infelizmente, C não permite a passagem por referência propriamente dita, em vez disso fazemos a passagem por ponteiros para modificar uma variável de entrada.
 
 1. A função chamadora não passa a variável, mas sim o **endereço** de memória dessa variável (usando o operador `&`).
 2. A função chamada recebe esse endereço em um parâmetro do tipo ponteiro. Tecnicamente, uma cópia do _endereço_ é feita (passagem por valor).
@@ -162,22 +162,22 @@ void trocar_sucesso(int *ptr_a, int *ptr_b);
 int main() {
     int a = 10;
     int b = 20;
-    
+
     printf("1. ANTES da troca: a = %d, b = %d\n", a, b);
-    
+
     /* 2. Chamada com o operador "Endereço de" (&)
      * Estamos passando os ENDEREÇOS de 'a' e 'b' na memória.
      */
     trocar_sucesso(&a, &b);
-    
+
     /* 4. Verificação pós-função */
     printf("3. DEPOIS da troca: a = %d, b = %d\n", a, b);
-    
+
     return 0;
 }
 
 // Definição da função
-void trocar_sucesso(int *ptr_a, int *ptr_b) {     
+void trocar_sucesso(int *ptr_a, int *ptr_b) {
     int temp = *ptr_a;
     *ptr_a = *ptr_b;
     *ptr_b = temp;
@@ -189,18 +189,18 @@ Em vez de enviar uma cópia do valor (10), enviamos o endereço de memória onde
 
 Na assinatura da função `trocar_sucesso`, o asterisco (`*`) informa ao compilador que esta função **não recebe `int`**, mas sim **`int*`** (ponteiros para inteiros), ou seja, **endereços de memória onde `int` estão armazenados**. Ao usar essa função na `main`, passamos `&a` e `&b`, ou seja, os endereços de `a` e `b`.
 
-Internamente, a função `trocar_sucesso` é bem didática. Usamos a variável `temp` para auxiliar na troca.   
+Internamente, a função `trocar_sucesso` é bem didática. Usamos a variável `temp` para auxiliar na troca.
 
 
-##  Exemplo 4 
+##  Exemplo 4
 
-Falamos que uma função em C só possui um retorno. Vimos também que com a passagem por referência (por ponteiros) podemos modificar variáveis externas. Dessa maneira, podemos usar os ponteiros para simular multiplos retornos. Por exemplo,
+Falamos que uma função em C só possui um retorno. Vimos também que com a passagem por referência (por ponteiros) podemos modificar variáveis externas. Dessa maneira, podemos usar os ponteiros para simular múltiplos retornos. Por exemplo:
 
 
 ```c
 #include <stdio.h>
 
-void operacoes (int a, int b, 
+void operacoes (int a, int b,
                 int *soma, int *subtracao, int *produto, int *divisao);
 
 int main(){
@@ -210,7 +210,7 @@ int main(){
     int soma, subtracao, produto, divisao;
 
     operacoes(a, b, &soma, &subtracao, &produto, &divisao);
-    
+
     printf("Soma: %d\n", soma);
     printf("Subtracao: %d\n", subtracao);
     printf("Produto: %d\n", produto);
@@ -220,7 +220,7 @@ int main(){
 }
 
 
-void operacoes (int a, int b, 
+void operacoes (int a, int b,
                 int *soma, int *subtracao, int *produto, int *divisao){
     *soma = a + b;
     *subtracao = a - b;
@@ -235,16 +235,16 @@ Essa técnica é extremamente comum em C. A função não retorna múltiplos val
 
 ---
 
-Nesta tutorial, você aprendeu
+Neste tutorial, você aprendeu:
 
-✅ a trabalhar com passagem de parametros por valor
+✅ a trabalhar com passagem de parâmetros por valor.
 
-✅ a trabalhar com passagem de parametros por referência usando ponteiros
+✅ a trabalhar com passagem de parâmetros por referência usando ponteiros.
 
 
 ---
 
 ::: callout-note
 ## Aviso da Redação
-Este artigo foi revisado e editado pela equipe do blog em **04 de Novembro de 2025**. 
+Este artigo foi revisado e editado pela equipe do blog em **04 de novembro de 2025**.
 :::

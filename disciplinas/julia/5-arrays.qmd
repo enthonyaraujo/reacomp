@@ -8,9 +8,9 @@ format:
   html:
     reference-location: margin
 execute:
-  eval: true 
+  eval: true
   daemon: true
-  cache: true 
+  cache: true
 ---
 
 
@@ -18,7 +18,7 @@ execute:
 
 Em Julia, ranges são estruturas compactas que representam sequências numéricas sem armazenar explicitamente todos os elementos. São especialmente úteis para iteração eficiente e construção de índices.
 
-A forma mais comum é `a:b`, que gera uma sequência com passo 1. Para maior controle, usa-se `a:s:b`, onde `s` é o passo. 
+A forma mais comum é `a:b`, que gera uma sequência com passo 1. Para maior controle, usa-se `a:s:b`, onde `s` é o passo.
 
 ```{julia}
 r1 = 1:10
@@ -93,7 +93,7 @@ println("A .^ 2 = ", A .^ 2)  # Potência em cada elemento
 
 Em Julia, o operador de broadcast permite aplicar uma operação elemento a elemento sobre arrays de forma concisa e eficiente. Ele é indicado pelo ponto (`.`) antes do operador ou função, como em `.+`, `.*` ou `sin.`.
 
-Por exemplo, ao invés de escrever um laço para somar dois vetores, utiliza-se `A .+ B`, que realiza a soma componente a componente. Da mesma forma, `sin.(A)` aplica a função seno a cada elemento do array.
+Por exemplo, em vez de escrever um laço para somar dois vetores, utiliza-se `A .+ B`, que realiza a soma componente a componente. Da mesma forma, `sin.(A)` aplica a função seno a cada elemento do array.
 
 Um diferencial importante é que o broadcast em Julia é _fused_: expressões como `A .+ B .* C` são executadas em uma única passagem, evitando alocações intermediárias e melhorando o desempenho.
 
@@ -146,7 +146,7 @@ println("Após popfirst!(arr): ", arr)
 ```
 
 
-<!-- 
+<!--
 # RANGE (intervalo)
 
 ```{julia}
@@ -164,7 +164,7 @@ println("0:0.5:2 = ", collect(r4))
 ```
 -->
 
-# MATRIZES 
+# MATRIZES
 
 Matrizes são arrays com mais de uma dimensão.
 
@@ -208,7 +208,7 @@ display(m_randn)
 
 ## Acessando elementos da matriz
 
-O acesso a elementos de uma matriz é realizado indicando a linha e coluna onde o elemento se encontra.
+O acesso a elementos de uma matriz é realizado indicando a linha e a coluna em que o elemento se encontra.
 
 ```{julia}
 m = [1 2 3; 4 5 6; 7 8 9]

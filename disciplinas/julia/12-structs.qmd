@@ -8,9 +8,9 @@ format:
   html:
     reference-location: margin
 execute:
-  eval: true 
+  eval: true
   daemon: true
-  cache: true 
+  cache: true
 ---
 
 
@@ -27,8 +27,8 @@ struct Pessoa
 end
 ```
 
-Aqui, `Pessoa` é um tipo com dois campos tipados. Instanciamos assim:
- 
+Aqui, `Pessoa` é um tipo com três campos tipados. Instanciamos assim:
+
 ```{julia}
 pessoa1 = Pessoa("Alice", 28, "alice@example.com")
 pessoa2 = Pessoa("Sinfronio", 35, "sinfronio@example.com")
@@ -77,7 +77,7 @@ conta.saldo -= 200
 println("Após saque de R\$ 200: R\$ ", conta.saldo)
 ```
 
-Por questão de eficiencia, é preferível usar estruturas imutáveis. Usamos `mutable struct` apenas quando houver necessidade semântica real de mutação.
+Por questão de eficiência, é preferível usar estruturas imutáveis. Usamos `mutable struct` apenas quando houver necessidade semântica real de mutação.
 
 # Estrutura com métodos
 
@@ -85,9 +85,9 @@ Por questão de eficiencia, é preferível usar estruturas imutáveis. Usamos `m
 struct Ponto
     x::Float64
     y::Float64
-    
-    # Constructor customizado
-    Ponto() = new(0.0, 0.0)  # Origin
+
+    # Construtor customizado
+    Ponto() = new(0.0, 0.0)  # Origem
 
     # Construtor para valores específicos
     Ponto(x, y) = new(x, y)
@@ -95,9 +95,9 @@ end
 ```
 
 ```{julia}
-p1 = Ponto()  # Usa constructor customizado
+p1 = Ponto()  # Usa construtor customizado
 println("Ponto padrão: ($(p1.x), $(p1.y))")
-p2 = Ponto(2,1)  
+p2 = Ponto(2,1)
 println("Ponto específico: ($(p2.x), $(p2.y))")
 ```
 
@@ -114,8 +114,8 @@ println("Ponto customizado: ", p2)
 ```
 -->
 
-<!-- 
-# Adicionando métodos 
+<!--
+# Adicionando métodos
 
 ```{julia}
 struct Retangulo
@@ -242,7 +242,7 @@ end
 mutable struct Biblioteca
     nome::String
     livros::Vector{Livro}
-    
+
     # Constructor padrão
     Biblioteca(nome::String) = new(nome, Livro[])
 end

@@ -4,7 +4,7 @@ lang: pt
 toc-title: Conteúdo
 toc: false
 ---
- 
+
 <button id="theme-toggle">Trocar Tema</button>
 <div id="chat-container" class="chat-container">
 </div>
@@ -67,7 +67,7 @@ function applyTheme(theme) {
 // 2. LÓGICA DO BOTÃO TOGGLE
 toggleButton.addEventListener('click', () => {
     const currentTheme = localStorage.getItem(themeKey);
-    
+
     // Troca o tema: se for dark, vira light; se não, vira dark.
     if (currentTheme === 'dark') {
         applyTheme('light');
@@ -80,12 +80,12 @@ toggleButton.addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', () => {
     // Tenta obter o tema salvo pelo usuário
     let savedTheme = localStorage.getItem(themeKey);
-    
+
     // Se o usuário nunca escolheu um tema, usa o padrão 'light'
     if (!savedTheme) {
-        savedTheme = 'light'; 
+        savedTheme = 'light';
     }
-    
+
     // Aplica o tema salvo (ou o padrão)
     applyTheme(savedTheme);
 });
@@ -99,15 +99,15 @@ Nesta seção, vamos entender como a linguagem C lida com a alocação dinâmica
 
 ## Alocação e liberação dinâmica {#sec-alo}
 
-Quando trabalhamos com _arrays_ ou estruturas em C, geralmente definimos seus tamanhos em tempo de compilação. Eles ficam armazenados em uma área de memória chamada **_stack_**. 
+Quando trabalhamos com _arrays_ ou estruturas em C, geralmente definimos seus tamanhos em tempo de compilação. Eles ficam armazenados em uma área de memória chamada **_stack_**.
 
 No entanto, há muitos casos em que o tamanho dos dados não é conhecido antecipadamente. Para esses casos, o C fornece funções de alocação dinâmica de memória, que permitem reservar e liberar espaço em tempo de execução. Esses blocos de memória são criados em uma região especial chamada **_heap_**.
 
-Dizemos que a memória _stack_ é estática, enquanto que a _heap_ é dinâmica. Na _stack_, quando a função termina, a variável é destruída. Já na _heap_, o programador decide quando alocar e liberar. 
+Dizemos que a memória _stack_ é estática, enquanto que a _heap_ é dinâmica. Na _stack_, quando a função termina, a variável é destruída. Já na _heap_, o programador decide quando alocar e liberar.
 
 A alocação dinâmica oferece flexibilidade, mas também exige disciplina. O princípio fundamental é: **quem aloca, deve liberar**.
 
-### Alocação simples 
+### Alocação simples
 
 A função `malloc` (de _memory allocation_) reserva um bloco contínuo de memória de tamanho especificado em _bytes_.
 
@@ -118,29 +118,29 @@ int *v = malloc(5 * sizeof(int));
 O argumento é o número total de _bytes_ a serem alocados. No trecho acima, estamos alocando o espaço suficiente para cinco inteiros. O retorno é um ponteiro genérico (`void*`) para o início do bloco. Caso a alocação falhe, `malloc` retorna `NULL`.
 
 ::: {.callout-note}
-Em C, ao contrário de C++, não há necessidade de fazer o _cast_ do ponteiro genérico. 
+Em C, ao contrário de C++, não há necessidade de fazer o _cast_ do ponteiro genérico.
 :::
 
-Como não temos garantia que a memória foi alocada, precisamos tratar quando `malloc` falha. Isso é geramente feito com um bloco `if`.
+Como não temos garantia que a memória foi alocada, precisamos tratar quando `malloc` falha. Isso é geralmente feito com um bloco `if`.
 
 ```{.c code-line-numbers="false"}
 int *v = malloc(5 * sizeof(int));
-    
+
 if (v == NULL) {
     fprintf(stderr, "Erro: sem memória suficiente!\n");
     return 1;
-}       
+}
 ```
 
-No trecho acima, poderíamos ter usado `printf` ao invés de `fprintf`. A escolha, por `fprintf` se dá por ser o padrão para erros. Ele permite especificar exatamente para onde a saída deve ir. Ao usarmos `stderr` (de _standard error_), estamos dizendo ao sistema que esta mensagem é um erro e deve ser tratada como tal.
+No trecho acima, poderíamos ter usado `printf` em vez de `fprintf`. A escolha por `fprintf` se dá por ser o padrão para erros. Ele permite especificar exatamente para onde a saída deve ir. Ao usarmos `stderr` (de _standard error_), estamos dizendo ao sistema que esta mensagem é um erro e deve ser tratada como tal.
 
 Quando usamos `printf` a saída é armazenada em _buffer_, portanto a mensagem de erro poderia ficar presa e nunca ser exibida antes do programa abortar. Já quando optamos por `fprintf`, a saída é _unbuffered_, ou seja, é exibida imediatamente no terminal.
 
-Resumindo, use `fprinf` mensagens de erro, diagnóstico e logs críticos e use `printf` para mensagens de sucesso, resultado da aplicação e saída esperada.
+Resumindo, use `fprintf` para mensagens de erro, diagnóstico e logs críticos, e use `printf` para mensagens de sucesso, resultado da aplicação e saída esperada.
 
 O `return 1` informa ao sistema operacional que algo deu errado .
 
-### Alocação e inicialização 
+### Alocação e inicialização
 
 A função `calloc` (de _contiguous allocation_) funciona como `malloc`, mas com duas diferenças:
 
@@ -153,7 +153,7 @@ int *v = calloc(5, sizeof(int));
 
 Assim, todo o vetor começa zerado, o que evita leituras de lixo de memória.
 
-### Redimensionamento de bloco 
+### Redimensionamento de bloco
 
 A função `realloc` permite ajustar o tamanho de um bloco de memória já alocado.
 
@@ -191,10 +191,10 @@ Este ciclo é a base de toda manipulação segura de memória dinâmica em C:
 ```{mermaid}
 flowchart LR
     A("Alocar") --> B("Usar")
-    B --> C("Liberar")  
+    B --> C("Liberar")
     C --> D("Invalidar")
     D --> A
-```    
+```
 
 - Alocar (`malloc`, `calloc` ou `realloc`)
 - Usar (ler e escrever por meio do ponteiro)
@@ -241,7 +241,7 @@ int main() {
 
     for (int i = 0; i < 5; i++)
         printf("%d ", destino[i]);
-    
+
     return 0;
 }
 ```
@@ -305,7 +305,7 @@ int main() {
 
     for (int i = 0; i < 5; i++)
         printf("%d ", v[i]);
-    
+
     return 0;
 }
 ```
@@ -329,7 +329,7 @@ Por exemplo, `memset(v, 1, sizeof(int)*5)` preencherá todos os _bytes_ com `0x0
   + Use `memcpy(dest, src, n * sizeof(T))`.
 - Prefira `memmove` quando houver dúvida sobre sobreposição.
 - Zere estruturas antes de usá-las (por exemplo, _buffers_ de _strings_).
-- Evite manipular memória de tipos complexos (estruturas com ponteiros internos) com `memcpy` 
+- Evite manipular memória de tipos complexos (estruturas com ponteiros internos) com `memcpy`
   + Isso pode quebrar o encapsulamento e gerar cópias superficiais perigosas.
 
 Com essas funções, temos ferramentas poderosas para manipular diretamente a memória. Isso é um recurso essencial para implementar estruturas genéricas e operações de baixo nível. Entretanto, o uso incorreto dessas funções é uma das principais causas de erros sutis e difíceis de depurar em C.
@@ -458,11 +458,11 @@ Podemos resumir os tipos de erros abordados por meio da seguinte tabela.
 
 | Tipo de Erro	| Causa	| Sintoma	| Prevenção|
 |---------------|-------|-----------|----------|
-| _Wild Pointer_	|Ponteiro não inicializado | _Crash_ aleatório | Inicializar com `NULL` | 
-| _Dangling Pointer_ | Uso após `free` | _Segmentation fault_ | `p = NULL` após `free` | 
-| _Memory Leak_ | Perda de referência | Aumento de uso de memória | Sempre liberar | 
-| _Double Free_ | Liberação repetida | Corrupção do _heap_ | Controle de _ownership_ | 
-| _Buffer Overflow_ | Escrita fora dos limites | Corrupção de memória | Verificar limites | 
+| _Wild Pointer_	|Ponteiro não inicializado | _Crash_ aleatório | Inicializar com `NULL` |
+| _Dangling Pointer_ | Uso após `free` | _Segmentation fault_ | `p = NULL` após `free` |
+| _Memory Leak_ | Perda de referência | Aumento de uso de memória | Sempre liberar |
+| _Double Free_ | Liberação repetida | Corrupção do _heap_ | Controle de _ownership_ |
+| _Buffer Overflow_ | Escrita fora dos limites | Corrupção de memória | Verificar limites |
 
 Erros de memória estão entre os mais sutis e perigosos em C. Eles não apenas causam falhas, mas podem introduzir vulnerabilidades de segurança sérias. Com boas práticas e ferramentas adequadas, é possível evitá-los e desenvolver sistemas robustos e confiáveis.
 
@@ -493,7 +493,7 @@ Um ponteiro deve sempre apontar para algo válido, ou para `NULL`.
 
 ### O princípio da propriedade (ownership)
 
-Em programas maiores, é comum que uma função aloca memória e outra a utilize.
+Em programas maiores, é comum que uma função aloque memória e outra a utilize.
 Para evitar vazamentos ou liberações incorretas, defina quem é o dono (_owner_) de cada bloco alocado.
 
 🔸 Quem aloca é responsável por liberar.

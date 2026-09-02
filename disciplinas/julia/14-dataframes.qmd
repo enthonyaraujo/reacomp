@@ -13,7 +13,7 @@ execute:
   cache: true
 ---
 
-Certifique-se de que as bibliotecas using `XLSX` e `DataFrames` estejam instaladas. Nesta etapa, preparamos o ambiente Julia e garantimos que as dependências necessárias para leitura de arquivos Excel e manipulação de dados estejam disponíveis.
+Certifique-se de que as bibliotecas `XLSX` e `DataFrames` estejam instaladas. Nesta etapa, preparamos o ambiente Julia e garantimos que as dependências necessárias para leitura de arquivos Excel e manipulação de dados estejam disponíveis.
 
 ```{julia}
 #| output: false
@@ -26,7 +26,7 @@ Aqui carregamos as bibliotecas que serão utilizadas ao longo do tutorial.
 
 ```{julia}
 #| output: false
-using XLSX, DataFrames 
+using XLSX, DataFrames
 ```
 
 <!--
@@ -39,7 +39,7 @@ xf = XLSX.readxlsx("WorldCups.xlsx")
 XLSX.sheetnames(xf)
 ```
 
-Em nosso caso, não é realmente necessário, pois vamos tranformar automaticamente nossa planilha em um `DataFrame`.
+Em nosso caso, não é realmente necessário, pois vamos transformar automaticamente nossa planilha em um `DataFrame`.
 -->
 
 ## Criando um dataset
@@ -70,7 +70,7 @@ select!(df, Not([:QualifiedTeams, :Attendance]))
 names(df) # mostra os nomes das colunas
 ```
 
-## Selecionando colunas
+## Criando novas colunas
 
 Podemos derivar métricas novas a partir dos dados existentes.
 
@@ -122,7 +122,7 @@ Os filtros permitem selecionar subconjuntos de dados com base em condições.
 filter(row -> row.Year > 2001, df)
 ```
 
-ou por meio da indexação booleana 
+ou por meio da indexação booleana
 
 ```{julia}
 df[df.Year .> 2001, :]
@@ -135,7 +135,7 @@ filter(row -> row.Winner == "Brazil", df)
 ```
 
 
-## Agrupando 
+## Agrupando
 
 O agrupamento é útil para análises agregadas e resumidas.
 

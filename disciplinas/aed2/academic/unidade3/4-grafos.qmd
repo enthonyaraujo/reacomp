@@ -8,14 +8,14 @@ format:
   html:
     reference-location: margin
     css: ../styles/academic.css
-filters: 
+filters:
     - quizdown
 execute:
-  echo: false 
-  eval: true 
+  echo: false
+  eval: true
   daemon: true
-  cache: true 
----  
+  cache: true
+---
 
 ```{julia}
 using Karnak, Graphs, NetworkLayout, Colors
@@ -28,15 +28,15 @@ Grafo é uma estrutura composta por um conjunto de elementos chamados vértices 
 ```{mermaid}
 graph LR
   subgraph s1["Grafo A"]
-    A((a)) 
+    A((a))
     B((b))
     C((c))
     D((d))
   end
 
   subgraph s2["Grafo B"]
-    direction LR 
-    A1((e)) 
+    direction LR
+    A1((e))
     B1((f))
     C1((g))
     D1((h))
@@ -67,18 +67,18 @@ classDef WT fill:#FFFFFF
 style s1 stroke:none,fill:transparent
 style s2 stroke:none,fill:transparent
 
-```  
+```
 
 Os vértices representam entidades do problema que o grafo modela. Por exemplo, os vértices podem representar computadores em uma rede ou cidades em um mapa. As arestas representam os relacionamentos entre essas entidades.
 
-Quando a relação entre dois vértices não possui orientação, dizemos que a aresta é bidirecional, e o grafo é chamado de grafo não-direcionado, como no Grafo A.
+Quando a relação entre dois vértices não possui orientação, dizemos que a aresta é bidirecional, e o grafo é chamado de grafo não direcionado, como no Grafo A.
 
 Quando a relação possui orientação, isto é, vai de um vértice a outro em um único sentido, dizemos que a aresta é direcionada, e o grafo é chamado de grafo direcionado, como no Grafo B.
 
 <!-- Em grafos direcionados, é comum interpretar as arestas como fluxos que seguem um sentido específico. Essa interpretação é útil em diversas aplicações, embora nem todo grafo represente, de fato, um fluxo físico. -->
 
 ## Definição Formal
-  
+
 Um grafo $G$ é um par $(\mathcal{V},\mathcal{E})$ onde:
 
 - $\mathcal{V}$ é conjunto de vértices (ou nós)
@@ -86,20 +86,20 @@ Um grafo $G$ é um par $(\mathcal{V},\mathcal{E})$ onde:
 
 ::: {.column-margin}
 **[Se liga!]{.text-warning}**
-Em grafos não-direcionados, as arestas são representadas por pares não ordenados. Já para os direcionados, elas são representadas por pares ordenados.
+Em grafos não direcionados, as arestas são representadas por pares não ordenados. Já para os direcionados, elas são representadas por pares ordenados.
 :::
 
-Para o grafo A, temos $$\mathcal{V} = \{a,b,c,d\} \text{ e } \mathcal{E} = \{\{a,b\},\{a,c\},\{b,c\},\{b,d\}\}.$$ 
-A aresta $\{a,c\}$ (notação de conjunto), por exemplo, significa que existe uma conexão entre os vértices $a$ e $c$. Essa relação de adjacência é simétrica, ou seja, o grafo conecta $a$ a $c$ e vice-versa. 
+Para o grafo A, temos $$\mathcal{V} = \{a,b,c,d\} \text{ e } \mathcal{E} = \{\{a,b\},\{a,c\},\{b,c\},\{b,d\}\}.$$
+A aresta $\{a,c\}$ (notação de conjunto), por exemplo, significa que existe uma conexão entre os vértices $a$ e $c$. Essa relação de adjacência é simétrica, ou seja, o grafo conecta $a$ a $c$ e vice-versa.
 
-Já para o grafo B, temos $$\mathcal{V} = \{e,f,g,h\} \text{ e } \mathcal{E} = \{(e,f),(f,g),(g,e),(g,h)\}.$$ 
+Já para o grafo B, temos $$\mathcal{V} = \{e,f,g,h\} \text{ e } \mathcal{E} = \{(e,f),(f,g),(g,e),(g,h)\}.$$
 Nesse caso, a aresta $(g,e)$ (notação de par ordenado), por exemplo, significa que existe uma aresta de $g$ para $e$. Essa relação de adjacência não é simétrica, ou seja, não ocorre no sentido de $e$ para $g$.
 
 
 ::: {.callout-important}
-Um laço, ou _self loop_, em um grafo é uma aresta que conecta um vértice a ele mesmo. Arestas paralelas são duas ou mais arestas que conectam o mesmo par de vértices. 
+Um laço, ou _self loop_, em um grafo é uma aresta que conecta um vértice a si mesmo. Arestas paralelas são duas ou mais arestas que conectam o mesmo par de vértices.
 
-- Grafo simples: não admite laços nem arestas paralelas. 
+- Grafo simples: não admite laços nem arestas paralelas.
 - Multigrafo: não admite laços.
 - Pseudógrafo: admite laços e arestas paralelas.
 
@@ -108,7 +108,7 @@ Todo grafo simples é um multigrafo e todo multigrafo é um pseudógrafo.
 
 
 
-## Grafo Ponderado 
+## Grafo Ponderado
 
 Os grafos podem ser enriquecidos através da rotulação das arestas. É sabido que, em grafos com muitas arestas, designar cada uma por pares é uma tarefa tediosa. Além disso, uma aresta como par em si não traz valor semântico ao modelo. Portanto, é comum a rotulação das arestas para distinguir as relações ou representar ações, por exemplo.
 
@@ -135,7 +135,7 @@ Rótulos permitem que o grafo modele sistemas mais ricos:
 - grafos de controle: condição de transição;
 - grafos químicos ou biológicos: tipo de interação.
 
-As arestas também pode carregar um valor numérico conhecido como peso. Isso vem ao encontro da definição de grafo ponderado.
+As arestas também podem carregar um valor numérico conhecido como peso. Isso vem ao encontro da definição de grafo ponderado.
 
 Um grafo ponderado, ou valorado, é uma tupla $(\mathcal{V},\mathcal{E},\mathcal{w})$, onde $\mathcal{V}$ e $\mathcal{E}$ são nossos conhecidos conjuntos de vértices e arestas, respectivamente. Já $\mathcal{w}:\mathcal{E}\rightarrow\mathbb{R}$ é uma função que associa a cada aresta um custo (ou peso). Esse valor depende do problema que o grafo está modelando.
 
@@ -154,13 +154,13 @@ D:::WT
 classDef WT fill:#FFFFFF
 ```
 
-No grafo acima, o custo de ir de 
+No grafo acima, o custo de ir de
 
   - $a$ para $b$ é 4
   - $b$ para $c$ é 2
   - $c$ para $d$ é 6
   - $d$ para $a$ é 3
-  
+
 O custo não é uma propriedade geométrica do grafo, mas uma modelagem do problema. O custo pode representar distância, tempo, consumo de recursos, custo financeiro e até penalidades.
 
 ::: {.column-margin}
@@ -180,7 +180,7 @@ Quando não há valor associado à aresta dizemos que o peso vale 1.
 end 600 300
 ```
 
-Os grafos possuem um vasto número de aplicações, dentre as quais, podemos destacar:
+Os grafos possuem um vasto número de aplicações, entre as quais podemos destacar:
 
 - Redes sociais (arestas representam conexões)
 - Infraestrutura (rodovias, roteamento)
@@ -195,16 +195,16 @@ Os grafos possuem um vasto número de aplicações, dentre as quais, podemos des
 
 Dizemos que os vértices $v$ e $u$ são vizinhos, se existe uma aresta que conecta ambos diretamente.
 
-A vizinhaça de um vértice $v$, denotado $\mathcal{N}(v)$, é o conjunto de vértices vizinhos à $v$.
+A vizinhança de um vértice $v$, denotada $\mathcal{N}(v)$, é o conjunto de vértices vizinhos a $v$.
 
 Tomando como exemplo o grafo A, temos:
 
-- $\mathcal{N}(a) = \{b, c\}$  
-- $\mathcal{N}(b) = \{a, c, d\}$ 
-- $\mathcal{N}(c) = \{a, b\}$  
-- $\mathcal{N}(d) = \{b\}$  
+- $\mathcal{N}(a) = \{b, c\}$
+- $\mathcal{N}(b) = \{a, c, d\}$
+- $\mathcal{N}(c) = \{a, b\}$
+- $\mathcal{N}(d) = \{b\}$
 
-Já para grafos direcionados, a noção de vizinho não é única. Nesse caso, temos a vizinhaça de entrada $\mathcal{N^-}(v)$ e a vizinhaça de saída $\mathcal{N^+}(v)$ que denotam o conjunto dos vértices que apontam para $v$ e o conjunto de vértices alcançáveis a partir de $v$ por uma aresta saindo de $v$, respectivamente.
+Já para grafos direcionados, a noção de vizinho não é única. Nesse caso, temos a vizinhança de entrada $\mathcal{N^-}(v)$ e a vizinhança de saída $\mathcal{N^+}(v)$ que denotam o conjunto dos vértices que apontam para $v$ e o conjunto de vértices alcançáveis a partir de $v$ por uma aresta saindo de $v$, respectivamente.
 
 
 Tomando como exemplo o grafo B, temos:
@@ -225,7 +225,7 @@ O grau de um vértice $v$, denotado $\mathcal{deg}(v)$, é a quantidade de arest
 
 Tomando como exemplo o grafo A, temos:
 $$\mathcal{deg}(a)=2, \mathcal{deg}(b)=3, \mathcal{deg}(c)=2 \text{ e }\mathcal{deg}(d)=1$$
-Para um grafo direcionado, temos o grau de entrada $\mathcal{deg^-}(v)$ e o grau de saída $\mathcal{deg^+}(v)$ que denotam a quantidade de arestas que indidem e saem do vértice, respectivamente.
+Para um grafo direcionado, temos o grau de entrada $\mathcal{deg^-}(v)$ e o grau de saída $\mathcal{deg^+}(v)$ que denotam a quantidade de arestas que incidem sobre o vértice e saem dele, respectivamente.
 
 Tomando como exemplo o grafo B, temos:
 $$\mathcal{deg^-}(e)=\mathcal{deg^-}(f)=\mathcal{deg^-}(g)=\mathcal{deg^-}(h)=1$$
@@ -233,8 +233,8 @@ e
 $$\mathcal{deg^+}(e)=1,\mathcal{deg^+}(f)=1,\mathcal{deg^+}(g)=2\text{ e }\mathcal{deg^+}(h)=0$$
 
 ::: {.column-margin}
-**[Se liga!]{.text-warning}**  
-Em grafos não-direcionados, não há distinção entre grau de entrada e grau de saída. 
+**[Se liga!]{.text-warning}**
+Em grafos não direcionados, não há distinção entre grau de entrada e grau de saída.
 :::
 
 Note que $$\mathcal{deg}(v)=|\mathcal{N}(v)|.$$
@@ -243,7 +243,7 @@ $$\mathcal{deg^-}(v)=|\mathcal{N^-}(v)|\text{ e }\mathcal{deg^+}(v)=|\mathcal{N^
 
 
 ::: {.callout-tip}
-Quanto todos os vértices de um grafo tem o mesmo grau $k$, dizemos que o grafo é $k$-regular. 
+Quando todos os vértices de um grafo têm o mesmo grau $k$, dizemos que o grafo é $k$-regular.
 :::
 
 ### Ordem e Tamanho

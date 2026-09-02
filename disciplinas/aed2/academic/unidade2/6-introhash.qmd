@@ -8,13 +8,13 @@ format:
   html:
     reference-location: margin
     css: ../styles/academic.css
-filters: 
-    - quizdown    
+filters:
+    - quizdown
 ---
 
 Nesta unidade do curso, iremos estudar as **tabelas de dispersão** (_hash table_). Pense em uma busca que não demora, que não precisa de caminhadas longas por uma lista ou descidas por uma árvore. Imagine que você pode encontrar qualquer dado em um instante, de forma quase mágica. Essa é a promessa de uma tabela de dispersão.
 
-Vamos explorar o conceito de **função de hash**, que é o coração dessa estrutura, e aprenderemos a lidar com as **colisões**. Ao final, você terá em mãos uma das ferramentas mais rápidas e eficientes para a manipulação de grandes volumes de dados desde dicionários de programação até _caches_ de navegador e bancos de dados. 
+Vamos explorar o conceito de **função de hash**, que é o coração dessa estrutura, e aprenderemos a lidar com as **colisões**. Ao final, você terá em mãos uma das ferramentas mais rápidas e eficientes para a manipulação de grandes volumes de dados, desde dicionários de programação até _caches_ de navegador e bancos de dados.
 
 ## Problematização
 
@@ -51,7 +51,7 @@ Como o divisor é $10$, os únicos valores de resto possíveis são os números 
 
 ::: {.column-margin}
 **[Se liga!]{.text-warning}**
-O resto da divisão de qualquer inteiro pelo inteiro $m$ está no intervalo $[0,m-1]$. 
+O resto da divisão de qualquer inteiro pelo inteiro $m$ está no intervalo $[0,m-1]$.
 :::
 
 
@@ -77,7 +77,7 @@ Agora, para verificar se o jogador possui o Amuleto Raro, basta aplicar novament
 Essa técnica permite economizar memória e acessar elementos em tempo constante, O(1).
 :::
 
-Um questionamento comum acontece quando a função retorna o mesmo valor para duas chaves distintas. Por exemplo, com uma chave $25$, teremos $f(25)=25\bmod 10=5$, mas a posição $5$ já está ocupada e o vetor não está totalmente preenchido. Nesse caso, dizemos que ocorreu uma **colisão**.
+Um questionamento comum acontece quando a função retorna o mesmo valor para duas chaves distintas. Por exemplo, com uma chave $25$, teremos $h(25)=25\bmod 10=5$, mas a posição $5$ já está ocupada e o vetor não está totalmente preenchido. Nesse caso, dizemos que ocorreu uma **colisão**.
 
 Colisões são indesejáveis! Precisamos de funções bem definidas para evitar esse tipo de problema.
 
@@ -90,16 +90,16 @@ A função que escolhemos anteriormente é chamada de função de hash. Existem 
 
 Nesta unidade, você aprendeu
 
-✅ o que é uma tabela de dispersão 
+✅ o que é uma tabela de dispersão
 
 ✅ onde uma tabela de dispersão é usada
 
-✅ como é controlada a entrada na tabela de dispersão 
+✅ como é controlada a entrada na tabela de dispersão
 
 
 ```quizdown
 
-# O que é uma tabela de dispersão ?
+# O que é uma tabela de dispersão?
 
 > Pense na principal característica que a torna eficiente.
 
@@ -129,7 +129,7 @@ Nesta unidade, você aprendeu
 1. [ ] Subtrai a chave de 10.
 
 
-# Dado o hash $h(k) = k \bmod 9$, qual é o valor de $h(21)$? 
+# Dado o hash $h(k) = k \bmod 9$, qual é o valor de $h(21)$?
 
 > Basta aplicar a operação de módulo.
 
@@ -139,7 +139,7 @@ Nesta unidade, você aprendeu
 1. [ ] 9
 
 
-# O que caracteriza uma colisão em uma tabela de dispersão? 
+# O que caracteriza uma colisão em uma tabela de dispersão?
 
 > É quando duas chaves competem pelo mesmo espaço.
 

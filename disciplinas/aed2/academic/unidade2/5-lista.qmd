@@ -8,12 +8,12 @@ format:
   html:
     reference-location: margin
     css: ../styles/academic.css
-filters: 
+filters:
     - quizdown
 ---
 
-Nesta unidade, iremos implementar uma lista genérica. As funções de _callback_ serão armazenadas no construtor da lista, dando um toque mais profissional para nosso programa.
- 
+Nesta unidade, iremos implementar uma lista genérica. As funções de _callback_ serão armazenadas no construtor da lista, dando um toque mais profissional ao nosso programa.
+
 
 ## Interface
 
@@ -30,8 +30,8 @@ typedef struct node {
 } Node;
 
 typedef struct {
-    site_t data_size;
-	Node *head;	
+    size_t data_size;
+	Node *head;
     // Funções de callback para o tipo de dado
     cb_free free_data;
     cb_compare compare_data;
@@ -60,12 +60,12 @@ Importando as bibliotecas.
 
 ### Criar Lista
 
-A primeira função que iremos implementar é o construtor da lista, `list_create`. O primeiro paramêtro é o tamanho em _bytes_ do dado que iremos armazenar na lista. Depois as funções de _callback_ para liberar a memória desse dado e como comparar dois dados.
+A primeira função que iremos implementar é o construtor da lista, `list_create`. O primeiro parâmetro é o tamanho em _bytes_ do dado que iremos armazenar na lista. Depois as funções de _callback_ para liberar a memória desse dado e como comparar dois dados.
 
 
 ```{.c filename=list.c}
 List *list_create(size_t data_size, cb_free free_data, cb_compare compare_data) {
-	assert(data_size > 0);	
+	assert(data_size > 0);
 
 	List *list = malloc(sizeof(List));
 	list->data_size = data_size;
@@ -76,11 +76,11 @@ List *list_create(size_t data_size, cb_free free_data, cb_compare compare_data) 
 }
 ```
 
-Como a lista inicia vazia, logo a cabeça da lista será `NULL`. 
+Como a lista inicia vazia, logo a cabeça da lista será `NULL`.
 
 ### Adicionar Elementos
 
-Após criar a lista, temos de adicionar nós a ela. A função `list_add` aloca memória duas vezes, uma para o nó e outra para o dado. Não podemos fazer um simples atribuição com `=` para passar o dado para o campo `data` do nó. Portanto, usamos a função `memcpy` que estudamos na seção sobre [gerenciamento de memória](3-memoria.qmd#sec-man).
+Após criar a lista, temos de adicionar nós a ela. A função `list_add` aloca memória duas vezes, uma para o nó e outra para o dado. Não podemos fazer uma simples atribuição com `=` para passar o dado para o campo `data` do nó. Portanto, usamos a função `memcpy` que estudamos na seção sobre [gerenciamento de memória](3-memoria.qmd#sec-man).
 
 
 ```{.c filename=list.c}
@@ -101,28 +101,28 @@ Essa função adiciona elementos na cabeça da lista: o novo nó aponta para a c
 
 ### Apagar Lista
 
-Precisamos criar o destrutor da lista. Mas antes temos de implementar a `free_node_data`. Ela serve para liberar a memória 
-alocada para o dado que é armazenado na lista. Esse dado pode ser mais complexo do que pensamos (algum `struct` com alocação interna). Por isso, passamos um função _callback_ para tratar esses casos. Por outro lado, para uma lista de inteiros ou outro tipo simples, um `free` é suficiente.
+Precisamos criar o destrutor da lista. Mas antes temos de implementar a `free_node_data`. Ela serve para liberar a memória
+alocada para o dado que é armazenado na lista. Esse dado pode ser mais complexo do que pensamos (algum `struct` com alocação interna). Por isso, passamos uma função _callback_ para tratar esses casos. Por outro lado, para uma lista de inteiros ou outro tipo simples, um `free` é suficiente.
 
 ```{.c filename=list.c}
-static void free_node_data(cb_free free_data, void *data) { 
-	if (free_data != NULL) 
-		free_data(data); 
-	else 
-		free(data); 
+static void free_node_data(cb_free free_data, void *data) {
+	if (free_data != NULL)
+		free_data(data);
+	else
+		free(data);
 }
 ```
 
-Mote que essa função não foi declarada no arquivo `.h` e isso significa que ela é privada. O modificador `static` indica isso para nós.
+Note que essa função não foi declarada no arquivo `.h` e isso significa que ela é privada. O modificador `static` indica isso para nós.
 
-A lógica do destrutor é simples. Após a verificação de segurança do `assert`, criamos um nó que aponta para a cabeça da lista. Em seguida, caminhamos na lista em direção a cauda. Nesse percurso, liberamos a memória do dado e depois do nó. Quando acabamos o percurso, liberaramos a estrutura lista.
+A lógica do destrutor é simples. Após a verificação de segurança do `assert`, criamos um nó que aponta para a cabeça da lista. Em seguida, caminhamos na lista em direção à cauda. Nesse percurso, liberamos a memória do dado e depois do nó. Quando acabamos o percurso, liberamos a estrutura lista.
 
 ```{.c filename=list.c}
 void list_destroy(List *list){
 	assert(list != NULL);
-	
+
 	Node *node = list->head;
-		
+
 	while (node != NULL){
 		Node *next = node->next; // guarda o próximo antes de liberar
 		free_node_data(list->free_data, node->data);
@@ -134,7 +134,7 @@ void list_destroy(List *list){
 }
 ```
 
-Note que usamos três liberações de memória. Uma para o dado (linha 8), uma para o nó (linha 9) e outra para a lista (linha 13). Isso porque usamos a alocação de memória três vezes, uma em `list_create` e duas em `list_add`. Lembre-se do que estudamos, para cada alocação deve haver um liberação correspondente.
+Note que usamos três liberações de memória. Uma para o dado (linha 8), uma para o nó (linha 9) e outra para a lista (linha 13). Isso porque usamos a alocação de memória três vezes, uma em `list_create` e duas em `list_add`. Lembre-se do que estudamos, para cada alocação deve haver uma liberação correspondente.
 
 ### Procurar Elementos
 
@@ -143,11 +143,11 @@ Uma das funções que declaramos em nossa interface foi `list_contains`. Ela ser
 ```{.c filename=list.c}
 bool list_contains(List *list, void *data) {
 	assert(list->compare_data != NULL);
-	
+
 	Node *node = list->head;
 	while (node != NULL)	{
 		if (list->compare_data(node->data, data) == 0)
-			return true;		
+			return true;
 		node = node->next;
 	}
 	return false;
@@ -173,7 +173,7 @@ Importando as bibliotecas e API da lista que criamos.
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "list.h" 
+#include "list.h"
 ```
 
 Função de _callback_ para comparar dois inteiros.
@@ -188,10 +188,10 @@ int compare_int(void *a, void *b) {
 ```
 ::: {.column-margin}
 **[Se liga!]{.text-warning}**
-Não vamos precisar de um função _callback_ para liberar um inteiro, pois nossa função `free_node_data` já trata esse caso se passarmos `NULL` como argumento para `list_create`. 
+Não vamos precisar de uma função _callback_ para liberar um inteiro, pois nossa função `free_node_data` já trata esse caso se passarmos `NULL` como argumento para `list_create`.
 :::
 
-Lembre-se, o padrão é que retorne zero se ambos são iguais. 
+Lembre-se, o padrão é que retorne zero se ambos são iguais.
 
 Função principal:
 
@@ -202,7 +202,7 @@ int main() {
     // Criar uma lista de inteiros
     List *list = list_create(sizeof(int), NULL, compare_int);
     int item[5] = {2, 5, 3, 8, 9};
- 
+
     // Adicionar elementos
     for (int i = 0; i < 5; i++) {
         int *data = malloc(sizeof(int));
@@ -213,18 +213,18 @@ int main() {
 
     // Verificar se um valor está na lista
     int search_key = 8;
-    
+
     printf("Procurando nó com chave: %d...\n", search_key);
-    
+
     if (list_contains(list, &search_key))
         printf("-> Sucesso: Chave %d encontrada!\n", search_key);
-    else 
+    else
         printf("-> Falha: Chave %d não encontrada.\n", search_key);
-    
+
     printf("----------------------------------------\n");
 
-    
-    // Destruir a lista    
+
+    // Destruir a lista
     list_destroy(list);
     list = NULL;
 
@@ -232,14 +232,14 @@ int main() {
 }
 ```
 
-Para demonstrar o poder da nossa lista genérica, vamos criar uma lista de anulos, onde cada aluno é uma `struct`.
+Para demonstrar o poder da nossa lista genérica, vamos criar uma lista de alunos, na qual cada aluno é uma `struct`.
 
 ```{.c filename=student_list.c}
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
-#include "list.h" 
+#include "list.h"
 
 typedef struct student {
     char* name;
@@ -255,13 +255,13 @@ int compare_student(void *a, void *b) {
 
 void free_student(void *data) {
     Student *student_ptr = (Student *)data;
-    
-    if (student_ptr == NULL) 
-        return; 
-    
-    if (student_ptr->name != NULL) 
-        free(student_ptr->name); 
-    
+
+    if (student_ptr == NULL)
+        return;
+
+    if (student_ptr->name != NULL)
+        free(student_ptr->name);
+
     free(student_ptr);
 }
 ```
@@ -273,17 +273,17 @@ Student *create_student(const char *name, int id) {
     Student *new_student = (Student *)malloc(sizeof(Student));
     if (new_student == NULL) {
         fprintf(stderr, "Erro ao alocar Student\n");
-        return 1; 
+        return 1;
     }
 
     new_student->id = id;
-    
+
     // strdup faz o malloc interno e a cópia.
-    new_student->name = strdup(name); 
+    new_student->name = strdup(name);
     if (new_student->name == NULL) {
         free(new_student); // Limpeza em caso de falha de alocação do nome
         fprintf(stderr, "Erro ao alocar nome\n");
-        return 1; 
+        return 1;
     }
 
     return new_student;
@@ -293,7 +293,7 @@ Student *create_student(const char *name, int id) {
 **[Se liga!]{.text-warning}**
 Internamente, `strdup` faz:
 
-- `char *new_name = malloc(strlen(name) + 1);` 
+- `char *new_name = malloc(strlen(name) + 1);`
 - `strcpy(new_name, name);`
 
 Note que o `free` correspondente ao `malloc` de `strdup` está no _callback_ `free_student`, no segundo `if`.
@@ -304,7 +304,7 @@ Agora estamos prontos para simular uma lista de alunos.
 ```{.c filename=student_list.c}
 int main() {
 
-    // Criar um  lista de alunos
+    // Criar uma lista de alunos
     List *list = list_create(sizeof(Student), free_student, compare_student);
 
     // Nomes e IDs
@@ -314,23 +314,23 @@ int main() {
     // Adicionar elementos
     for (int i = 0; i < 4; i++) {
         Student *s = create_student(names[i], ids[i]);
-        list_add(list, s); 
+        list_add(list, s);
     }
-   
+
     // Verificar se um aluno está na lista
-    Student search_key = {.name = NULL, .id = 303}; 
-    
+    Student search_key = {.name = NULL, .id = 303};
+
     printf("Procurando aluno com ID: %d...\n", search_key.id);
-    
-    if (list_contains(list, &search_key)) 
+
+    if (list_contains(list, &search_key))
         printf("-> Sucesso: Aluno ID %d encontrado!\n", search_key.id);
     else
         printf("-> Falha: Aluno ID %d não encontrado.\n", search_key.id);
-    
+
     printf("----------------------------------------\n");
 
     // Destruir a lista
-    list_destroy(list); 
+    list_destroy(list);
     list = NULL;
 
     return 0;
@@ -340,22 +340,22 @@ int main() {
 A implementação desta lista genérica garante alta modularidade. Graças ao design baseado em funções _callback_, evitamos a reimplementação de funções centrais (como criação, adição ou destruição). Para adaptar a lista a qualquer novo tipo de dado, basta fornecer os _callbacks_ específicos para a comparação e liberação de memória daquele tipo.
 
 ::: {.callout-note icon="false" title="🎯 Desafio de Código"}
-Defina uma nova assinatura para um função _callback_ chamada `cb_iterate` e adicione a declaração da função `list_iterate` no arquivo de cabeçalho (`list.h`).
+Defina uma nova assinatura para uma função _callback_ chamada `cb_iterate` e adicione a declaração da função `list_iterate` no arquivo de cabeçalho (`list.h`).
 
 ```{.c code-line-numbers="false"}
 typedef bool(*cb_iterate)(int index, void *data);
 void list_iterate(LinkedList *list, cb_iterate iterate_callback);
 ```
 
-Depois, na implementação (`list.c`) escreva a o código para essa função.
+Depois, na implementação (`list.c`) escreva o código para essa função.
 
 ```{.c code-line-numbers="false"}
 void list_iterate(LinkedList *list, cb_iterate iterate_callback) {
 	assert(list != NULL);
     assert(iterate_callback != NULL);
 
-    Node *current = list->head;  
-    int index = 0;               
+    Node *current = list->head;
+    int index = 0;
 
     // Enquanto ainda houver nós para visitar
     while (current != NULL) {
@@ -372,7 +372,7 @@ void list_iterate(LinkedList *list, cb_iterate iterate_callback) {
 }
 ```
 
-Implemente uma funçao _callback_ para imprimir a lista de inteiros. Ela deve ter a mesma assinatura de `cb_iterate`:
+Implemente uma função _callback_ para imprimir a lista de inteiros. Ela deve ter a mesma assinatura de `cb_iterate`:
 
 ```{.c code-line-numbers="false"}
 bool print_int(int index, void *data);
@@ -416,7 +416,7 @@ Nesta unidade, você aprendeu
 ✅ a criar uma lista ligada genérica simples
 
 
-```quizdown 
+```quizdown
 # Qual é o principal objetivo da estrutura `List` apresentada?
 
 > Pense na abstração que ela representa.
@@ -531,7 +531,7 @@ Nesta unidade, você aprendeu
 
 # Sobre o uso de `strdup` na criação de um aluno, marque as opções corretas.
 
-> Lembre-se que `strdup` também faz alocação.
+> Lembre-se de que `strdup` também faz alocação.
 
 - [x] Ela aloca memória e copia a string de origem.
 - [x] O `free` correspondente ocorre em `free_student`.

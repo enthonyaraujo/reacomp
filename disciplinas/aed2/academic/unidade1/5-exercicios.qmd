@@ -8,14 +8,14 @@ format:
   html:
     reference-location: margin
     css: ../styles/academic.css
-filters: 
+filters:
     - quizdown
 ---
 
 ### Questão 1
 
 
-Classifique as árvores A-F quanto ao número de filho e calcule:
+Classifique as árvores A-F quanto ao número de filhos e calcule:
 
 - O tamanho da árvore
 - A altura de cada nó
@@ -59,7 +59,7 @@ end
      C --- G
      D --- H
      D --- I
-     
+
      A1 --- B1
      A1 --- C1
      A1 --- D1
@@ -129,7 +129,7 @@ end
      D --- F
      E --- G
      E --- H
-     
+
      A1 --- B1
      A1 --- C1
      B1 --- D1
@@ -211,8 +211,8 @@ end
      H --- K
      K --- L
      K --- M
-     
-     
+
+
      A1 --- B1
      A1 --- C1
      A1 --- D1
@@ -228,7 +228,7 @@ end
      F1 --- M1
      I1 --- N1
      I1 --- O1
-     
+
      s ~~~ s1
 A:::WT
 B:::WT
@@ -268,7 +268,7 @@ classDef WT fill:#FFFFFF
 
 Em relação às árvores cheia, perfeita e completa:
 
-a. Qual delas implica em outra? Por exemplo, árvores cheias são também completas? E as completas são cheias?
+a. Qual delas implica outra? Por exemplo, árvores cheias são também completas? E as completas são cheias?
 b. O que dizer das cheias e das perfeitas? E sobre as perfeitas e as completas?
 
 ### Questão 3
@@ -289,7 +289,7 @@ Determine os percursos em pré-ordem, ordem e pós-ordem das árvores obtidas no
 
 ### Questão 5
 
-Se você tivesse a tarefa de implementar um BST que permitisse chaves duplicadas, como você trataria elas? Cite pelo menos duas abordagens.
+Se você tivesse a tarefa de implementar uma BST que permitisse chaves duplicadas, como você as trataria? Cite pelo menos duas abordagens.
 
 ### Questão 6
 
@@ -388,7 +388,7 @@ Determine a árvore após a remoção dos nós 49, 22, 81, 34, 92 e 52
 
 ### Questão 7
 
-Qual a relação entre BST e AVL? Ou seja, o que elas tem em comum e o que as diferenciam.
+Qual a relação entre BST e AVL? Ou seja, o que elas têm em comum e o que as diferencia?
 
 ### Questão 8
 
@@ -416,7 +416,7 @@ Como ficaria cada uma das árvores depois que a palavra 'food' fosse removida?
 
 ### Questão 12
 
-Refaça o exercício anterior considerando uma AVL ao invés de uma BST.
+Refaça o exercício anterior considerando uma AVL em vez de uma BST.
 
 
 ### Questão 13
@@ -471,6 +471,6 @@ Responda em que tipo de situação a passagem por referência é indispensável.
 
 ### Questão 16
 
-Você foi encarregado de escrever um função para apagar uma árvore liberando a memória alocada para cada nó. Qual estratégia de visitação você abordaria para que nenhum nó fosse esquecido e porquê?
+Você foi encarregado de escrever uma função para apagar uma árvore liberando a memória alocada para cada nó. Qual estratégia de visitação você abordaria para que nenhum nó fosse esquecido e por quê?
 
 

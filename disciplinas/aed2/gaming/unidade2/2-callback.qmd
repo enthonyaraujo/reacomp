@@ -47,7 +47,7 @@ A sintaxe de declaração deve ser lida da seguinte forma:
 Diferentemente das variáveis, ao atribuir o endereço de uma função a um ponteiro de função, não é necessário usar o operador & (o nome da função sozinho já representa seu endereço).
 :::
 
-Note que a função `meta` obedece a **assinatura** (ou contrato) estabelecido pelo ponteiro de função `meta_ptr`, ou seja, possui o mesmo **tipo de retorno** e os mesmos **tipos de parâmetros de entrada** (`double, double`) Portanto, devemos manter a **compatibilidade** de tipos.
+Note que a função `meta` obedece à **assinatura** (ou contrato) estabelecida pelo ponteiro de função `meta_ptr`, ou seja, possui o mesmo **tipo de retorno** e os mesmos **tipos de parâmetros de entrada** (`double, double`). Portanto, devemos manter a **compatibilidade** de tipos.
 
 
 ## Introdução aos Callbacks {#sec-cal}
@@ -78,12 +78,12 @@ int main(){
 
   int n1 = 10;
   int n2 = 2;
-  
+
   printf("Soma:      %d\n", calcular(n1, n2, soma));
   printf("Subtração: %d\n", calcular(n1, n2, subtracao));
   printf("Produto:   %d\n", calcular(n1, n2, produto));
-  printf("Divisão:   %d\n", calcular(n1, n2, divisao));  
-  
+  printf("Divisão:   %d\n", calcular(n1, n2, divisao));
+
   return 0;
 }
 ```
@@ -96,7 +96,7 @@ A saída desse programa será
   Soma:      12
   Subtração: 8
   Produto:   20
-  Divisão:   5 
+  Divisão:   5
 ```
 Ao **passar a função como parâmetro**, tornamos o código de C extremamente **poderoso e reutilizável**. A função `calcular` não se importa como o cálculo é feito, apenas que a função fornecida (o _callback_) respeite o contrato de tipos (`int` para retorno, e `int`, `int` para parâmetros).
 
@@ -124,9 +124,9 @@ Ao definir o tipo do _callback_, tornamos a função `calcular` muito mais limpa
 // que retorna int e aceita dois int como parâmetros.
 typedef int (*Operacao)(int, int);
 
-// A função 'calcular' agora usa o tipo 'Operacao', 
+// A função 'calcular' agora usa o tipo 'Operacao',
 // simplificando sua assinatura.
-int calcular(int a, int b, Operacao operacao); 
+int calcular(int a, int b, Operacao operacao);
 ```
 O código final ficaria assim:
 
@@ -149,9 +149,9 @@ int main(){
 
   int n1 = 10;
   int n2 = 2;
-  
+
   printf("Soma: %d\n", calcular(n1, n2, soma));
-  
+
   return 0;
 }
 ```

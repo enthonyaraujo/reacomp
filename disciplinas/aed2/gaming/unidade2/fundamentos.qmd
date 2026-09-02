@@ -8,9 +8,9 @@ format:
     css: ../styles/turtlemap.css
 ---
 
-Nesta unidade do curso, iremos estudar as **estruturas genéricas**. Imagine poder criar uma lista ou uma árvore que funciona com qualquer tipo de dado, sem precisar mudar uma única linha do código principal. As estruturas genéricas permitem criar códigos flexíveis usando conceitos como **listas genéricas**, o uso de **_callbacks_** para operações personalizadas, e a construção de **árvores de busca genéricas**. 
+Nesta unidade do curso, iremos estudar as **estruturas genéricas**. Imagine poder criar uma lista ou uma árvore que funciona com qualquer tipo de dado, sem precisar mudar uma única linha do código principal. As estruturas genéricas permitem criar códigos flexíveis usando conceitos como **listas genéricas**, o uso de **_callbacks_** para operações personalizadas, e a construção de **árvores de busca genéricas**.
 
-Antes de tudo, precisamos preparar o terreno para que não nenhuma ponta solta. Iniciaremos com um pequena   revisão sobre ponteiros. Em seguida, introduzir os _callbacks_, seguido por gerenciamento de memória.
+Antes de tudo, precisamos preparar o terreno para que não fique nenhuma ponta solta. Iniciaremos com uma pequena revisão sobre ponteiros. Em seguida, introduziremos os _callbacks_, seguidos pelo gerenciamento de memória.
 
 
 <script>
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", mostrarFases);
 ![](../../img/avatars/shell_avatar.png){.chat-avatar alt="Shell"}
 
 :::{.chat-bubble}
- Ao completar desafios ou uma fase, você encontrará a palavra-chave para desbloquear a próxima. 
+ Ao completar desafios ou uma fase, você encontrará a palavra-chave para desbloquear a próxima.
 
  _Fique atento às nossas dicas!_
 :::

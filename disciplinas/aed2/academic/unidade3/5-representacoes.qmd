@@ -8,25 +8,25 @@ format:
   html:
     reference-location: margin
     css: ../styles/academic.css
-filters: 
+filters:
     - quizdown
----  
+---
 
-Até aqui descrevemos grafos de forma abstrata. Para armazená-los e manipulá-los em computador, precisamos de representações concretas. Vamos usar os mesmos grafos da seção passada: 
+Até aqui descrevemos grafos de forma abstrata. Para armazená-los e manipulá-los em computador, precisamos de representações concretas. Vamos usar os mesmos grafos da seção passada:
 
 
 ```{mermaid}
 graph LR
   subgraph s1["Grafo A"]
-    A((a)) 
+    A((a))
     B((b))
     C((c))
     D((d))
   end
 
   subgraph s2["Grafo B"]
-    direction LR 
-    A1((e)) 
+    direction LR
+    A1((e))
     B1((f))
     C1((g))
     D1((h))
@@ -57,14 +57,14 @@ classDef WT fill:#FFFFFF
 style s1 stroke:none,fill:transparent
 style s2 stroke:none,fill:transparent
 
-```  
+```
 
 
 ## Matriz de Adjacência
-  
+
 Dado o grafo com $n$ vértices, a matriz de adjacência é uma matriz quadrada de ordem $n$ em que as linhas e colunas são os vértices. O valor na posição $(i, j)$ indica se existe aresta entre o vértice $i$ e o vértice $j$. Usamos $1$ para existência e $0$ para ausência.
 
-Para os grafos A e B:  
+Para os grafos A e B:
 
 ::: {style="width: 50%; margin: auto;"}
 |   | A | B | C | D |
@@ -88,7 +88,7 @@ Note que a matriz é simétrica ($A=A^T$) para grafos não-direcionados.
 : Matriz de adjacência do grafo B
 :::
 
-Note que as linhas representam de onde as arestas partem. Já as colunas, representam onde elas incidem.
+Note que as linhas representam de onde as arestas partem. Já as colunas representam onde elas incidem.
 
 ### Implementação
 
@@ -100,11 +100,11 @@ Vamos implementar a matriz de adjacência para um grafo não-direcionado. Fica c
 
 void add_edge(int mat[V][V], int i, int j) {
     mat[i][j] = 1;
-    mat[j][i] = 1; 
+    mat[j][i] = 1;
 }
 ```
 
-A função `add_edge` (adicionar aresta) recebe uma matriz quadrada de ordem `V` (número de vértices) e os vértices que estão conectados por uma aresta. Como o grafo é não-direcionado, a matriz deve ser simétrica, isto é, `mat[i][j] = mat[j][i] = 1`. 
+A função `add_edge` (adicionar aresta) recebe uma matriz quadrada de ordem `V` (número de vértices) e os vértices que estão conectados por uma aresta. Como o grafo é não-direcionado, a matriz deve ser simétrica, isto é, `mat[i][j] = mat[j][i] = 1`.
 
 Uma dica de segurança para a função `add_edge` é adicionar a seguinte linha:
 
@@ -112,7 +112,7 @@ Uma dica de segurança para a função `add_edge` é adicionar a seguinte linha:
 if (i < 0 || i >= V || j < 0 || j >= V) return;
 ```
 
-Isso vai garantir que não serão passados valores fora do intervalo permitido. 
+Isso vai garantir que não serão passados valores fora do intervalo permitido.
 
 Para imprimir a matriz, utilizamos um laço duplo percorrendo as linhas e colunas:
 
@@ -159,7 +159,7 @@ Modifique a implementação anterior para grafos direcionados. Use o grafo B par
 Nota-se que é muito simples implementar uma matriz de adjacências. Nesta subseção, propomos algumas modificações a fim de obter um código mais funcional.
 
 
-Ao invés de termos um grafo com tamanho fixo definido por uma constante, vamos criar nossa matriz usando o tamanho do conjunto de vértices dinâmicamente.
+Em vez de termos um grafo com tamanho fixo definido por uma constante, vamos criar nossa matriz usando o tamanho do conjunto de vértices dinamicamente.
 
 
 A função `zeros` aloca uma matriz bidimensional com `lin` linhas e `col` colunas, inicializando todas as posições com zero. O uso de `calloc` garante tanto a alocação quanto a inicialização. Em caso de falha durante a alocação de alguma linha, toda a memória previamente alocada é corretamente liberada.
@@ -178,8 +178,8 @@ int** zeros(size_t lin, size_t col) {
           return NULL;
       }
   }
-     
-  return matrix; 
+
+  return matrix;
 }
 
 void display_matrix(int** matrix, size_t lin, size_t col) {
@@ -201,13 +201,13 @@ A função auxiliar `display_matrix` é usada para imprimir uma matriz. Por exem
 int** mat = zeros(3, 4);
 display_matrix(mat, 3, 4);
 ```
-    
+
 vai gerar a seguinte saída:
 
 ```{.console code-line-numbers="false"}
-0 0 0 0 
-0 0 0 0 
-0 0 0 0 
+0 0 0 0
+0 0 0 0
+0 0 0 0
 ```
 
 
@@ -217,13 +217,13 @@ Uma vez que alocamos memória, precisamos liberar o espaço reservado quando fin
 void destroy_matrix(int** matrix, size_t lin) {
   for (size_t i = 0; i < lin; i++)
     free(mat[i]);
-  free(mat); 
-} 
+  free(mat);
+}
 ```
 
-Primeiramente, liberamos a memória de cada linha com `free(mat[i])`. Depois liberamos o vetor de ponteiros `mat`. 
+Primeiramente, liberamos a memória de cada linha com `free(mat[i])`. Depois liberamos o vetor de ponteiros `mat`.
 
-Agora podemos trabalhar com a semâtica de grafos ao invés de matrizes. Primeiro, vamos criar um nova estrutura que contém uma matriz de ordem $|V|\times |V|$. 
+Agora podemos trabalhar com a semântica de grafos em vez de matrizes. Primeiro, vamos criar uma nova estrutura que contém uma matriz de ordem $|V|\times |V|$.
 
 ```c
 typedef struct {
@@ -231,7 +231,7 @@ typedef struct {
   int** adj_matrix;
 } Graph;
 ```
-Usamos `size_t` para armazenar a ordem do grafo, isto é, o número de vértices. Lembre-se que `size_t` é usado para contagem de elementos ou tamanho de estruturas por se tratar de um inteiro sem sinal e, portanto, não admite valores negativos.
+Usamos `size_t` para armazenar a ordem do grafo, isto é, o número de vértices. Lembre-se de que `size_t` é usado para contagem de elementos ou tamanho de estruturas por se tratar de um inteiro sem sinal e, portanto, não admite valores negativos.
 
 Sabemos que a matriz de adjacência de um grafo é sempre quadrada, portanto:
 
@@ -242,8 +242,8 @@ Graph* simple_graph(size_t V) {
 
   graph->V = V;
   graph->adj_matrix = zeros(V, V);
-   
-  return graph; 
+
+  return graph;
 }
 ```
 
@@ -255,9 +255,9 @@ Para adicionar uma aresta entre dois vértices `v` e `u`, vamos associar a ela u
 ```c
 void add_edge(Graph* graph, size_t v, size_t u, int w) {
   if (u >= graph->V || v >= graph->V) return;
- 
+
   graph->adj_matrix[v][u] = w;
-  graph->adj_matrix[u][v] = w; 
+  graph->adj_matrix[u][v] = w;
 }
 ```
 
@@ -282,13 +282,13 @@ size_t degree(Graph* graph, size_t v) {
 
 size_t* neighborhood(Graph* graph, size_t v) {
   if (v >= graph->V) return NULL;
-  
-  size_t k = 0; 
-  size_t size = degree(graph, v); 
+
+  size_t k = 0;
+  size_t size = degree(graph, v);
   size_t* neighbor = malloc(size*sizeof(size_t));
-  
+
   if (!neighbor) return NULL;
-  
+
   for (size_t j = 0; j < graph->V; j++){
     if (graph->adj_matrix[v][j] != 0)
       neighbor[k++] = j;
@@ -310,7 +310,7 @@ void display_neighborhood(size_t* neighbor, size_t size) {
   printf("N(v) = { ");
   for (size_t i = 0; i < size; i++)
     printf("%zu ", neighbor[i]);
-  printf("}\n");     
+  printf("}\n");
 }
 ```
 
@@ -320,7 +320,7 @@ Finalmente, vamos encapsular a função `destroy_matrix` para obtermos uma consi
 void destroy_graph(Graph* graph) {
   destroy_matrix(graph->adj_matrix, graph->V);
   free(graph);
-} 
+}
 ```
 
 Exemplo de uso para o grafo A:
@@ -329,27 +329,27 @@ int main() {
 
   size_t V = 4;
   Graph* g = simple_graph(V);
-  
-  add_edge(mat, 0, 1, 1); // Liga 'a' e 'b' 
+
+  add_edge(mat, 0, 1, 1); // Liga 'a' e 'b'
   add_edge(mat, 0, 2, 1); // Liga 'a' e 'c'
   add_edge(mat, 1, 2, 1); // Liga 'b' e 'c'
   add_edge(mat, 1, 3, 1); // Liga 'b' e 'd'
 
   printf("Representação por Matriz de Adjacencia:\n");
   display_graph(g);
-    
+
   size_t v = 2;
   size_t* neighbor = malloc(V * sizeof(size_t));
   size_t deg = neighborhood(g, v, neighbor);
-    
-  printf("\nO vertice v = %zu possui %zu vizinho(s): ", v, deg);
+
+  printf("\nO vértice v = %zu possui %zu vizinho(s): ", v, deg);
 
   display_neighborhood(neighbor, deg);
-    
+
   destroy_graph(g);
-  free(neighbor); 
-  
-  return 0;   
+  free(neighbor);
+
+  return 0;
 }
 ```
 
@@ -357,12 +357,12 @@ Saída:
 
 ```{.console code-line-numbers="false"}
 Representação por Matriz de Adjacencia:
-0 1 1 0 
-1 0 1 1 
-1 1 0 0 
-0 1 0 0 
+0 1 1 0
+1 0 1 1
+1 1 0 0
+0 1 0 0
 
-O vertice v = 2 possui 2 vizinho(s): N(v) = { 0 1 }
+O vértice v = 2 possui 2 vizinho(s): N(v) = { 0 1 }
 ```
 
 ::: {.callout-tip title="Exercício"}
@@ -378,10 +378,10 @@ size_t* neighborhood_out(Graph* graph, size_t v);
 A função para imprimir a vizinhança deve mostrar a vizinhança de entrada e a de saída, por exemplo:
 
 ```{.console code-line-numbers="false"}
-O vertice v = 2 possui 3 vizinho(s): N-(v) = { 1 } e N+(v) = { 0 3 }
+O vértice v = 2 possui 3 vizinho(s): N-(v) = { 1 } e N+(v) = { 0 3 }
 ```
 :::
- 
+
 
 
 ::: {.column-margin}
@@ -395,10 +395,10 @@ A lista de adjacência nada mais é que uma lista de vizinhos para cada vértice
 
 Usando os mesmos exemplos anteriores, para o grafo A:
 
-- $\mathcal{N}(a) = \{b, c\}$  
-- $\mathcal{N}(b) = \{a, c, d\}$ 
-- $\mathcal{N}(c) = \{a, b\}$  
-- $\mathcal{N}(d) = \{b\}$  
+- $\mathcal{N}(a) = \{b, c\}$
+- $\mathcal{N}(b) = \{a, c, d\}$
+- $\mathcal{N}(c) = \{a, b\}$
+- $\mathcal{N}(d) = \{b\}$
 
 Para o grafo direcionado B, temos:
 
@@ -406,7 +406,7 @@ Para o grafo direcionado B, temos:
 - $\mathcal{N^-}(f)=\{e\}\text{ e }\mathcal{N^+}(f)=\{g\}$
 - $\mathcal{N^-}(g)=\{f\}\text{ e }\mathcal{N^+}(g)=\{e,h\}$
 - $\mathcal{N^-}(h)=\{g\}\text{ e }\mathcal{N^+}(h)=\emptyset$
- 
+
 ### Implementação
 
 Para implementar essas listas, vamos construir listas ligadas.
@@ -430,7 +430,7 @@ Node* create_node(int dest) {
 
   new_node->dest = dest;
   new_node->next = NULL;
-    
+
   return new_node;
 }
 ```
@@ -439,13 +439,13 @@ Node* create_node(int dest) {
 Graph* simple_graph(int V) {
   Graph* graph = malloc(sizeof(Graph));
   if(!graph) return NULL;
-  
+
   Node** list_adj = calloc(V, sizeof(Node*));
   if(!list_adj) return NULL;
-    
+
   graph->V = V;
   graph->list_adj = list_adj;
-        
+
   return graph;
 }
 ```
@@ -459,7 +459,7 @@ void destroy_graph(Graph* graph) {
 ```
 
 ```c
-void add_edge(Graph* graph, int src, int dest) {    
+void add_edge(Graph* graph, int src, int dest) {
   Node* new_node = create_node(dest);
   new_node->next = graph->array[src];
   graph->array[src] = new_node;
@@ -498,7 +498,7 @@ void display_neighborhood(Node* neighbor, size_t size) {
   printf("N(v) = { ");
   for (Node* cur = neighbor; cur; cur = cur->next)
     printf("%d ", cur->dest);
-  printf("}\n");     
+  printf("}\n");
 }
 ```
 
@@ -511,19 +511,19 @@ int main() {
   add_edge(graph, 0, 2);
   add_edge(graph, 1, 2);
   add_edge(graph, 1, 3);
-  
+
   printf("Representação por Lista de Adjacencia:\n");
   display_graph(graph);
 
   size_t v = 2;
   size_t deg = degree(graph, v);
   Node* neighbor = neighborhood(graph, v);
-    
-  printf("\nO vertice v = %zu possui %zu vizinho(s): ", v, deg);
+
+  printf("\nO vértice v = %zu possui %zu vizinho(s): ", v, deg);
 
   display_neighborhood(neighbor, deg);
   destroy_graph(graph);
-  
+
   return 0;
 }
 ```
@@ -535,12 +535,12 @@ Representação por Lista de Adjacencia:
 2: 1 0
 3: 1
 
-O vertice v = 2 possui 2 vizinho(s): N(v) = { 1 0 }
+O vértice v = 2 possui 2 vizinho(s): N(v) = { 1 0 }
 ```
 
 ## Matriz de Incidência
 
-Dado o grafo com $n$ vértices e $m$ arestas, a matriz de incidência é uma matriz $n\times m$ em que as linhas são os vértices, as colunas são as arestas e o valor na interseção indica se a aresta incide sobre o vértice. 
+Dado o grafo com $n$ vértices e $m$ arestas, a matriz de incidência é uma matriz $n\times m$ em que as linhas são os vértices, as colunas são as arestas e o valor na interseção indica se a aresta incide sobre o vértice.
 
 ::: {style="width: 60%; margin: auto;"}
 |   | (A,B) | (A,C) | (B,C) | (B,D) |
@@ -561,7 +561,7 @@ Note que a soma de cada coluna é sempre 2.
 | B | 1 | -1 | 0 | 0 |
 | C | 0 | 1 | -1 | -1 |
 | D | 0 | 0 | 0 | 1 |
-: Matriz de adjacência do grafo da sec-dir
+: Matriz de incidência do grafo da sec-dir
 :::
 
 No caso de grafo direcionado, atribuímos $-1$ se a aresta $e$ sai de $v$, $1$ se a aresta $e$ entra em $v$ e $0$ caso contrário. Logo, a soma das colunas deve ser sempre zero.
@@ -586,7 +586,7 @@ typedef struct {
 } Graph;
 ```
 
-Também modificamos o nome da matriz para `inc_matrix` para se referir a incidência. Dessa forma, reaproveitamos as funções `add_edge`, `degree` e `neighborhood` trocando `adj_matrix` por `inc_matrix`.
+Também modificamos o nome da matriz para `inc_matrix` para se referir à incidência. Dessa forma, reaproveitamos as funções `add_edge`, `degree` e `neighborhood` trocando `adj_matrix` por `inc_matrix`.
 
 A função para criar um grafo vazio (matriz com zero em todas as posições) é semelhante ao caso da matriz de adjacência. Só temos de garantir que a matriz tenha `V` linhas e `E` colunas.
 
@@ -598,14 +598,14 @@ Graph* simple_graph(size_t V, size_t E) {
   graph->V = V;
   graph->E = E;
   graph->inc_matrix = zeros(V, E);
-   
-  return graph; 
+
+  return graph;
 }
 ```
 
-Para imprimir a matriz, temos de tomar cuidado para passar as linhas e colunas corretamente. 
+Para imprimir a matriz, temos de tomar cuidado para passar as linhas e colunas corretamente.
 
-```c 
+```c
 void display_graph(Graph* graph) {
   display_matrix(graph->inc_matrix, graph->V, graph->E);
 }
@@ -624,32 +624,32 @@ int main() {
   add_edge(g, 1, 2, 1);
   add_edge(g, 2, 3, 1);
   add_edge(g, 2, 0, 1);
-    
+
   printf("Representação por Matriz de Incidencia:\n");
   display_graph(g);
-    
+
   size_t v = 2;
   size_t deg = degree(g, v);
   size_t* neighbor = neighborhood(g, v);
-    
-  printf("\nO vertice v = %zu possui %zu vizinho(s): ", v, deg);
+
+  printf("\nO vértice v = %zu possui %zu vizinho(s): ", v, deg);
   display_neighborhood(neighbor, deg);
-    
+
   destroy_graph(g);
-  free(neighbor); 
-    
-  return 0;   
+  free(neighbor);
+
+  return 0;
 }
 ```
 
 ```{.console code-line-numbers="false"}
 Representação por Matriz de Incidencia:
-0 1 1 0 
-1 0 1 0 
-1 1 0 1 
-0 0 1 0 
+0 1 1 0
+1 0 1 0
+1 1 0 1
+0 0 1 0
 
-O vertice v = 2 possui 3 vizinho(s): N(v) = { 0 1 3 }
+O vértice v = 2 possui 3 vizinho(s): N(v) = { 0 1 3 }
 ```
 
 

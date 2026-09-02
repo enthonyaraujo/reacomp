@@ -8,18 +8,18 @@ format:
   html:
     reference-location: margin
     css: ../styles/academic.css
-filters: 
+filters:
     - quizdown
 ---
 
-A árvore binária é uma árvore onde os nós possuem no máximo dois filhos. Portanto, um nó qualquer pode possuir 0, 1 ou 2 filhos.
+A árvore binária é uma árvore em que os nós possuem no máximo dois filhos. Portanto, um nó qualquer pode possuir 0, 1 ou 2 filhos.
 
 Exemplos
 
 ```{mermaid}
 flowchart LR
     subgraph s1[" "]
-    A(("A")) 
+    A(("A"))
     B(("B"))
 	C(("C"))
 	D(("D"))
@@ -39,7 +39,7 @@ flowchart LR
     end
 
     subgraph s3[" "]
-	A2((🙈)) 
+	A2((🙈))
     B2((🙄))
 	C2((👀))
 	D2((🤣))
@@ -59,7 +59,7 @@ flowchart LR
 	C1 --- F1
 	C1 --- I1
 
-	A2 --- B2   
+	A2 --- B2
 	A2 --- C2
 	B2 --- D2
 	B2 --- I2
@@ -88,18 +88,18 @@ style s2 stroke:none,fill:transparent
 style s3 stroke:none,fill:transparent
 style I1 stroke:none,fill:transparent
 style I2 stroke:none,fill:transparent
-linkStyle 11 stroke:none,fill:none    
-linkStyle 15 stroke:none,fill:none    
+linkStyle 11 stroke:none,fill:none
+linkStyle 15 stroke:none,fill:none
 
 classDef WT fill:#FFFFFF
-```	
+```
 
 
 ## Propriedades
 
-- Um árvore binária de altura $h$ tem no máximo $2^{h+1}-1$ nós
-- Um árvore binária com $n$ nós tem uma altura mínima de $\lceil \log_2(n+1)\rceil-1$
-- Um árvore binária com $n$ nós tem no máximo $\lceil n/2\rceil$ nós terminais
+- Uma árvore binária de altura $h$ tem no máximo $2^{h+1}-1$ nós
+- Uma árvore binária com $n$ nós tem uma altura mínima de $\lceil \log_2(n+1)\rceil-1$
+- Uma árvore binária com $n$ nós tem no máximo $\lceil n/2\rceil$ nós terminais
 
 Exemplo
 
@@ -143,11 +143,11 @@ F:::WT
 G:::WT
 
 classDef WT fill:#FFFFFF
-```	
+```
 
 - nenhum filho: B, E, F e G
 - um filho: -
-- dois filhos: A, C e D 
+- dois filhos: A, C e D
 
 ### Árvore Binária Completa
 
@@ -185,7 +185,7 @@ L:::WT
 classDef WT fill:#FFFFFF
 style I1 stroke:none,fill:transparent
 linkStyle 9 stroke:none,fill:none
-```	
+```
 
 
 A árvore acima possui 4 níveis, onde os níveis 0, 1 e 2 estão completos.
@@ -203,7 +203,7 @@ Em uma árvore binária, para um nível $n$ estar completo é necessário que el
 
 ### Árvore Binária Perfeita
 
-É uma árvore binária em todos os níveis estão completamente preenchidos.
+É uma árvore binária em que todos os níveis estão completamente preenchidos.
 
 ```{mermaid}
 flowchart TB
@@ -240,7 +240,7 @@ N:::WT
 O:::WT
 
 classDef WT fill:#FFFFFF
-```	
+```
 
 
 Todos os nós internos têm dois filhos e todas as folhas estão no mesmo nível.
@@ -248,7 +248,7 @@ Todos os nós internos têm dois filhos e todas as folhas estão no mesmo nível
 ### Árvore Degenerada
 
 
-Uma árvore degenerada que é aquela em que cada nó tem no máximo um filho. Isso faz com que a árvore se assemelhe a uma lista encadeada.
+Uma árvore degenerada é aquela em que cada nó tem no máximo um filho. Isso faz com que a árvore se assemelhe a uma lista encadeada.
 
 ```{mermaid}
 flowchart LR
@@ -304,7 +304,7 @@ end
 	C1 ~~~ I7
     D1 --- E1
     D1 ~~~ I8
-    
+
 	A2 --- B2
     A2 ~~~ I9
 	B2 ~~~ I10
@@ -350,13 +350,13 @@ style I12 stroke:none,fill:transparent
 style s1 stroke:none,fill:transparent
 style s2 stroke:none,fill:transparent
 style s3 stroke:none,fill:transparent
-```	
+```
 
 ## Percursos
 
 Como podemos visitar todos os nós de uma árvore, sem exceção, somente uma vez? Isso pode ser realizado de várias maneiras.
 
-Um percurso, ou travessia, diz respeito ao modo de como percorremos uma árvore. Percorrer uma árvore binária envolve visitar todos os seus nós em uma ordem específica para realizar várias operações, como pesquisar, classificar ou modificar a árvore.
+Um percurso, ou travessia, diz respeito ao modo como percorremos uma árvore. Percorrer uma árvore binária envolve visitar todos os seus nós em uma ordem específica para realizar várias operações, como pesquisar, classificar ou modificar a árvore.
 
 As estratégias de travessia são amplamente classificadas em:
 
@@ -382,7 +382,7 @@ D:::WT
 E:::WT
 
 classDef WT fill:#FFFFFF
-```	
+```
 
 Um percurso em largura resultará na sequência A, B, C, D e E.
 
@@ -393,7 +393,7 @@ Um percurso em largura resultará na sequência A, B, C, D e E.
 
 ### Percurso em Profundidade
 
-O percurso em profundidade explora o mais profundamente possível em cada ramo antes de retroceder. Esta categoria inclui os subtipos pré-ordem, ordeme pós-ordem.
+O percurso em profundidade explora o mais profundamente possível em cada ramo antes de retroceder. Esta categoria inclui os subtipos pré-ordem, ordem e pós-ordem.
 
 Vamos usar a seguinte árvore para exemplificar tais percursos.
 
@@ -407,13 +407,13 @@ B:::WT
 C:::WT
 
 classDef WT fill:#FFFFFF
-```	
+```
 
 #### Pré-ordem
 
 Cada nó é processado antes de seus filhos. Segue a seguinte ordem de visita:
 
-- raiz 
+- raiz
 - subárvore esquerda
 - subárvore direita
 
@@ -428,7 +428,7 @@ Resultado: A, B, C
 
 
 ::: {.callout-tip title="Exercício"}
-Nesse exercício, você deve reproduzir o comportamento de uma travessia em pré-ordem. Clique nos nós para indicar a ordem na qual o algoritmo de travessia deve percorre-los. O botão reset cria um novo exercício.
+Nesse exercício, você deve reproduzir o comportamento de uma travessia em pré-ordem. Clique nos nós para indicar a ordem na qual o algoritmo de travessia deve percorrê-los. O botão reset cria um novo exercício.
 
 ```{=html}
 <iframe src="https://opendsa-server.cs.vt.edu/embed/btTravPreorderPRO" style="border:none;" height="430" width="900" scrolling="no"></iframe>
@@ -448,7 +448,7 @@ Resultado: B, A, C
 > Este percurso é amplamente utilizado em estruturas de dados que precisam manter alguma ordem.
 
 ::: {.callout-tip title="Exercício"}
-Nesse exercício, você deve reproduzir o comportamento de uma travessia em ordem. Clique nos nós para indicar a ordem na qual o algoritmo de travessia deve percorre-los. O botão reset cria um novo exercício.
+Nesse exercício, você deve reproduzir o comportamento de uma travessia em ordem. Clique nos nós para indicar a ordem na qual o algoritmo de travessia deve percorrê-los. O botão reset cria um novo exercício.
 
 ```{=html}
 <iframe src="https://opendsa-server.cs.vt.edu/embed/btTravInorderPRO" style="border:none;" height="430" width="100%" scrolling="no"></iframe>
@@ -458,7 +458,7 @@ Nesse exercício, você deve reproduzir o comportamento de uma travessia em orde
 
 #### Pós-ordem
 
-Acessa o nó atual após suas subárvores. Segue a seguinte ordem de visita: 
+Acessa o nó atual após suas subárvores. Segue a seguinte ordem de visita:
 
 - subárvore esquerda
 - subárvore direita
@@ -475,14 +475,14 @@ Resultado: B, C, A
 > - Avaliação de Expressões Matemáticas: Compiladores usam isso para resolver contas. Para calcular (3 + 4) * 5, o computador primeiro resolve o 3 e o 4, depois o +, e só então multiplica pelo 5.
 
 ::: {.callout-tip title="Exercício"}
-Nesse exercício, você deve reproduzir o comportamento de uma travessia em pós-ordem. Clique nos nós para indicar a ordem na qual o algoritmo de travessia deve percorre-los. O botão reset cria um novo exercício.
+Nesse exercício, você deve reproduzir o comportamento de uma travessia em pós-ordem. Clique nos nós para indicar a ordem na qual o algoritmo de travessia deve percorrê-los. O botão reset cria um novo exercício.
 ```{=html}
 <iframe src="https://opendsa-server.cs.vt.edu/embed/btTravPostorderPRO" style="border:none;" height="430" width="100%" scrolling="no"></iframe>
 ```
 :::
 
 
-Para fixação, vamos considerar uma nova nova árvore: 
+Para fixação, vamos considerar uma nova árvore:
 
 ```{mermaid}
 flowchart TB
@@ -503,13 +503,13 @@ F:::WT
 classDef WT fill:#FFFFFF
 linkStyle 4 stroke:none,fill:none
 style I1 stroke:none,fill:transparent
-```	
+```
 
 
 - Largura: A, B, C, D, E, F
-- Pré-ordem (Nó, Esquerda, Direta): A, B, D, E, C, F
-- Ordem (Esquerda, Nó, Direta): D, B, E, A, C, F
-- Pós-ordem (Esquerda, Direta, Nó): D, E, B, F, C, A
+- Pré-ordem (Nó, Esquerda, Direita): A, B, D, E, C, F
+- Ordem (Esquerda, Nó, Direita): D, B, E, A, C, F
+- Pós-ordem (Esquerda, Direita, Nó): D, E, B, F, C, A
 
 ::: {.column-margin}
 **[Se liga!]{.text-warning}**
@@ -519,7 +519,7 @@ Os percursos em árvore podem ser usados para a serialização, isto é, salvar 
 
 ## Implementação
 
-Como se trata de uma estrutura dinâmica, usaremos ponteiros. 
+Como se trata de uma estrutura dinâmica, usaremos ponteiros.
 
 Para criarmos uma árvore binária em C, devemos criar uma nova estrutura. Tal estrutura deve conter o valor da chave e dois ponteiros para indicar os filhos do lado esquerdo e direito.
 
@@ -538,7 +538,7 @@ Node* create_node(int key) {
     Node* new_node = malloc(sizeof(Node));
     new_node->key = key;
     new_node->left = new_node->right = NULL;
-     
+
     return new_node;
 }
 ```
@@ -572,9 +572,9 @@ D:::WT
 E:::WT
 
 classDef WT fill:#FFFFFF
-```	
+```
 
-Os percusos são implementados recursivamente da seguinte forma:
+Os percursos são implementados recursivamente da seguinte forma:
 
 ```c
 void pre_order(Node *root) {
@@ -606,9 +606,9 @@ Na pasta code, você pode encontrar a implementação no arquivo arvorebinaria.c
 
 No nosso exemplo anterior, o programa deve gerar a saída:
 
-- Pre-Ordem:  10 15 5 12 18
+- Pré-ordem:  10 15 5 12 18
 - Ordem:      15 10 12 5 18
-- Pos-Ordem:  15 12 18 5 10
+- Pós-ordem:  15 12 18 5 10
 
 ---
 
@@ -628,96 +628,96 @@ Nesta seção, estudamos a estrutura de dados árvore binária. Em particular,
 
 > Considere a definição formal apresentada no texto.
 
-1. [ ] Todo nó possui exatamente dois filhos  
-1. [ ] Todo nó possui pelo menos um filho  
-1. [x] Todo nó possui no máximo dois filhos  
-1. [ ] Apenas a raiz pode ter dois filhos  
+1. [ ] Todo nó possui exatamente dois filhos
+1. [ ] Todo nó possui pelo menos um filho
+1. [x] Todo nó possui no máximo dois filhos
+1. [ ] Apenas a raiz pode ter dois filhos
 
 
 # Sobre as propriedades de árvores binárias
 
 > Considere uma árvore binária com altura h e n nós.
 
-- [x] Uma árvore binária de altura h tem no máximo \(2^{h+1}-1\) nós  
-- [x] Uma árvore binária com n nós tem altura mínima \(\lceil \log_2(n+1)\rceil - 1\)  
-- [ ] Uma árvore binária sempre tem exatamente \(n/2\) folhas  
-- [x] Uma árvore binária com n nós tem no máximo \(\lceil n/2\rceil\) folhas  
+- [x] Uma árvore binária de altura h tem no máximo \(2^{h+1}-1\) nós
+- [x] Uma árvore binária com n nós tem altura mínima \(\lceil \log_2(n+1)\rceil - 1\)
+- [ ] Uma árvore binária sempre tem exatamente \(n/2\) folhas
+- [x] Uma árvore binária com n nós tem no máximo \(\lceil n/2\rceil\) folhas
 
 
 # Classifique a árvore onde cada nó possui zero ou dois filhos, nunca exatamente um.
 
-1. [ ] Árvore completa  
-1. [ ] Árvore perfeita  
-1. [x] Árvore cheia  
-1. [ ] Árvore degenerada  
+1. [ ] Árvore completa
+1. [ ] Árvore perfeita
+1. [x] Árvore cheia
+1. [ ] Árvore degenerada
 
 
-# Em uma árvore binária completa 
+# Em uma árvore binária completa
 
 > Considere o preenchimento dos níveis da árvore.
 
-1. [ ] Todos os níveis estão completamente preenchidos  
-1. [x] Todos os níveis acima do último estão completamente preenchidos  
-1. [ ] Apenas o nível das folhas é completo  
-1. [ ] Apenas a raiz está completa  
+1. [ ] Todos os níveis estão completamente preenchidos
+1. [x] Todos os níveis acima do último estão completamente preenchidos
+1. [ ] Apenas o nível das folhas é completo
+1. [ ] Apenas a raiz está completa
 
 
 # Em uma árvore binária perfeita
 
 > Considere a estrutura global da árvore.
 
-1. [ ] Apenas os nós internos têm dois filhos  
-1. [ ] Apenas as folhas estão no mesmo nível  
-1. [x] Todos os níveis estão completamente preenchidos  
-1. [ ] Apenas os dois primeiros níveis estão completos  
+1. [ ] Apenas os nós internos têm dois filhos
+1. [ ] Apenas as folhas estão no mesmo nível
+1. [x] Todos os níveis estão completamente preenchidos
+1. [ ] Apenas os dois primeiros níveis estão completos
 
 
 # Uma árvore degenerada
 
 > Compare a estrutura da árvore com outras estruturas conhecidas.
 
-1. [ ] Se comporta como uma pilha  
-1. [ ] Se comporta como uma fila  
-1. [x] Se comporta como uma lista encadeada  
-1. [ ] Se comporta como um grafo completo  
+1. [ ] Se comporta como uma pilha
+1. [ ] Se comporta como uma fila
+1. [x] Se comporta como uma lista encadeada
+1. [ ] Se comporta como um grafo completo
 
 
-# O percurso em largura 
+# O percurso em largura
 
 > Considere a ordem de visita dos nós.
 
-1. [ ] Visita primeiro os ramos mais profundos  
-1. [x] Visita os nós nível a nível, da esquerda para a direita  
-1. [ ] Visita primeiro a subárvore esquerda  
-1. [ ] Visita primeiro as folhas  
+1. [ ] Visita primeiro os ramos mais profundos
+1. [x] Visita os nós nível a nível, da esquerda para a direita
+1. [ ] Visita primeiro a subárvore esquerda
+1. [ ] Visita primeiro as folhas
 
 
 # Quais percursos pertencem à categoria de percurso em profundidade?
 
-- [x] Pré-ordem  
-- [x] Ordem  
-- [x] Pós-ordem  
-- [ ] Percurso em largura  
+- [x] Pré-ordem
+- [x] Ordem
+- [x] Pós-ordem
+- [ ] Percurso em largura
 
 
 # Sobre a implementação em C
 
 > Considere a estrutura `Node` apresentada no texto.
 
-- [x] Cada nó armazena uma chave  
-- [x] Cada nó possui um ponteiro para o filho esquerdo  
-- [x] Cada nó possui um ponteiro para o filho direito  
-- [ ] Cada nó armazena obrigatoriamente o ponteiro para o pai  
+- [x] Cada nó armazena uma chave
+- [x] Cada nó possui um ponteiro para o filho esquerdo
+- [x] Cada nó possui um ponteiro para o filho direito
+- [ ] Cada nó armazena obrigatoriamente o ponteiro para o pai
 
 
 # Sobre a implementação dos percursos
 
 > Considere os códigos apresentados.
 
-1. [ ] São implementados iterativamente  
-1. [x] São implementados de forma recursiva  
-1. [ ] Apenas o percurso em largura é recursivo  
-1. [ ] Apenas o percurso em profundidade é iterativo  
+1. [ ] São implementados iterativamente
+1. [x] São implementados de forma recursiva
+1. [ ] Apenas o percurso em largura é recursivo
+1. [ ] Apenas o percurso em profundidade é iterativo
 ```
 
 Agora que estamos familiarizados com os conceitos fundamentais da estrutura de dados árvore, iremos estudar um tipo especial de árvore binária chamada árvore binária de busca.

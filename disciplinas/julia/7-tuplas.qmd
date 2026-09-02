@@ -8,19 +8,19 @@ format:
   html:
     reference-location: margin
 execute:
-  eval: true 
+  eval: true
   daemon: true
-  cache: true 
+  cache: true
 ---
 
-Uma tupla é uma estrutura de dados de tamanho fixo e imutável (não pode ser alterada após a criação) que armazena qualquer valor. Definidas por parênteses, garantem integridade de dados e são ideais para proteger informações constantes. 
+Uma tupla é uma estrutura de dados de tamanho fixo e imutável (não pode ser alterada após a criação) que armazena qualquer valor. Definida por parênteses, garante a integridade de dados e são ideais para proteger informações constantes.
 
 ```{julia}
 tupla1 = (3, 2, 1)
 tupla2 = ('a', "julia", 3.14)
 
 println("typeof(tupla1): ", typeof(tupla1))
-println("typeof(tupla1): ", typeof(tupla2))
+println("typeof(tupla2): ", typeof(tupla2))
 
 ```
 
@@ -28,7 +28,7 @@ A primeira tupla possui três inteiros. Por essa razão seu tipo é `Tuple{Int64
 
 # Acessando elementos
 
-Usamos indexação para acessar os valores, inciando por 1. 
+Usamos indexação para acessar os valores, iniciando por 1.
 
 ```{julia}
 println("tupla1[1]   = ", tupla1[1])
@@ -60,7 +60,7 @@ println("Desempacotamento: linha = $linha, coluna = $coluna")
 
 - Modificar um elemento: `tupla1[1] = 0`
 - Modificar a ordem dos elementos: `sort(tupla1)`
-- Inserir um elemento novo: `push!(tupla1, 4)`  
+- Inserir um elemento novo: `push!(tupla1, 4)`
 
 # Tuplas nomeadas
 
@@ -122,7 +122,7 @@ for produto in produtos
 end
 ```
 
-::: 
+:::
 
 
 ::: {.callout-tip title="Solução (clique para ver)" collapse="true"}
@@ -151,9 +151,9 @@ end
 :::
 -->
 
-# Conjuntos 
+# Conjuntos
 
-Em Julia, um consjunto (_set_) é uma coleção não ordenada de elementos únicos, ou seja, não permite duplicatas. Ele é implementado com base em tabelas de dispersão (_hash tables_), o que garante operações eficientes de inserção, remoção e verificação de pertencimento.
+Em Julia, um conjunto (_set_) é uma coleção não ordenada de elementos únicos, ou seja, não permite duplicatas. Ele é implementado com base em tabelas de dispersão (_hash tables_), o que garante operações eficientes de inserção, remoção e verificação de pertencimento.
 
 ```{julia}
 set1 = Set([1, 2, 3, 3, 4, 4, 4])  # Automático: remove duplicatas

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
-#include "list.h" 
+#include "list.h"
 
 // Callback para comparar dois inteiros
 int compare_int(void *a, void *b) {
@@ -22,13 +22,14 @@ int main() {
         *data = item[i];
         list_add(list, data);
         printf("Valor %d adicionado\n", *data);
+        free(data);
     }
    printf("----------------------------------------\n");
 
     // Verificar se um valor está na lista
     int valor = 4;
     printf("Procurando pelo valor %d...\n", valor);
-    
+
     if (list_contains(list, &valor)) {
         printf("-> Sucesso: %d encontrado!\n", valor);
     } else {
@@ -36,8 +37,8 @@ int main() {
     }
     printf("----------------------------------------\n");
 
-   
-    printf("Destruindo a lista e liberando toda a memória restante.\n"); 
+
+    printf("Destruindo a lista e liberando toda a memória restante.\n");
     list_destroy(list);
     list = NULL;
 

@@ -8,8 +8,8 @@ format:
   html:
     reference-location: margin
     css: ../styles/academic.css
-filters: 
-    - quizdown    
+filters:
+    - quizdown
 ---
 
 A função _hash_ é usada para mapear uma chave para um valor, gerando um código hash que, por sua vez, é usado para encontrar a localização de um item em uma estrutura de dados como uma tabela hash.
@@ -44,7 +44,7 @@ flowchart LR
     s2 =="h('banana')=4"==> E2
 
     classDef box fill:#fff,stroke:#000,color:#000,stroke-width:1px;
-    
+
     class A0 box
     class B0 box
     class C0 box
@@ -54,11 +54,11 @@ flowchart LR
     class C2 box
     class D2 box
     class E2 box
-    
+
     style s2 stroke:none,fill:#BBDEFB
     style s1 stroke:none,fill:#FFE0B2
     style s3 stroke:none,fill:#FFE0B2
-    
+
     linkStyle 0 stroke:#D50000,fill:none
     linkStyle 1 stroke:#00C853,fill:none
     linkStyle 2 stroke:#2962FF,fill:none
@@ -68,7 +68,7 @@ flowchart LR
 ```
 
 ## Características da Função Hash
-	
+
 É desejável que a função _hash_ possua as seguintes características.
 
 - Fácil de ser calculada;
@@ -76,37 +76,37 @@ flowchart LR
 - Minimiza as colisões;
 - Capaz de resolver possíveis colisões.
 
-A vantagem da tabela hash é a velocidade de busca, uma função muito complicada para calcular é incoveniente, pois pode demorar mais que uma busca em uma árvore binária, por exemplo. Além disso, se a função não distribui as chaves de maneira uniforme, muitas delas irão se concentrar em um local do vetor, aumentando a probabilidade de colisões.
+A vantagem da tabela hash é a velocidade de busca, uma função muito complicada para calcular é inconveniente, pois pode demorar mais que uma busca em uma árvore binária, por exemplo. Além disso, se a função não distribui as chaves de maneira uniforme, muitas delas irão se concentrar em um local do vetor, aumentando a probabilidade de colisões.
 
 ::: {.column-margin}
 **[Se liga!]{.text-warning}**
-Quando muitas chaves se concentram um lugar, dizemos que se formou um _cluster_ (aglomerado).
+Quando muitas chaves se concentram em um lugar, dizemos que se formou um _cluster_ (aglomerado).
 :::
 
 A seguir, vamos estudar os métodos clássicos para criação de funções _hash_.
 
 ## Método da Divisão
-	
+
 No método da divisão, usamos o resultado do resto da divisão do valor da chave pelo tamanho da tabela.
  $$h(k) = k \bmod m$$
 
 O ideal é que $m$ seja um número primo e não muito próximo de potências de $2$.
-	
+
 Por exemplo, se $k=12345$ e $m=101$, então
 $$h(k) = h(12345)= 12345 \bmod 101 = 23$$
 
-A chave $12345$ deve ser alocada na posição $23$ do vetor de $101$ posições.	
-	
+A chave $12345$ deve ser alocada na posição $23$ do vetor de $101$ posições.
+
 ::: {.column-margin}
 **[Se liga!]{.text-warning}**
-Nem sempre trateremos com chaves inteiras simples como as vistas até aqui. Nesses casos, precisamos de um mecanismo para transformar em um valor inteiro antes de processar a função hash. Veremos isso à frente.
+Nem sempre trataremos de chaves inteiras simples como as vistas até aqui. Nesses casos, precisamos de um mecanismo para transformá-las em um valor inteiro antes de processar a função hash. Veremos isso à frente.
 :::
 
 
-Este é o método mais simples e fácil de gerar um valor de hash. A função hash divide o valor $k$ (chave) por $m$ (tamanho da tabela) e, em seguida, usa o resto obtido. É mais adequado que $m$ seja um número primo, pois isso pode garantir que as chaves sejam distribuídas de forma mais uniforme. 
+Este é o método mais simples e fácil de gerar um valor de hash. A função hash divide o valor $k$ (chave) por $m$ (tamanho da tabela) e, em seguida, usa o resto obtido. É mais adequado que $m$ seja um número primo, pois isso pode garantir que as chaves sejam distribuídas de forma mais uniforme.
 
 Embora simples, o método da divisão leva a um desempenho ruim, uma vez que chaves consecutivas mapeiam para valores de hash consecutivos na tabela de hash.
-	
+
 ::: {.callout-note icon="false" title="Exercício"}
 Dada a função hash $h(k) = k^2\bmod 7$, calcule os valores hash para as chaves $$4, 17, 13, 35, 25, 11, 2, 10, 32$$.
 :::
@@ -122,7 +122,7 @@ Dada a função hash $h(k) = k^2\bmod 7$, calcule os valores hash para as chaves
 - $h(10)=10^2\bmod 7=100\bmod 7\,\,\,=2$
 - $h(32)=32^2\bmod 7=1024\bmod 7=2$
 
-Muitas colisões ocorreram! Era evidente que haveria sobreposição de chaves, pois temos somentes sete espaços. 
+Muitas colisões ocorreram! Era evidente que haveria sobreposição de chaves, pois temos somente sete espaços.
 :::
 
 ## Método da Multiplicação
@@ -143,12 +143,12 @@ Por exemplo, considere $k = 123$, $m = 1000$, e $A \approx 0,618$.
 h(k) &= \lfloor 1000 (123 \cdot 0,618 \bmod 1) \rfloor \\
 &=\lfloor 1000 (76,014 \bmod 1) \rfloor \\ &=\lfloor 1000\cdot 0,014 \rfloor=14
 \end{align*}
-	
-A vantagem deste método é que ele pode trabalhar com qualquer valor entre 0 e 1. 
+
+A vantagem deste método é que ele pode trabalhar com qualquer valor entre 0 e 1.
 
 ::: {.column-margin}
 **[Se liga!]{.text-warning}**
-O método de multiplicação é geralmente adequado quando o tamanho da tabela é uma potência de dois.	
+O método de multiplicação é geralmente adequado quando o tamanho da tabela é uma potência de dois.
 :::
 
 ::: {.callout-note icon="false" title="Exercício"}
@@ -172,13 +172,13 @@ Seja $p$ um número primo maior que qualquer chave possível, e $m$ o tamanho da
 $$h_{a,b}(k) = ((ak + b) \bmod p) \bmod m$$
 
 Onde $a$ e $b$ são parâmetros **inteiros** aleatórios escolhidos no início, com $a\in[1, p-1]$ e $b\in[0, p-1]$.
-  
-Os parâmetros aleatórios ajudam a dispersar o valor da chave. Já a operação de módulo por um primo $p$ ajuda a garantir que a distribuição do resultado seja uniforme no intervalo $[0, p-1]$. Finalmente, o resultado final é mapeado para o índice da tabela hash, no intervalo $[0, m-1]$. 
-  
+
+Os parâmetros aleatórios ajudam a dispersar o valor da chave. Já a operação de módulo por um primo $p$ ajuda a garantir que a distribuição do resultado seja uniforme no intervalo $[0, p-1]$. Finalmente, o resultado final é mapeado para o índice da tabela hash, no intervalo $[0, m-1]$.
+
 Por exemplo, digamos uma tabela com $m=10$ slots e escolhamos $p=103$.
 
-- Sorteamos $a$ entre $1$ e $p-1$, ou seja, no intervalo $[1, 102]$ 
-- Sorteamos $b$ entre $0$ e $p-1$, ou seja, no intervalo $[0, 102]$ 
+- Sorteamos $a$ entre $1$ e $p-1$, ou seja, no intervalo $[1, 102]$
+- Sorteamos $b$ entre $0$ e $p-1$, ou seja, no intervalo $[0, 102]$
 
 Digamos que $a=5$ e $b=13$, então nossa função sorteada da família universal será:
 $$h_{5,13}(k)=((5k+13)\bmod103)\bmod 10$$
@@ -191,7 +191,7 @@ Vamos calcular alguns valores de hash para fixação.
 - $h(32)=((5\cdot32+13)\bmod103)\bmod 10=(173\bmod103)\bmod 10=70\bmod 10=0$
 
 
-Mesmo com os melhores métodos, é impossível evitar colisões. Quando acontece, devemos tratá-la de modo que o desempenho da busca não seja muito afetado. No entanto, antes de estudarmos os tratamentos de colições, iremos abordar as estratégias para mapeamento de chaves em inteiros.
+Mesmo com os melhores métodos, é impossível evitar colisões. Quando acontece, devemos tratá-la de modo que o desempenho da busca não seja muito afetado. No entanto, antes de estudarmos os tratamentos de colisões, iremos abordar as estratégias para mapeamento de chaves em inteiros.
 
 
 ## Estratégias para Mapeamento
@@ -206,7 +206,7 @@ Os métodos clássicos para tratar strings usam o fato de cada letra ter um inte
 
 #### Soma
 
-Muitas vezes, as chaves que estamos trabalhando são _strings_. Uma forma simples de convertê-las em inteiros é somar os valores ASCII de cada caractere:
+Muitas vezes, as chaves com que estamos trabalhando são _strings_. Uma forma simples de convertê-las em inteiros é somar os valores ASCII de cada caractere:
 $$k=\sum_{i=0}^{n-1}s[i]=s[0]+s[1]+s[2]+\cdots+s[n-1]$$
 
 onde $n$ é o tamanho da palavra.
@@ -233,9 +233,9 @@ k&=s[0]\cdot 13^{3-1}+s[1]\cdot 13^{3-2}+s[2]\cdot 13^{3-3}\\
 A multiplicação por um número primo ajuda a espalhar os valores de forma mais uniforme do que se usássemos um número composto.
 :::
 
-Essa técnica é superior à soma simples, pois considera a ordem dos caracteres. Para palavras como "cama" e "maca", a soma simples irá retornar os mesmos valores, enquanto que a multiplicação polinomial não.
+Essa técnica é superior à soma simples, pois considera a ordem dos caracteres. Para palavras como "cama" e "maca", a soma simples irá retornar os mesmos valores, enquanto a multiplicação polinomial não.
 
-Exemplo simples: 
+Exemplo simples:
 
 - $BA : 66\cdot13^1 + 65\cdot13^0 = 923$.
 - $AB : 65\cdot13^1 + 66\cdot13^0 = 911$.
@@ -261,10 +261,10 @@ No dobramento por XOR, as partes são combinadas usando a operação lógica OU 
 
 ::: {style="width: 60%; margin: auto;"}
 | Parte | Decimal | Binário (10 bits)|
-| -----| -----| -----|  
-| $k_1$ | 835 | 1101000011| 
-| $k_2$ | 291 | 0100100011| 
-| $k_3$ | 70  | 0001000110| 
+| -----| -----| -----|
+| $k_1$ | 835 | 1101000011|
+| $k_2$ | 291 | 0100100011|
+| $k_3$ | 70  | 0001000110|
 :::
 
 Realizamos a operação XOR bit a bit entre as partes.
@@ -290,9 +290,9 @@ Esses métodos apresentados podem ser combinados ou até mesmo utilizados como s
 
 Nesta unidade, você aprendeu
 
-✅ quais características uma função _hash_ deve possuir 
+✅ quais características uma função _hash_ deve possuir
 
-✅ metódos clássicos para definir funções _hash_ 
+✅ métodos clássicos para definir funções _hash_
 
 ✅ como mapear palavras e grandes números em chaves
 
@@ -308,7 +308,7 @@ Nesta unidade, você aprendeu
 1. [ ] Uma estrutura de dados hierárquica.
 
 
-# Quais são características desejáveis de uma boa função hash? 
+# Quais são características desejáveis de uma boa função hash?
 
 > Elas influenciam diretamente na eficiência e distribuição das chaves.
 
@@ -318,7 +318,7 @@ Nesta unidade, você aprendeu
 - [ ] Depender de operações aleatórias complexas.
 
 
-# No método da divisão, qual das opções expressa corretamente a função hash? 
+# No método da divisão, qual das opções expressa corretamente a função hash?
 
 > Observe a operação usada para gerar o índice.
 
@@ -328,7 +328,7 @@ Nesta unidade, você aprendeu
 1. [ ] $h(k) = \sqrt{k} \bmod m$
 
 
-# Por que é ideal escolher $m$ como um número primo no método da divisão? 
+# Por que é ideal escolher $m$ como um número primo no método da divisão?
 
 > Isso afeta a forma como os valores se espalham na tabela.
 
@@ -352,29 +352,29 @@ Nesta unidade, você aprendeu
 
 > Relembre a ordem dos cálculos realizados.
 
-1. Multiplicar a chave ($k$) por uma constante $A$ entre 0 e 1.  
-2. Extrair a parte fracionária de $kA$.  
-3. Multiplicar o resultado por $m$.  
+1. Multiplicar a chave ($k$) por uma constante $A$ entre 0 e 1.
+2. Extrair a parte fracionária de $kA$.
+3. Multiplicar o resultado por $m$.
 4. Arredondar para baixo.
 
 
-# No método da multiplicação, qual é uma vantagem importante? 
+# No método da multiplicação, qual é uma vantagem importante?
 
 > Observe a observação sobre o tamanho da tabela.
 
-1. [ ] É ideal quando $m$ é primo.  
-1. [x] É adequado quando o tamanho da tabela é uma potência de dois.  
-1. [ ] Garante ausência total de colisões.  
+1. [ ] É ideal quando $m$ é primo.
+1. [x] É adequado quando o tamanho da tabela é uma potência de dois.
+1. [ ] Garante ausência total de colisões.
 1. [ ] Dispensa o uso do operador módulo.
 
 
-# O que caracteriza o hashing universal? 
+# O que caracteriza o hashing universal?
 
 > Está relacionado à escolha aleatória de funções.
 
-1. [ ] Usa apenas o método da divisão.  
-1. [ ] Calcula o hash como a média de várias funções.  
-1. [x] Escolhe aleatoriamente uma função de uma família de funções que minimiza colisões.  
+1. [ ] Usa apenas o método da divisão.
+1. [ ] Calcula o hash como a média de várias funções.
+1. [x] Escolhe aleatoriamente uma função de uma família de funções que minimiza colisões.
 1. [ ] Utiliza constantes irracionais para dispersão.
 
 
@@ -388,53 +388,53 @@ Nesta unidade, você aprendeu
 - [ ] $m$
 
 
-# Quais são métodos clássicos para transformar _strings_ em inteiros? 
+# Quais são métodos clássicos para transformar _strings_ em inteiros?
 
 > Pense nos dois tipos mencionados no texto.
 
-- [x] Soma dos valores ASCII.  
-- [x] Multiplicação polinomial.  
-- [ ] Hashing universal.  
+- [x] Soma dos valores ASCII.
+- [x] Multiplicação polinomial.
+- [ ] Hashing universal.
 - [ ] Método da divisão.
 
 
-# Por que a multiplicação polinomial é superior à soma simples? 
+# Por que a multiplicação polinomial é superior à soma simples?
 
 > Compare o que cada método considera.
 
-1. [x] Porque considera a ordem dos caracteres.  
-1. [ ] Porque ignora os valores ASCII.  
-1. [ ] Porque usa números compostos.  
+1. [x] Porque considera a ordem dos caracteres.
+1. [ ] Porque ignora os valores ASCII.
+1. [ ] Porque usa números compostos.
 1. [ ] Porque sempre gera números primos.
 
 
-# Se $\beta = 13$, qual é o valor de $k$ para a palavra "BA"? 
+# Se $\beta = 13$, qual é o valor de $k$ para a palavra "BA"?
 
 > Use a fórmula da multiplicação polinomial.
 
-1. [ ] 911  
-1. [x] 923  
-1. [ ] 1213  
-1. [ ] 1001  
+1. [ ] 911
+1. [x] 923
+1. [ ] 1213
+1. [ ] 1001
 
 
 # No método de dobramento (folding), o que fazemos com a chave?
 
 > Veja como ela é reduzida.
 
-1. [x] Dividimos em partes menores e as combinamos por soma ou XOR.  
-1. [ ] Multiplicamos por um número primo e aplicamos módulo.  
-1. [ ] Extraímos os dígitos centrais do quadrado da chave.  
+1. [x] Dividimos em partes menores e as combinamos por soma ou XOR.
+1. [ ] Multiplicamos por um número primo e aplicamos módulo.
+1. [ ] Extraímos os dígitos centrais do quadrado da chave.
 1. [ ] Aplicamos o logaritmo da chave.
 
 
-# No exemplo do método XOR, qual foi o resultado decimal final? 
+# No exemplo do método XOR, qual foi o resultado decimal final?
 
 > Observe a conversão final do número binário.
 
-1. [ ] 512  
-1. [ ] 5900  
-1. [x] 590  
+1. [ ] 512
+1. [ ] 5900
+1. [x] 590
 1. [ ] 676
 
 
@@ -442,19 +442,19 @@ Nesta unidade, você aprendeu
 
 > Ele é simples, mas eficaz.
 
-1. [ ] Somar as partes da chave.  
-1. [x] Elevar a chave ao quadrado e extrair os dígitos centrais.  
-1. [ ] Dividir a chave por um número primo.  
+1. [ ] Somar as partes da chave.
+1. [x] Elevar a chave ao quadrado e extrair os dígitos centrais.
+1. [ ] Dividir a chave por um número primo.
 1. [ ] Converter a chave em binário e aplicar XOR.
 
 
-# Quais métodos são indicados para mapear inteiros muito grandes? 
+# Quais métodos são indicados para mapear inteiros muito grandes?
 
 > Lembre dos três apresentados no texto.
 
-- [x] Dobramento (folding)  
-- [x] XOR  
-- [x] Quadrado central (mid-square)  
+- [x] Dobramento (folding)
+- [x] XOR
+- [x] Quadrado central (mid-square)
 - [ ] Divisão inteira simples
 
 ```

@@ -8,12 +8,12 @@ format:
   html:
     reference-location: margin
 execute:
-  eval: true 
+  eval: true
   daemon: true
-  cache: true 
+  cache: true
 ---
 
-# Simbólos
+# Símbolos
 
 Em Julia, `Symbol` é um tipo utilizado para representar identificadores imutáveis e internados, muito comum em metaprogramação e manipulação de código.
 
@@ -58,7 +58,7 @@ println("Valores: ", values(dict3))    # coleção de valores
 
 # Acessando valores
 
-O acesso de valores se dá pelas chaves.
+O acesso aos valores se dá pelas chaves.
 
 ```{julia}
 println("dict1[\"nome\"] = ", dict1["nome"])

@@ -8,9 +8,9 @@ format:
   html:
     reference-location: margin
 execute:
-  eval: true 
+  eval: true
   daemon: true
-  cache: true 
+  cache: true
 ---
 
 Nos exemplos anteriores, não nos preocupamos com o tipo das variáveis. Julia é dinâmica por padrão, ou seja, você não precisa declarar que `x` é um inteiro. Simplesmente, escrevemos `x = 10` e o sistema resolve isso em tempo de execução. Além disso, esse mecanismo permite a reatribuição de tipo, ou seja, podemos fazer `x = "dez"` (agora `x` é uma cadeia de caracteres).
@@ -52,7 +52,7 @@ y = true
 println("y = ", y, " | Tipo: ", typeof(y))
 ```
 
-Nossa saída, mostra um inteiro de 64 bits, um inteiro de 16 bits, um inteiro sem sinal de 8 bits, dois números em ponto flutuante com 64 e 32 bits, um número racional, outro irracional e, por fim, um booleano. Julia trata os booleanos (`true` e `false`) como valores numéricos `1` e `0`. 
+Nossa saída mostra um inteiro de 64 bits, um inteiro de 16 bits, um inteiro sem sinal de 8 bits, dois números em ponto flutuante com 64 e 32 bits, um número racional, outro irracional e, por fim, um booleano. Julia trata os booleanos (`true` e `false`) como valores numéricos `1` e `0`.
 
 # Verificação de tipo
 
@@ -66,9 +66,9 @@ println("isa(numero, Integer): ", isa(numero, Integer))
 println("isa(numero, Number): ", isa(numero, Number))
 println("isa(numero, Any): ", isa(numero, Any))
 ```
- 
- 
-Essa função também ser usada no modo infixo:
+
+
+Essa função também pode ser usada no modo infixo:
 
 ```{julia}
 println("numero isa Int16: ", numero isa Int16)
@@ -78,7 +78,7 @@ Você pode usar funções para explorar a hierarquia de tipos.
 
 ```{julia}
 println("Subtipos de Integer: ", subtypes(Integer))
-println("Supertipo de Int: ",supertype(Int))  
-println("Tipo de numero: ", typeof(numero))     
+println("Supertipo de Int: ",supertype(Int))
+println("Tipo de numero: ", typeof(numero))
 ```
 

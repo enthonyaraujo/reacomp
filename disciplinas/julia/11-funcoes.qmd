@@ -1,5 +1,5 @@
 ---
-title: "Funcões"
+title: "Funções"
 lang: pt
 toc-title: Conteúdo
 toc: false
@@ -8,16 +8,16 @@ format:
   html:
     reference-location: margin
 execute:
-  eval: true 
+  eval: true
   daemon: true
-  cache: true 
+  cache: true
 ---
 
 
-A sintaxe para definir um função em Julia segue a seguinte sequência:
+A sintaxe para definir uma função em Julia segue a seguinte sequência:
 
 - palavra reservada `function`
-- nome da função e seus paramêtros entre parenteses
+- nome da função e seus parâmetros entre parênteses
 - corpo da função
 - finaliza com a palavra-chave `end`
 
@@ -35,7 +35,7 @@ saudacao("Maria")
 
 # Sintaxe compacta
 
-Julia também permite um sintaxe mais simples para definir uma função. Algo semelhante ao que fazemos quando estudamos funções matemáticas.
+Julia também permite uma sintaxe mais simples para definir uma função. Algo semelhante ao que fazemos quando estudamos funções matemáticas.
 
 ```{julia}
 triplo(x::Int) = 3 * x
@@ -53,7 +53,7 @@ Os argumentos são classificados em posicionais, opcionais ou nomeados. Isso dá
 
 # Função com múltiplos argumentos
 
-Os paramêtros são separados por vírgulas.
+Os parâmetros são separados por vírgulas.
 
 ```{julia}
 function soma(a, b)
@@ -65,7 +65,7 @@ println("soma(5, 3) = ", soma(5, 3))
 ```
 
 A palavra-chave `return` é opcional, pois a função sempre retorna a última expressão.
- 
+
 
 ```{julia}
 function multiplicacao(a, b)
@@ -77,7 +77,7 @@ println("multiplicacao(4, 5) = ", multiplicacao(4, 5))
 
 # Argumento opcional
 
-Na função abaixo, o paramêtro `sobrenome` tornará o argumento opcional.
+Na função abaixo, o parâmetro `sobrenome` tornará o argumento opcional.
 
 ```{julia}
 function cumprimento(nome, sobrenome="Silva")

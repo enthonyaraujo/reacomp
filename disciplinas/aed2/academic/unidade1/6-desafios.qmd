@@ -8,13 +8,13 @@ format:
   html:
     reference-location: margin
     css: ../styles/academic.css
-filters: 
+filters:
     - quizdown
 ---
 
 ### Desafio 1
 
-Encontre o elemento com a menor chave de uma BST data.
+Encontre o elemento com a menor chave de uma BST dada.
 
 ```{.c code-line-numbers="false"}
 Node* get_min(Node* root);
@@ -47,7 +47,7 @@ Implemente um método para remover o nó com a menor chave de uma BST.
 Node* remove_min(Node* root);
 ```
 
-Dada uma BST, realiza a mudança de uma chave.
+Dada uma BST, realize a mudança de uma chave.
 
 ```{.c code-line-numbers="false"}
 Node* change_key(Node* root, int old, int new);

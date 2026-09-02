@@ -8,26 +8,26 @@ format:
   html:
     reference-location: margin
     css: ../styles/academic.css
-filters: 
-    - quizdown    
+filters:
+    - quizdown
 ---
 
 O **filtro de Bloom** é uma aplicação da tabela hash que indica a relação de pertinência de um elemento e um conjunto. O filtro possui duas saídas:
 
-- **Certeza** que o elemento **não pertence**;
+- **Certeza** de que o elemento **não pertence**;
 - **Talvez** o elemento **pertença**;
 
-Imagine que, em um sistema com milhares de usuários, seu programa deve verificar se um login está disponível. Não é salutar percorrer todos os usuários cadastrados devido a latência. O filtro de Bloom pode ser útil para casos como esse que envolvem verificação de pertinência de conjunto em sistemas de grande escala.
+Imagine que, em um sistema com milhares de usuários, seu programa deve verificar se um login está disponível. Não é salutar percorrer todos os usuários cadastrados devido à latência. O filtro de Bloom pode ser útil para casos como esse que envolvem verificação de pertinência de conjunto em sistemas de grande escala.
 
 ## Construção
 
-O filtro de Bloom é composto por um array de bits e algumas funções hash. Toda vez que um elemento é inserido no sistema, são calculados os hashs. Os resultados indicam as posições nas quais os bits devem se tornar $1$. 
+O filtro de Bloom é composto por um array de bits e algumas funções hash. Toda vez que um elemento é inserido no sistema, são calculados os hashs. Os resultados indicam as posições nas quais os bits devem se tornar $1$.
 
 Por exemplo, considere um filtro com tamanho $m=5$ e as funções $h_1(k)=k\bmod 5$ e $h_2(k)=(2k+3)\bmod 5$. Vamos inserir as chaves $9$ e $11$:
 
 ::: {style="width: 60%; margin: auto;"}
-| 0   | 1    |  2   | 3  | 4  |   
-| :----: | :-----: | :-----: | :---: | :---: |  
+| 0   | 1    |  2   | 3  | 4  |
+| :----: | :-----: | :-----: | :---: | :---: |
 | 0 | 0  | 0  | 0 |  0 |
 :::
 
@@ -38,8 +38,8 @@ Por exemplo, considere um filtro com tamanho $m=5$ e as funções $h_1(k)=k\bmod
 Portanto, as posições $1$ e $4$ são setadas para $1$:
 
 ::: {style="width: 60%; margin: auto;"}
-| 0   | 1    |  2   | 3  | 4  |   
-| :----: | :-----: | :-----: | :---: | :---: |  
+| 0   | 1    |  2   | 3  | 4  |
+| :----: | :-----: | :-----: | :---: | :---: |
 | 0 | 1  | 0  | 0   | 1 |
 :::
 
@@ -50,8 +50,8 @@ Portanto, as posições $1$ e $4$ são setadas para $1$:
 Portanto, as posições $0$ e $1$ são setadas para $1$:
 
 ::: {style="width: 60%; margin: auto;"}
-| 0   | 1    |  2   | 3  | 4  |   
-| :----: | :-----: | :-----: | :---: | :---: |  
+| 0   | 1    |  2   | 3  | 4  |
+| :----: | :-----: | :-----: | :---: | :---: |
 | 1 | 1  | 0  | 0   | 1 |
 :::
 
@@ -60,29 +60,29 @@ De posse de nosso vetor de bits, vamos pesquisar se algumas chaves foram inserid
 - $h_1(15)=15\bmod 5=0$
 - $h_2(15)=(2\cdot15+3)\bmod 5=33\bmod 5=3$
 
-Verificamos no filtro que a posição $0$ está setada com bit $1$, mas a posição $3$ não. Portanto, temos certeza que a chave $15$ nunca foi inserida. 
+Verificamos no filtro que a posição $0$ está setada com bit $1$, mas a posição $3$ não. Portanto, temos certeza de que a chave $15$ nunca foi inserida.
 
 ::: {.column-margin}
 **[Se liga!]{.text-warning}**
-Se ao menos um posição for zero, então temos certeza que o elemento nunca foi inserido no sistema
+Se ao menos uma posição for zero, então temos certeza de que o elemento nunca foi inserido no sistema.
 :::
 
-Agora, testemos o chave $16$:
+Agora, testemos a chave $16$:
 
 - $h_1(16)=16\bmod 5=1$
 - $h_2(16)=(2\cdot16+3)\bmod 5=35\bmod 5=0$
 
-Verificamos no filtro que as posições $0$ e $1$ estão setadas com bit $1$. Nesse caso, **provavelmente** a chave $12$ foi inserida. Como sabemos de antemão que esta chave não foi inserida, dizemos que é um falso positivo. 
+Verificamos no filtro que as posições $0$ e $1$ estão setadas com bit $1$. Nesse caso, **provavelmente** a chave $16$ foi inserida. Como sabemos de antemão que essa chave não foi inserida, dizemos que é um falso positivo.
 
-O desafio de um criar um bom filtro é minimizar as ocorrências de falsos positivos (taxa de falso positivo). Para isso, devemos escolher bem o tamanho do array de bits e o número de funções hash em função do número de elementos que a serem inseridos e a taxa de falso positivo máxima aceitável. Não é nosso objetivo realizar esses cálculos, apenas deixar claro que o filtro de Bloom não é sobre armazenar dados, mas sobre gerenciar essa negociação entre espaço de memória, velocidade de consulta e probabilidade de erro.
+O desafio de criar um bom filtro é minimizar as ocorrências de falsos positivos (taxa de falso positivo). Para isso, devemos escolher bem o tamanho do array de bits e o número de funções hash em função do número de elementos a serem inseridos e da taxa de falsos positivos máxima aceitável. Não é nosso objetivo realizar esses cálculos, apenas deixar claro que o filtro de Bloom não é sobre armazenar dados, mas sobre gerenciar essa negociação entre espaço de memória, velocidade de consulta e probabilidade de erro.
 
 ---
 
 Nesta unidade, você aprendeu
 
-✅ o que é um filtro de Bloom 
+✅ o que é um filtro de Bloom
 
-✅ a construir um fitro de Bloom 
+✅ a construir um filtro de Bloom
 
 ```quizdown
 # O filtro de Bloom é usado principalmente para verificar...

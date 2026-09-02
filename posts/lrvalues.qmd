@@ -25,7 +25,7 @@ Eles estão ligados a como o C enxerga o que pode ou não receber um valor.
 
 ## O que é um lvalue?
 
-A palavra **lvalue** vem de "left value", ou "valor que pode estar à esquerda", do sinal de igual (=).
+A palavra **lvalue** vem de "left value", ou "valor que pode estar à esquerda do sinal de igual (=)".
 Em outras palavras, um lvalue é algo que tem um endereço na memória e pode armazenar um valor.
 
 Pense no lvalue como uma caixinha com nome, onde o programa guarda um dado.
@@ -48,7 +48,7 @@ int x = 10;
 int y = x + 5; // x + 5 é um rvalue
 ```
 
-A expressão `x + 5` é um _rvalue_. Ela é apenas o resultado de uma conta, um número temporário que "nasce e morre" dentro dessa linha. Ele não mora em lugar nenhum, então não dá pra armazenar nada nele.
+A expressão `x + 5` é um _rvalue_. Ela é apenas o resultado de uma conta, um número temporário que "nasce e morre" dentro dessa linha. Ele não mora em lugar nenhum, então não dá para armazenar nada nele.
 
 ## Ligando os pontos
 
@@ -82,20 +82,20 @@ error: lvalue required as left operand of assignment
 
 Porque `a + b` não é um "lugar" da memória, mas apenas o resultado de uma soma.
 
-🧠 Mais exemplos rápidos
+🧠 Mais exemplos rápidos:
 
-| Código	| Pode compilar?	| Por quê |
+| Código	| Pode compilar?	| Por quê? |
 |---------|-----------------|---------|
 | `x = 5;` |	✅	| `x` é lvalue, `5` é rvalue |
 | `5 = x;` |	❌	| Literal `5` não pode receber valor |
-| `*ptr = 10;` |	✅	| `*ptr` é um lvalue (aponta pra um endereço) |
+| `*ptr = 10;` |	✅	| `*ptr` é um lvalue (aponta para um endereço) |
 | `ptr + 1 = x;` |	❌	| Resultado de `ptr + 1` é temporário |
 | `++x;` |	✅	| `x` tem endereço, pode ser alterado |
 | `++(x + 1);` |	❌	| `x + 1` é rvalue, não existe na memória |
 
 
 
-Resumindo
+Resumindo:
 
 | Tipo	| Pode estar à esquerda do =?	| Tem endereço? |
 |-------|-----------------------------|----------------|
@@ -105,11 +105,11 @@ Resumindo
 
 ---
 
-Nesta tutorial, você aprendeu
+Neste tutorial, você aprendeu:
 
 ✅ os conceitos de lvalue e rvalue
 
 ✅ a evitar erros de compilação envolvendo lvalue
 
-✅ como o C pensa internamente 
+✅ como o C pensa internamente
 

@@ -14,17 +14,17 @@ categories:
 ---
 
 
-# Introdução 
+# Introdução
 
-Tipos estruturados de dados são tipos de dados fora dos tipos habituais como: `int`, `float`, `char` e `bool`. Eles são utilizados para tornar a linguagem mais dinâmica e versátil. Tradicionalmente, são estudados três tipos de dados estruturados: **enumerações (`enums`), registros (`structs`) e uniões (`unions`)**.
+Tipos estruturados de dados são tipos de dados fora dos tipos habituais, como `int`, `float`, `char` e `bool`. Eles são utilizados para tornar a linguagem mais dinâmica e versátil. Tradicionalmente, são estudados três tipos de dados estruturados: **enumerações (`enums`), registros (`structs`) e uniões (`unions`)**.
 
 # Enum
 
-Um **enum** ou enumeração define um conjunto de valores **inteiros** referenciados por um nome, podendo serem utilizados para melhorar a legibilidade e compreensão de código.
+Um **enum** ou enumeração define um conjunto de valores **inteiros** referenciados por um nome, podendo ser utilizados para melhorar a legibilidade e a compreensão do código.
 
 ## Exemplo 1
 
-Uma enumeração é definida usando a palavra reservada `enum` seguido por um nome que o identifica, e por chaves que delimitam os valores nomeados que podem ser referenciados, ressaltando que os valores nomeados são escritos todos em maiúsculo para destacar que são valores imutáveis, por exemplo:
+Uma enumeração é definida usando a palavra reservada `enum` seguida por um nome que a identifica, e por chaves que delimitam os valores nomeados que podem ser referenciados, ressaltando que os valores nomeados são escritos todos em maiúsculo para destacar que são valores imutáveis, por exemplo:
 
 ```c
 enum dia_da_semana {
@@ -38,7 +38,7 @@ enum dia_da_semana {
 };
 ```
 
-Por padrão, o compilador designa 0 ao primeiro nome, 1 ao segundo, e assim sucessivamente. Para exemplificar o uso, utilizaremos um `switch-case`, um local onde enums se destacam ao tornar o código significativamente mais legível do que se fosse usado números.
+Por padrão, o compilador designa 0 ao primeiro nome, 1 ao segundo, e assim sucessivamente. Para exemplificar o uso, utilizaremos um `switch-case`, um local onde enums se destacam ao tornar o código significativamente mais legível do que se fossem usados números.
 
 ```{.c}
 int main() {
@@ -130,14 +130,14 @@ Uma das principais armadilhas que os enums ajudam a evitar é a utilização de 
 
 Isso dificulta a leitura e a manutenção do código. Se você precisar alterar o valor que representa `PENDENTE` de `2` para `3`, terá que buscar e substituir todos os `2` no código, o que pode resultar na modificação de um `2` que não está relacionado ao status.
 
-Uma boa prática é reunir essas constantes em um enum com nomes que sejam descritivos. Por padrão, os nomes das constantes em um enum são escritos em letras maiúsculas para sinalizar que se tratam de valores imutáveis.
+Uma boa prática é reunir essas constantes em um enum com nomes que sejam descritivos. Por padrão, os nomes das constantes em um enum são escritos em letras maiúsculas para sinalizar que se trata de valores imutáveis.
 
 
 # Struct
 
 Registro ou _struct_ é um tipo de dado que permite armazenar múltiplos valores de tipos diferentes sob um único nome, agrupando informações que estão correlacionadas.
 
-Uma _struct_ é definido usando a palavra reservada `struct` seguido do **nome genérico**, em sequência, o par de de chaves define o escopo dos múltiplos valores. 
+Uma _struct_ é definida usando a palavra reservada `struct` seguida do **nome genérico**; em sequência, o par de chaves define o escopo dos múltiplos valores.
 
 ```c
 struct nome_generico{
@@ -165,30 +165,30 @@ No caso acima, o nome tem no máximo 100 caracteres, a idade em anos é do tipo 
 struct pessoa p1 = {"Marilia", 23, 1.65, 60.0};
 ```
 
-Dentro da função `main` é criado uma variável `p1` do tipo `Pessoa` usando a sintaxe `struct Pessoa`, em que são repassados valores para cada campo da struct, respectivamente. Ou seja, usando a sintaxe de chaves `{}`, os valores devem estar na mesma ordem em que os membros foram declarados na _struct_.
+Dentro da função `main` é criada uma variável `p1` do tipo `Pessoa` usando a sintaxe `struct Pessoa`, em que são repassados valores para cada campo da struct, respectivamente. Ou seja, usando a sintaxe de chaves `{}`, os valores devem estar na mesma ordem em que os membros foram declarados na _struct_.
 
 Se não quiser inicializar todos os campos, você pode fornecer apenas os valores dos primeiros membros. Os membros restantes serão inicializados com seus valores padrão (`0`, `NULL` etc.).
 
 ```{.c code-line-numbers="false"}
 struct pessoa p1; = {"Marilia"};
-``` 
+```
 
 Em C99 e versões posteriores, você pode usar designadores para inicializar membros específicos, independentemente da ordem. Isso torna a inicialização mais legível e robusta contra mudanças na ordem dos membros. Por exemplo,
 
 ```{.c code-line-numbers="false"}
 struct pessoa p1 = {.nome = "Marilia", .altura = 1.65, .idade = 23, .peso = 60.0};
-``` 
+```
 
 Também podemos inicializar os campos individualmente usando o operador ponto.
 
 ```{.c code-line-numbers="false"}
 struct pessoa p1; = {"Marilia", 23, 1.65, 60.0};
-    
+
 strcpy(p1.nome, "Marilia"); // necessário <string.h>
 p1.idade = 23;
 p1.altura = 1.65;
 p1.peso = 60.0;
-``` 
+```
 
 O operador ponto também é usado para  acessar os valores salvos de uma estrutura.
 
@@ -338,7 +338,7 @@ $ Pessoa 1:
   Idade: 35 anos
   Altura: 1.60 m
   Peso: 54.00 kg
-  
+
   Pessoa 3:
   Nome: Ana
   Idade: 25 anos
@@ -371,7 +371,7 @@ void celebrar_aniversario(struct pessoa *p) {
 int main() {
     struct pessoa p1 = {"Marilia", 23, 1.65, 60};
 
-    printf("Idade original: %d anos\n", p1.idade); 
+    printf("Idade original: %d anos\n", p1.idade);
     celebrar_aniversario(&p1);
     printf("Idade apos a funcao: %d anos\n", p1.idade);
 
@@ -388,7 +388,7 @@ $ Idade original: 23 anos
   Idade apos a funcao: 24 anos
 ```
 
-A sintaxe para acessar um campo de uma struct pode meio de um ponteiro parace bastante carregada. Temos de dereferenciar o ponteiro e depois usar o operador ponot. Para simplificar isso tudo, C permite que o acesso com o operador seta. Dessa maneira o código de `celebrar_aniversario` ficaria assim:
+A sintaxe para acessar um campo de uma struct por meio de um ponteiro parece bastante carregada. Temos de desreferenciar o ponteiro e depois usar o operador ponto. Para simplificar isso tudo, C permite o acesso com o operador seta. Dessa maneira, o código de `celebrar_aniversario` ficaria assim:
 
 ```c
 void celebrar_aniversario(struct pessoa *p) {
@@ -405,7 +405,7 @@ O uso da seta é mais comum e deixa o código mais legível.
 
 Cuidado ao passar _structs_ para funções. Ao passar uma _struct_ para uma função (por exemplo, `void minha_funcao(struct pessoa p)`), o sistema criará uma cópia completa dessa _struct_. Isso é ineficiente e consome memória. Nessas situações, geralmente é mais eficaz passar um ponteiro (`void minha_funcao(struct pessoa *p)`), conforme demonstrado no exemplo anterior.
 
-Alé disso, evite usar nomear os campos por apenas uma letra (como `n`, `i` ou `p`). Ao invés, utilize nomes descritivos (como `nome`, `idade`, `peso`) que facilitem significativamente a leitura e a manutenção do código.
+Além disso, evite nomear os campos com apenas uma letra (como `n`, `i` ou `p`). Em vez disso, utilize nomes descritivos (como `nome`, `idade`, `peso`) que facilitem significativamente a leitura e a manutenção do código.
 
 # Union
 
@@ -421,22 +421,22 @@ union uniao{
 };
 
 int main() {
-    printf("%zu Bytes\n", sizeof(union uniao)); 
+    printf("%zu Bytes\n", sizeof(union uniao));
 
     return 0;
 }
 ```
 
-A estrutura _union_ é útil quando temos pouco espaço de armazenamento ou podemos fazer com que várias variáveis compartilham o mesmo espaço. O espaço compartilhado das variáveis será o tamanho do maior tipo de variável que a união possui. 
+A estrutura _union_ é útil quando temos pouco espaço de armazenamento ou podemos fazer com que várias variáveis compartilhem o mesmo espaço. O espaço compartilhado das variáveis será o tamanho do maior tipo de variável que a união possui.
 
 Considere um sistema que reserve 4 bytes para o tipo `int`, 1 byte para `char` e  4 bytes para `float`. Nossa `union` acima terá tamanho de 4 bytes e esse espaço será compartilhado entre `valor1`, `valor2` e `valor3`.
 
-Se usassemos `struct` em vez de `union`, o tamanho seria 12 bytes. Você poderia pensar que seria 9 bytes (4+4+1), mas devido ao _padding_ é adicionado mais 3 bytes. Não é nosso objetivo tratar isso aqui, apenas deixar claro que cada campo de um _struct_ tem seu espaço reservado, enquanto que com _union_ todos compartilham o mesmo espaço.
+Se usássemos `struct` em vez de `union`, o tamanho seria 12 bytes. Você poderia pensar que seria 9 bytes (4+4+1), mas devido ao _padding_ são adicionados mais 3 bytes. Não é nosso objetivo tratar isso aqui, apenas deixar claro que cada campo de uma _struct_ tem seu espaço reservado, enquanto com _union_ todos compartilham o mesmo espaço.
 
 
 ## Exemplo 1
 
-Os sensores são dispositivos que possuem pouca ou nenhum memória disponível para uso, além disso, as leituras requeridas podem ser representadas com valores diferentes. Imagine um sensor que consiga realizar a leitura de valores inteiros, valores aproximados e também capaz de informar se o sensor está funcionando corretamente. 
+Os sensores são dispositivos que possuem pouca ou nenhuma memória disponível para uso, além disso, as leituras requeridas podem ser representadas com valores diferentes. Imagine um sensor que consiga realizar a leitura de valores inteiros, valores aproximados e também capaz de informar se o sensor está funcionando corretamente.
 
 Esse sensor pode ser representado pela `union` abaixo:
 
@@ -491,12 +491,12 @@ int main()
     sensor1.dados_int = 65;
     printf("Inteiro (ativo): %d\n", sensor1.dados_inteiros);
     printf("Char (inativo): %c\n", sensor1.estado_sensor);
-    
+
     sensor1.estado_sensor = 'B';
     printf("Char (ativo): %c\n", sensor1.estado_sensor);
-   
+
     printf("Inteiro (inativo): %d\n", sensor1.dados_inteiros);
-    
+
     return 0;
 }
 ```
@@ -510,7 +510,7 @@ $ Inteiro (ativo): 65
   Inteiro (inativo): 66
 ```
 
-Como o espaço de memória é compartilhado, quando lemos na linha 7 o atributo `estado_sensor` o retorno é `'A'`, pois a letra A tem o valor 65 na tabela ASCII. De modo semelhante, quando mudanos `estado_sensor` para `B`, o inteiro correspondente é 66.
+Como o espaço de memória é compartilhado, quando lemos na linha 7 o atributo `estado_sensor` o retorno é `'A'`, pois a letra A tem o valor 65 na tabela ASCII. De modo semelhante, quando mudamos `estado_sensor` para `B`, o inteiro correspondente é 66.
 
 Portanto, ao escrever em um membro (por exemplo, dados_aprox), os dados armazenados em outro membro (por exemplo, dados_inteiros) são corrompidos.
 
@@ -520,7 +520,7 @@ Tentar acessar o membro inativo levará a um lixo de memória, que ocorre quando
 
 # Bônus: typedef
 
-Toda vez que precisamos criar uma enumeração, resistro ou união precisamos colocar as palavras-chave correspondentes:
+Toda vez que precisamos criar uma enumeração, registro ou união precisamos colocar as palavras-chave correspondentes:
 
 ```{.c code-line-numbers="false"}
 enum dia_da_semana dia = ...;
@@ -565,7 +565,7 @@ typedef enum {
 } Dia;
 ```
 
-Note que depois de `enum` não há um nome, uma tag. Porém, caso a estrutura seja autoreferenciada, precisamos nomear:
+Note que depois de `enum` não há um nome, uma tag. Porém, caso a estrutura seja autorreferenciada, precisamos nomeá-la:
 
 ```{.c code-line-numbers="false"}
 typedef struct no {
@@ -577,9 +577,9 @@ typedef struct no {
 
 ---
 
-Nesta tutorial, você aprendeu
+Neste tutorial, você aprendeu:
 
-✅ a definir e usar _enums_ 
+✅ a definir e usar _enums_
 
 ✅ a definir e inicializar _structs_
 
@@ -587,7 +587,7 @@ Nesta tutorial, você aprendeu
 
 ✅ a usar _structs_ aninhadas, _array_ de _structs_ e ponteiro para _structs_
 
-✅ a definir e usar _unions_ 
+✅ a definir e usar _unions_
 
 ✅ a utilizar `typedef` para criar apelidos ou alias para tipos estruturados
 
@@ -596,5 +596,5 @@ Nesta tutorial, você aprendeu
 
 ::: callout-note
 ## Aviso da Redação
-Este artigo foi revisado e editado pela equipe do blog em **04 de Novembro de 2025**. 
+Este artigo foi revisado e editado pela equipe do blog em **04 de novembro de 2025**.
 :::

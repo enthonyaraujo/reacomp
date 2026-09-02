@@ -7,7 +7,7 @@ toc: false
 
 Bem-vindo(a) ao curso de **{{< meta title >}}**!
 
-> Este módulo está dividido em cinco temas centrais. 
+> Este módulo está dividido em cinco temas centrais.
 > Clique em qualquer um deles para expandir o conteúdo e navegar pelos subtópicos específicos.
 
 
@@ -52,7 +52,7 @@ Bem-vindo(a) ao curso de **{{< meta title >}}**!
 
 ::: {.callout-note collapse="true" icon="false"}
 ## <i class="bi bi-hash"></i> Tabela de Dispersão
-  
+
 ::: {.list-group .list-group-flush .mb-0 .text-decoration-none .border-0}
 
 [1. Introdução](unidade2/6-introhash.qmd){.list-group-item .list-group-item-action .text-body .border-0}
@@ -74,7 +74,7 @@ Bem-vindo(a) ao curso de **{{< meta title >}}**!
 ## <i class="bi bi-bounding-box-circles"></i> Grafos
 ::: {.list-group .list-group-flush .mb-0 .text-decoration-none .border-0}
 
-[4. Gafos](unidade3/4-grafos.qmd){.list-group-item .list-group-item-action .text-body .border-0}
+[4. Grafos](unidade3/4-grafos.qmd){.list-group-item .list-group-item-action .text-body .border-0}
 [5. Representações Computacionais](unidade3/5-representacoes.qmd){.list-group-item .list-group-item-action .text-body .border-0}
 [6. Caminhos](unidade3/6-caminhos.qmd){.list-group-item .list-group-item-action .text-body .border-0}
 

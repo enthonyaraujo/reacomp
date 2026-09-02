@@ -10,9 +10,9 @@ format:
 ---
 
 
-Para instalar a linguagen Julia em seu computador siga as instruções deste _link_ [JULIA](https://julialang.org/downloads/){.text-decoration-none}.
+Para instalar a linguagem Julia em seu computador, siga as instruções deste _link_ [JULIA](https://julialang.org/downloads/){.text-decoration-none}.
 
-Julia possui um ambiente REPL (_read-eval-print loop_) para executar pequenas instruções diretamente no console, sem a necessidade de salvar o código em um arquivo e compilar, por exemplo. Para testar essa funcionalidade digite `julia` em sem terminal. 
+Julia possui um ambiente REPL (_read-eval-print loop_) para executar pequenas instruções diretamente no console, sem a necessidade de salvar o código em um arquivo e compilar, por exemplo. Para testar essa funcionalidade digite `julia` em seu terminal.
 
 ![](img/REPL.png)
 
@@ -25,23 +25,23 @@ Para obter ajuda digite `?`. O terminal mudará de `julia>` para `help?>`. No mo
 
 - Documentação de funções e macros: `?print` ou `?@time`
 - Definições de tipos e estruturas: `?String` ou `?struct`
-- Operdores e sintaxe: `?+` ou `?&&`
+- Operadores e sintaxe: `?+` ou `?&&`
 
 Para sair do ambiente REPL digite `exit()`.
 
 ## Integração com Visual Studio Code
 
-Inicie seu [VS Code](https://code.visualstudio.com/){.text-decoration-none}. Na lateral esquerda, clique no ícone de extensões (um botão com quatro quadrados) ou digite `Ctrt+Shift+X` para abir o painel de extensões. Em seguida, digite `julia` na barra de pesquisa e instale a extensão Julia Language Support. Pronto, pode fechar a aba da extensão e o painel de extensões.
+Inicie seu [VS Code](https://code.visualstudio.com/){.text-decoration-none}. Na lateral esquerda, clique no ícone de extensões (um botão com quatro quadrados) ou digite `Ctrl+Shift+X` para abrir o painel de extensões. Em seguida, digite `julia` na barra de pesquisa e instale a extensão Julia Language Support. Pronto, pode fechar a aba da extensão e o painel de extensões.
 
 ![](img/extensao.png)
 
-Abra o explorador, o primeiro botão na barra vertical esquerda com ícone de duas folhas sobrepostas ou digite `Ctrt+Shift+E`. É nesse painel que você verá todas as suas pastas de arquivos. 
+Abra o explorador, o primeiro botão na barra vertical esquerda com ícone de duas folhas sobrepostas ou digite `Ctrl+Shift+E`. É nesse painel que você verá todas as suas pastas de arquivos.
 
-Clique em `Open Fold` e selecione uma pasta recem criada, por exemplo `Tutorial Julia`.
+Clique em `Open Folder` e selecione uma pasta recém-criada, por exemplo, `Tutorial Julia`.
 
 Alternativamente, você pode criar a nova pasta e entrar nela. Com o botão direito do _mouse_ selecione a opção `Abrir no Terminal`. Em seguida, digite `code .` e se abrirá uma instância do VS Code. Na verdade, em um terminal, ao digitar esse comando, o VS Code iniciará na pasta atual.
 
-No explorador, passe o _mouse_ sob o nome do "projeto" que aparecerá os ícones de criar arquivo, criar pasta, atualizar e retrair pastas, respectivamente.
+No explorador, passe o _mouse_ sobre o nome do "projeto" que aparecerão os ícones de criar arquivo, criar pasta, atualizar e retrair pastas, respectivamente.
 
 ![](img/explorer.png)
 
@@ -49,13 +49,13 @@ Crie um arquivo chamado `hello.jl` e feche o explorador. Antes de digitar qualqu
 
 ![](img/autosave.png)
 
-No arquivo `hello.jl`, digite o código `println("Hello, World!")`. Há três maneiras de avaliar esse código no VS Code. 
+No arquivo `hello.jl`, digite o código `println("Hello, World!")`. Há três maneiras de avaliar esse código no VS Code.
 
-- `Shift+Enter`: avalia uma linha e move o cursor para a proxima linha
+- `Shift+Enter`: avalia uma linha e move o cursor para a próxima linha
 - `Ctrl+Enter`: avalia uma linha e mantém o cursor na mesma linha
-- `Alt+Enter` avalia o arquvio inteiro
+- `Alt+Enter` avalia o arquivo inteiro
 
-Para nosso código, qualquer opção é válida, pois contém somente uma linha. Ao realizar um desses comandos pela primeira vez, uma janela de terminal será aberta com o REPL de Julia. Se você ver a mensagem "Hello, World!", parabéns.
+Para nosso código, qualquer opção é válida, pois contém somente uma linha. Ao realizar um desses comandos pela primeira vez, uma janela de terminal será aberta com o REPL de Julia. Se você vir a mensagem "Hello, World!", parabéns.
 
 ![](img/hello.png)
 

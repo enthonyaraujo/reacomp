@@ -14,7 +14,7 @@ Saudações!
 Infelizmente, naufragamos na traiçoeira Ilha dos Ponteiros. Este lugar é uma prisão natural, cheia de referências complexas e caminhos que se perdem se não forem gerenciados corretamente.
 
 Juntamente com Shell, usaremos nossas habilidades para escapar.
- 
+
 
 ## Declaração e Desreferenciação {#sec-dec}
 
@@ -43,7 +43,7 @@ printf("*meta_ptr: %.2f\n", *meta_ptr); // *meta_ptr: 7.50
 
 🧮 Memória ilustrada
 
-| Variável	| Endereço	| Conteúdo | 
+| Variável	| Endereço	| Conteúdo |
 |------|----------|-------|
 | `meta`	| [0x55]{.mark} | 7.5 |
 | `meta_ptr`	| 0x58 |	[0x55]{.mark} |
@@ -89,7 +89,7 @@ flowchart RL
     class P,PP ptr
 ```
 
-As variáveis `x` e `y` carregam dados que estão armazenados nos endereços `0x100` e `0x200`, respectivamente. A variável `p` é um ponteiro cujo conteúdo é `0x100`, portanto aponta para `x`. A variável `pp` é outro ponteiro, mas com conteúdo `0x300`, ou seja, aponta para o local com endereço `0x300`, que seria `p`. Isso mesmo um ponteiro de ponteiro. O código que representa esse diagrama poder ser o seguinte.
+As variáveis `x` e `y` carregam dados que estão armazenados nos endereços `0x100` e `0x200`, respectivamente. A variável `p` é um ponteiro cujo conteúdo é `0x100`, portanto aponta para `x`. A variável `pp` é outro ponteiro, mas com conteúdo `0x300`, ou seja, aponta para o local com endereço `0x300`, que seria `p`. Isso mesmo um ponteiro de ponteiro. O código que representa esse diagrama pode ser o seguinte:
 
 ```{.c code-line-numbers="false"}
 int x = 42;
@@ -102,7 +102,7 @@ int **pp = &p;
 :::{.chat-line .shell}
 :::{.chat-avatar}
   ![](../../img/avatars/shell_avatar.png)
-::: 
+:::
 :::{.chat-bubble}
 Resumindo
 
@@ -136,7 +136,7 @@ Além de ler, você também pode modificar valores indiretamente usando ponteiro
 
 ```{.c code-line-numbers="false"}
 double meta = 7.5;
-double *meta_ptr = &meta; 
+double *meta_ptr = &meta;
 
 *meta_ptr = 10;
 printf("meta: %.2f\n", meta); // meta: 10.00
@@ -159,7 +159,7 @@ printf("meta: %.2f\n", meta); // meta: 10.00
 
 ::: {.callout-tip title="Solução (clique para ver)" collapse="true"}
 ```{.c}
-#include <stdio.h> 
+#include <stdio.h>
 
 int main(){
     int x = 5;
@@ -179,7 +179,7 @@ int main(){
 - Passo 1: Declare um ponteiro `ponteiro_chave` que aponte para a `chave_secreta`.
 - Passo 2: Mude o valor da `chave_secreta` para 99 usando o ponteiro.
 - Passo 3: Imprima o valor da chave secreta.
-    
+
 ```{.c}
 #include <stdio.h>
 
@@ -194,7 +194,7 @@ int main() {
 
 ::: {.callout-tip title="Solução (clique para ver)" collapse="true"}
 ```{.c}
-#include <stdio.h> 
+#include <stdio.h>
 
 int main() {
     int chave_secreta = 10;
@@ -211,13 +211,13 @@ int main() {
 
 ## Ponteiros como Parâmetros {#sec-par}
 
-Acredito que estamos perto de deixar esta ilha. Por enquanto, a situação está calma, mas não podemos subestimar este local. Parece que encontramos algo que exige a nossa atenção imetata.
+Acredito que estamos perto de deixar esta ilha. Por enquanto, a situação está calma, mas não podemos subestimar este local. Parece que encontramos algo que exige a nossa atenção imediata.
 
 Em C, os parâmetros são passados por valor. Portanto, a função recebe uma cópia do argumento.
 
 ```{.c code-line-numbers="false"}
-void dobrar_meta (double meta){ 
-    meta = 2*meta; 
+void dobrar_meta (double meta){
+    meta = 2*meta;
 }
 ```
 
@@ -251,9 +251,9 @@ Nada mudou, pois a função alterou apenas a cópia local.
 💡 Vamos imprimir os endereços
 
 ```{.c code-line-numbers="false"}
-void dobrar_meta (double meta){ 
+void dobrar_meta (double meta){
     printf("local &meta: %x\n", &meta);
-    meta = 2*meta; 
+    meta = 2*meta;
 }
 ```
 
@@ -301,7 +301,7 @@ flowchart LR
   end
 
     s1 --dobrar_meta--> s2
-    
+
      X:::var
      Y:::var
      A:::var
@@ -315,22 +315,22 @@ flowchart LR
 <div class="chat-container">
 <div class="chat-line shell">
   <img src="../../img/avatars/shell_avatar.png" class="chat-avatar" alt="ShellSort">
-  <div class="chat-bubble">E se, ao invés de passarmos o conteúdo armazenado, a gente passar o endereço ?</div>
+  <div class="chat-bubble">E se, em vez de passarmos o conteúdo armazenado, a gente passar o endereço?</div>
 </div>
 </div>
 
-Shell, isso é conhecido como passagem por referência. Na verdade, ainda será feita uma cópia do valor passado, mas como esse valor copiado é um endereço (o ponteiro), esse artifício será suficiente para manipularmos os dados originais. 
+Shell, isso é conhecido como passagem por referência. Na verdade, ainda será feita uma cópia do valor passado, mas como esse valor copiado é um endereço (o ponteiro), esse artifício será suficiente para manipularmos os dados originais.
 
 ```{.c}
 #include <stdio.h>
 
-void dobrar_meta (double *meta){ 
-    *meta = 2*(*meta); // Desreferenciação 
+void dobrar_meta (double *meta){
+    *meta = 2*(*meta); // Desreferenciação
 }
 
 int main (){
     double meta = 7.5;
-    
+
     printf("meta: %.2f\n", meta);
     dobrar_meta(&meta); // Passando o endereço
     printf("meta: %.2f\n", meta);
@@ -352,7 +352,7 @@ A função modificou a variável original, pois passamos a referência.
 <div class="chat-container">
 <div class="chat-line shell">
   <img src="../../img/avatars/shell_avatar.png" class="chat-avatar" alt="ShellSort">
-  <div class="chat-bubble">Nossa! que mágica foi essa?</div>
+  <div class="chat-bubble">Nossa! Que mágica foi essa?</div>
 </div>
 </div>
 
@@ -411,12 +411,12 @@ Saída esperada: `x = 20, y = 10`
 
 ::: {.callout-tip title="Solução (clique para ver)" collapse="true"}
 ```{.c}
-#include <stdio.h> 
+#include <stdio.h>
 
 void swap(int *a, int *b){
     int aux = *a;
-    a* = *b;
-    b* = aux;
+    *a = *b;
+    *b = aux;
 }
 
 int main(){
@@ -429,7 +429,7 @@ int main(){
 ```
 :::
 
-🎖️ +20 XP: Você aplicou a passagem por referência 
+🎖️ +20 XP: Você aplicou a passagem por referência
 
 ::: {.callout-caution icon="false" title="Conquista Desbloqueada"}
 <i class="bi bi-arrow-down-right-square"></i> Manipulador de Ponteiros
@@ -455,7 +455,7 @@ Recompensas:
 <div class="chat-container">
 <div class="chat-line shell">
   <img src="../../img/avatars/shell_avatar.png" class="chat-avatar" alt="ShellSort">
-  <div class="chat-bubble">Ihuuu! conseguimos passar com êxito por todos os desafios da ilha. Precisamos resgatar a Hashy no Deserto dos Callbacks.</div>
+  <div class="chat-bubble">Ihuuu! Conseguimos passar com êxito por todos os desafios da ilha. Precisamos resgatar a Hashy no Deserto dos Callbacks.</div>
 </div>
 </div>
 
@@ -463,7 +463,7 @@ Recompensas:
 
 ::: {.callout-caution icon="false"}
 ### 🏁 Fase Concluída!
- A palavra-chave para desbloquear a próxima fase é:  
+ A palavra-chave para desbloquear a próxima fase é:
  **CHAVE: callback**
 :::
 

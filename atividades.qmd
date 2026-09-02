@@ -18,7 +18,7 @@ Cada artigo deverá ser elaborado utilizando a linguagem de marcação **Markdow
 
 ## Orientações e Regras
 
-- A atividade deve ser realizada **em duplas**. 
+- A atividade deve ser realizada **em duplas**.
 - Cada dupla será responsável por um tema **sorteado**.
 - O artigo deve ser **original** e escrito pelos alunos.
 - Evite copiar e colar trechos sem comentários ou explicações próprias.
@@ -35,13 +35,13 @@ description: "Breve descrição do conteúdo"
 author: ["Nome do autor 1", "Nome do autor 2"]
 date: "YYYY-MM-DD"
 categories:
-  - palavra-chave-1 
+  - palavra-chave-1
   - palavra-chave-2
-  - palavra-chave-3  
+  - palavra-chave-3
 ---
 ```
 
-O restante do artigo pode seguir livremente, basta seguir um ordem lógica (consulte o blog para ter uma ideia). Mas, recomenda-se que o artigo contenha:
+O restante do artigo pode seguir livremente, basta seguir uma ordem lógica (consulte o blog para ter uma ideia). Mas recomenda-se que o artigo contenha:
 
 - **Introdução ao tema**
 	- Contextualização e motivação para o assunto.
@@ -57,9 +57,9 @@ O restante do artigo pode seguir livremente, basta seguir um ordem lógica (cons
 
 ## Entrega
 
-A entrega deverá ser realizada pelo sigaa por um dos componentes da dupla. O arquivo deve ter o formado `.md` com o nome `numero_do_tema-sobrenome1-sobrenome2.md`, por exemplo `9-silva-souza.md`.
+A entrega deverá ser realizada pelo SIGAA por um dos componentes da dupla. O arquivo deve ter o formato `.md` com o nome `numero_do_tema-sobrenome1-sobrenome2.md`, por exemplo, `9-silva-souza.md`.
 
-Os critérios de avaliação serão: clareza, organização, formatação e presença de exemplos comentados. 
+Os critérios de avaliação serão: clareza, organização, formatação e presença de exemplos comentados.
 
 Essa atividade valerá 25% da nota da segunda unidade e deverá ser entregue até uma semana após o sorteio dos temas.
 
@@ -70,17 +70,17 @@ Essa atividade valerá 25% da nota da segunda unidade e deverá ser entregue at�
 - Geração de código para exemplos em C.
 - Revisão ou correção do texto explicativo.
 
-Além disso, **todos os prompts utilizados** para gerar conteúdo com IA devem ser enviados junto com o artigo.  
+Além disso, **todos os prompts utilizados** para gerar conteúdo com IA devem ser enviados junto com o artigo.
 
 ## Temas para Sorteio
 
 1. Manipulação de arquivos em C (`fopen`, `fread`, `fwrite`, `fclose`, `fprintf`, `fscanf`)
 2. Argumentos da função `main` (`argc`, `argv`) e _parsing_ básico de linha de comando
-3. Bibliotecas estáticas (`.a`) e dinâmicas (`.so`) em C 
+3. Bibliotecas estáticas (`.a`) e dinâmicas (`.so`) em C
 4. Tratamento de erros com `errno` e `perror`
 5. Configurando WSL/Ubuntu + GCC + VS Code no Windows
 6. Compilação avançada com GCC: flags úteis e otimização
-7. Diferença entre `struct` e `union` 
+7. Diferença entre `struct` e `union`
 8. _Bit Fields_ e operações bit a bit em C
 9. Depuração básica com o `gdb`
 10. Ponteiros `const` e `const` Ponteiros
@@ -90,11 +90,11 @@ Além disso, **todos os prompts utilizados** para gerar conteúdo com IA devem s
 14. Classes de armazenamento: `auto`,  `static` e `extern`
 15. Manipulação de _strings_ (funções básicas da biblioteca `string.h`)
 16. Programação modular (arquivos `.h` e `.c`)
-17. Detecção de vazamentos de memória com `valgrind` 
+17. Detecção de vazamentos de memória com `valgrind`
 18. Funções em C (protótipos, passagem por valor e por referência)
-19. Escopo e tempo de vida de variáveis (variáveis locais, globais e estáticas; _stack_, _heap_ e segmento de dados) 
+19. Escopo e tempo de vida de variáveis (variáveis locais, globais e estáticas; _stack_, _heap_ e segmento de dados)
 20. Funções recursivas e recursão em cauda
-21. Tipo Abstrato de Dados (TAD) : conceito, motivação e exemplos simples em C
+21. Tipo Abstrato de Dados (TAD): conceito, motivação e exemplos simples em C
 22. Inteiros sem sinal e tipos inteiros portáveis (`unsigned`, `size_t`, `uint32_t` etc.)
 
 
@@ -131,16 +131,16 @@ Sorteio realizado em 28 de outubro de 2025.
 
 ```{mermaid}
 flowchart TD
-    A["Codigo fonte (.c)"] --> B["Pre-processador"]
-    B --o n1@{ label: "<span style=\"color:\">expande macros, inclui headers, remove comentarios</span>" }
+    A["Código-fonte (.c)"] --> B["Pré-processador"]
+    B --o n1@{ label: "<span style=\"color:\">expande macros, inclui headers, remove comentários</span>" }
     B --> C["Compilador"]
-    C --o n2@{ label: "<span style=\"color:\">analisa sintaxe e semantica, gera codigo assembly</span>" }
+    C --o n2@{ label: "<span style=\"color:\">analisa sintaxe e semântica, gera código assembly</span>" }
     C --> D["Montador"]
-   D --o n3@{ label: "<span style=\"color:\">converte assembly em codigo objeto .o</span>" }
+   D --o n3@{ label: "<span style=\"color:\">converte assembly em código-objeto .o</span>" }
    D --> E["Ligador (Linker)"]
-   E --o n4@{ label: "<span style=\"color:\">une codigo objeto e bibliotecas</span>" }
-    E --> F["Executavel (.exe / a.out)"]
-   
+   E --o n4@{ label: "<span style=\"color:\">une código-objeto e bibliotecas</span>" }
+    E --> F["Executável (.exe / a.out)"]
+
     n1@{ shape: text}
     n2@{ shape: text}
     n3@{ shape: text}

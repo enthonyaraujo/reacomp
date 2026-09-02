@@ -8,10 +8,10 @@ format:
   html:
     reference-location: margin
     css: ../styles/academic.css
-filters: 
+filters:
     - quizdown
 ---
- 
+
 
 Até aqui, vimos como generalizar dados e comportamentos em C usando ponteiros e _callbacks_.
 No entanto, toda essa flexibilidade traz a responsabilidade de gerenciar manualmente a memória.
@@ -20,15 +20,15 @@ Nesta seção, vamos entender como a linguagem C lida com a alocação dinâmica
 
 ## Alocação e liberação dinâmica {#sec-alo}
 
-Quando trabalhamos com _arrays_ ou estruturas em C, geralmente definimos seus tamanhos em tempo de compilação. Eles ficam armazenados em uma área de memória chamada **_stack_**. 
+Quando trabalhamos com _arrays_ ou estruturas em C, geralmente definimos seus tamanhos em tempo de compilação. Eles ficam armazenados em uma área de memória chamada **_stack_**.
 
 No entanto, há muitos casos em que o tamanho dos dados não é conhecido antecipadamente. Para esses casos, o C fornece funções de alocação dinâmica de memória, que permitem reservar e liberar espaço em tempo de execução. Esses blocos de memória são criados em uma região especial chamada **_heap_**.
 
-Dizemos que a memória _stack_ é estática, enquanto que a _heap_ é dinâmica. Na _stack_, quando a função termina, a variável é destruída. Já na _heap_, o programador decide quando alocar e liberar. 
+Dizemos que a memória _stack_ é estática, enquanto a _heap_ é dinâmica. Na _stack_, quando a função termina, a variável é destruída. Já na _heap_, o programador decide quando alocar e liberar.
 
 A alocação dinâmica oferece flexibilidade, mas também exige disciplina. O princípio fundamental é: **quem aloca, deve liberar**.
 
-### Alocação simples 
+### Alocação simples
 
 A função `malloc` (de _memory allocation_) reserva um bloco contíguo de memória de tamanho especificado em _bytes_.
 
@@ -40,21 +40,21 @@ O argumento é o número total de _bytes_ a serem alocados. No trecho acima, est
 
 ::: {.column-margin}
 **[Se liga!]{.text-warning}**
-Em C, ao contrário de C++, não há necessidade de fazer o _cast_ do ponteiro genérico neste caso. 
+Em C, ao contrário de C++, não há necessidade de fazer o _cast_ do ponteiro genérico neste caso.
 :::
 
-Como não temos garantia que a memória foi alocada, precisamos tratar quando `malloc` falha. Isso é geramente feito com um bloco `if`.
+Como não temos garantia de que a memória foi alocada, precisamos tratar quando `malloc` falha. Isso é geralmente feito com um bloco `if`.
 
 ```{.c code-line-numbers="false"}
 int *v = malloc(5 * sizeof(int));
-    
+
 if (v == NULL) {
     fprintf(stderr, "Erro: sem memória suficiente!\n");
     return 1;
-}       
+}
 ```
 
-No trecho acima, poderíamos ter usado `printf` ao invés de `fprintf`. A escolha, por `fprintf` se dá por ser o padrão para erros. Ele permite especificar exatamente para onde a saída deve ir. Ao usarmos `stderr` (de _standard error_), estamos dizendo ao sistema que esta mensagem é um erro e deve ser tratada como tal.
+No trecho acima, poderíamos ter usado `printf` em vez de `fprintf`. A escolha por `fprintf` se dá por ser o padrão para erros. Ele permite especificar exatamente para onde a saída deve ir. Ao usarmos `stderr` (de _standard error_), estamos dizendo ao sistema que esta mensagem é um erro e deve ser tratada como tal.
 
 ::: {.column-margin}
 **[Se liga!]{.text-warning}**
@@ -63,11 +63,11 @@ A função `perror` imprime uma mensagem de erro em `stderr` também e é muito 
 
 Quando usamos `printf` a saída é armazenada em _buffer_, portanto a mensagem de erro poderia ficar presa e nunca ser exibida antes do programa abortar. Já quando optamos por `fprintf`, a saída é _unbuffered_, ou seja, é exibida imediatamente no terminal.
 
-Resumindo, use `fprinf` mensagens de erro, diagnóstico e logs críticos e use `printf` para mensagens de sucesso, resultado da aplicação e saída esperada.
+Resumindo, use `fprintf` para mensagens de erro, diagnóstico e logs críticos, e use `printf` para mensagens de sucesso, resultado da aplicação e saída esperada.
 
-O `return 1` informa ao sistema operacional que algo deu errado .
+O `return 1` informa ao sistema operacional que algo deu errado.
 
-### Alocação e inicialização 
+### Alocação e inicialização
 
 A função `calloc` (de _contiguous allocation_) funciona como `malloc`, mas com duas diferenças:
 
@@ -78,9 +78,9 @@ A função `calloc` (de _contiguous allocation_) funciona como `malloc`, mas com
 int *v = calloc(5, sizeof(int));
 ```
 
-Assim, todo as posições começam zeradas, o que evita leituras de lixo de memória.
+Assim, todas as posições começam zeradas, o que evita leituras de lixo de memória.
 
-### Redimensionamento de bloco 
+### Redimensionamento de bloco
 
 A função `realloc` permite ajustar o tamanho de um bloco de memória já alocado.
 
@@ -120,10 +120,10 @@ Este ciclo é a base de toda manipulação segura de memória dinâmica em C:
 ```{mermaid}
 flowchart LR
     A("Alocar") --> B("Usar")
-    B --> C("Liberar")  
+    B --> C("Liberar")
     C --> D("Invalidar")
     D --> A
-```    
+```
 
 - Alocar (`malloc`, `calloc` ou `realloc`)
 - Usar (ler e escrever por meio do ponteiro)
@@ -170,7 +170,7 @@ int main() {
 
     for (int i = 0; i < 5; i++)
         printf("%d ", destino[i]);
-    
+
     return 0;
 }
 ```
@@ -205,7 +205,7 @@ int main() {
 
     // Copiando parte sobreposta
     memmove(texto + 2, texto, 4);
-    texto[6] = '\0'; // Caracter de fim de string
+    texto[6] = '\0'; // Caractere de fim de string
 
     printf("%s\n", texto); // Resultado: "ABABCD"
     return 0;
@@ -234,7 +234,7 @@ int main() {
 
     for (int i = 0; i < 5; i++)
         printf("%d ", v[i]);
-    
+
     return 0;
 }
 ```
@@ -257,10 +257,10 @@ Os seguintes cuidados são recomendados quando estamos programando com uso de me
 
 - Sempre use `sizeof` para calcular o número correto de _bytes_.
   + Evite expressões mágicas como `memcpy(dest, src, 20)`.
-  + Ao invés, use `memcpy(dest, src, n * sizeof(T))`.
+  + Em vez disso, use `memcpy(dest, src, n * sizeof(T))`.
 - Prefira `memmove` quando houver dúvida sobre sobreposição.
 - Zere estruturas antes de usá-las (por exemplo, _buffers_ de _strings_).
-- Evite manipular memória de tipos complexos (estruturas com ponteiros internos) com `memcpy` 
+- Evite manipular memória de tipos complexos (estruturas com ponteiros internos) com `memcpy`
   + Isso pode quebrar o encapsulamento e gerar cópias superficiais perigosas.
 :::
 
@@ -353,7 +353,7 @@ int main() {
 A memória continua alocada, mas inacessível. Em programas longos, isso pode acumular e exaurir a memória do sistema.
 :::
 
-Como boas prática, sempre emparelhe `malloc` e `free`. Pois, cada chamada de alocação dinâmica deve ter uma contrapartida de liberação. Evite fluxos de execução que impeçam o `free` de ser chamado.
+Como boa prática, sempre emparelhe `malloc` e `free`. Pois, cada chamada de alocação dinâmica deve ter uma contrapartida de liberação. Evite fluxos de execução que impeçam o `free` de ser chamado.
 
 ```{.c code-line-numbers="false"}
 char *p = malloc(100);
@@ -427,18 +427,18 @@ int main() {
 Esse tipo de erro é grave: pode corromper variáveis adjacentes, causar travamentos ou vulnerabilidades de segurança.
 :::
 
-Como boas prática, sempre verifique limites de vetores. Ao usar `malloc`, garanta que o tamanho esteja correto com `sizeof`.
+Como boa prática, sempre verifique limites de vetores. Ao usar `malloc`, garanta que o tamanho esteja correto com `sizeof`.
 
 Podemos resumir os tipos de erros abordados por meio da seguinte tabela.
 
 
 | Tipo de Erro	| Causa	| Sintoma	| Prevenção|
 |---------------|-------|-----------|----------|
-| _Wild Pointer_	|Ponteiro não inicializado | _Crash_ aleatório | Inicializar com `NULL` | 
-| _Dangling Pointer_ | Uso após `free` | _Segmentation fault_ | `p = NULL` após `free` | 
-| _Memory Leak_ | Perda de referência | Aumento de uso de memória | Sempre liberar | 
-| _Double Free_ | Liberação repetida | Corrupção do _heap_ | Controle de _ownership_ | 
-| _Buffer Overflow_ | Escrita fora dos limites | Corrupção de memória | Verificar limites | 
+| _Wild Pointer_	|Ponteiro não inicializado | _Crash_ aleatório | Inicializar com `NULL` |
+| _Dangling Pointer_ | Uso após `free` | _Segmentation fault_ | `p = NULL` após `free` |
+| _Memory Leak_ | Perda de referência | Aumento de uso de memória | Sempre liberar |
+| _Double Free_ | Liberação repetida | Corrupção do _heap_ | Controle de _ownership_ |
+| _Buffer Overflow_ | Escrita fora dos limites | Corrupção de memória | Verificar limites |
 
 ::: {.column-margin}
 **[Se liga!]{.text-warning}**
@@ -502,7 +502,7 @@ Nesta unidade, você aprendeu
 
 ✅ a copiar blocos de memória
 
-✅ a evitar erros clássicos no gerenciamento de memrória
+✅ a evitar erros clássicos no gerenciamento de memória
 
 ✅ a aplicar boas práticas em grandes projetos
 
@@ -511,8 +511,8 @@ Gerenciar memória em C é uma arte de equilíbrio entre controle total e respon
 Com disciplina e padrões bem definidos, é possível construir sistemas robustos, performáticos e seguros.
 
 
-```quizdown 
-# Qual é a principal diferença entre a memória *stack* e a *heap*? 
+```quizdown
+# Qual é a principal diferença entre a memória *stack* e a *heap*?
 
 > Pense em quem controla o tempo de vida das variáveis.
 
@@ -522,7 +522,7 @@ Com disciplina e padrões bem definidos, é possível construir sistemas robusto
 1. [ ] A *heap* é usada apenas por funções recursivas.
 
 
-# Qual é o princípio fundamental da alocação dinâmica de memória em C? 
+# Qual é o princípio fundamental da alocação dinâmica de memória em C?
 
 > Ele garante que não haja vazamentos de memória.
 
@@ -532,7 +532,7 @@ Com disciplina e padrões bem definidos, é possível construir sistemas robusto
 1. [ ] Usar `calloc` e `realloc` em conjunto.
 
 
-# O que acontece se `malloc` falhar ao tentar alocar memória? 
+# O que acontece se `malloc` falhar ao tentar alocar memória?
 
 > Lembre-se do valor de retorno.
 
@@ -542,7 +542,7 @@ Com disciplina e padrões bem definidos, é possível construir sistemas robusto
 1. [ ] Finaliza automaticamente o programa.
 
 
-# Qual das seguintes funções inicializa automaticamente a memória com zeros? 
+# Qual das seguintes funções inicializa automaticamente a memória com zeros?
 
 > Ela recebe dois parâmetros: número de elementos e tamanho de cada um.
 
@@ -562,7 +562,7 @@ Com disciplina e padrões bem definidos, é possível construir sistemas robusto
 1. [ ] `realloc(&v, novo_tamanho);`
 
 
-# Quais das alternativas abaixo são boas práticas ao liberar memória? 
+# Quais das alternativas abaixo são boas práticas ao liberar memória?
 
 > Lembre-se do ciclo: alocar, usar, liberar, invalidar.
 
@@ -582,7 +582,7 @@ Com disciplina e padrões bem definidos, é possível construir sistemas robusto
 4. Invalidar o ponteiro (`ptr = NULL`)
 
 
-# Qual é a função adequada para copiar dados entre regiões de memória que podem se sobrepor? 
+# Qual é a função adequada para copiar dados entre regiões de memória que podem se sobrepor?
 
 > Ela é mais segura que `memcpy` em casos de sobreposição.
 
@@ -602,7 +602,7 @@ Com disciplina e padrões bem definidos, é possível construir sistemas robusto
 - [ ] Passar valores inteiros diretamente para `memset` sem conversão.
 
 
-# Qual é o erro que ocorre ao usar um ponteiro não inicializado? 
+# Qual é o erro que ocorre ao usar um ponteiro não inicializado?
 
 > Ele contém um endereço aleatório.
 
@@ -622,7 +622,7 @@ Com disciplina e padrões bem definidos, é possível construir sistemas robusto
 - [ ] Atribuir `NULL` a um ponteiro liberado.
 
 
-# O que caracteriza um *memory leak*? 
+# O que caracteriza um *memory leak*?
 
 > O programa perde acesso ao bloco de memória alocado.
 
@@ -632,7 +632,7 @@ Com disciplina e padrões bem definidos, é possível construir sistemas robusto
 1. [ ] Ponteiro não inicializado.
 
 
-# Como evitar o erro *double free*? 
+# Como evitar o erro *double free*?
 
 > Lembre-se da prática após `free`.
 
@@ -642,7 +642,7 @@ Com disciplina e padrões bem definidos, é possível construir sistemas robusto
 - [ ] Usar `malloc` e `free` na mesma função sempre.
 
 
-# Qual prática ajuda a evitar *buffer overflow*? 
+# Qual prática ajuda a evitar *buffer overflow*?
 
 > Pense no controle dos índices.
 
@@ -652,7 +652,7 @@ Com disciplina e padrões bem definidos, é possível construir sistemas robusto
 1. [ ] Usar ponteiros não inicializados.
 
 
-# Quais são boas práticas de segurança com memória sensível? 
+# Quais são boas práticas de segurança com memória sensível?
 
 > Por exemplo, quando lidamos com senhas.
 
@@ -662,7 +662,7 @@ Com disciplina e padrões bem definidos, é possível construir sistemas robusto
 - [ ] Evitar o uso de `free` para não perder dados.
 
 
-# Coloque na ordem correta as ações da função `safe_malloc` descrita no texto. 
+# Coloque na ordem correta as ações da função `safe_malloc` descrita no texto.
 
 > Pense no fluxo interno da função.
 

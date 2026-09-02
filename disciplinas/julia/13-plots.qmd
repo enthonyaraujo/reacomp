@@ -8,9 +8,9 @@ format:
   html:
     reference-location: margin
 execute:
-  eval: true 
+  eval: true
   daemon: true
-  cache: true 
+  cache: true
 ---
 
 Para usar a biblioteca Plots, certifique-se de que está instalada.
@@ -39,10 +39,10 @@ gr()
 x = 1:10
 y = x.^2
 
-p1 = plot(x, y, 
-            title="Linha", 
-            xlabel="x", 
-            ylabel="y", 
+p1 = plot(x, y,
+            title="Linha",
+            xlabel="x",
+            ylabel="y",
             legend=false, size=(600, 400))
 ```
 
@@ -67,10 +67,10 @@ ATRIBUTOS PRINCIPAIS:
 x_scatter = randn(100)
 y_scatter = randn(100)
 
-p2 = scatter(x_scatter, y_scatter, 
-                title="Dispersão", 
-                xlabel="x", 
-                ylabel="y", 
+p2 = scatter(x_scatter, y_scatter,
+                title="Dispersão",
+                xlabel="x",
+                ylabel="y",
                 legend=false)
 ```
 
@@ -80,14 +80,14 @@ x_erro = 1:5
 y_erro = [2, 4, 6, 8, 10]
 erro = [0.5, 0.8, 0.6, 0.9, 0.7]
 
-p_erro = scatter(x_erro, y_erro, yerror=erro, 
+p_erro = scatter(x_erro, y_erro, yerror=erro,
                   title="Com Barras de Erro",
-                  xlabel="x", ylabel="y", 
+                  xlabel="x", ylabel="y",
                   legend=false, markersize=8)
 ```
 
 
-# Múltiplos gráficos (subgrafico)
+# Múltiplos gráficos (subgráfico)
 
 ```{julia}
 x = 0:0.1:2π
@@ -100,7 +100,7 @@ p4 = plot(x, exp.(-x), title="e^(-x)", label="e^(-x)")
 p_layout = plot(p1, p2, p3, p4, layout=(2,2), size=(800, 600))
 ```
 
-- `ylims()`, `xlims()`: Define limites dos eixos
+- `ylims()`, `xlims()`: Definem os limites dos eixos.
 
 # Histograma
 ```{julia}
@@ -114,16 +114,16 @@ plot(p1, p2, p3, layout=(1, 3), legend=false)
 
 ```
 
-# Gráfico de Barra
+# Gráfico de barras
 
 ```{julia}
 categorias = ["Python", "Julia", "R", "MATLAB"]
-velocidades = [100, 950, 150, 200] 
+velocidades = [100, 950, 150, 200]
 
-p_bar = bar(categorias, velocidades, 
-            title="Barra", 
-            ylabel="Velocidade (relativa)", 
-            legend=false, 
+p_bar = bar(categorias, velocidades,
+            title="Barra",
+            ylabel="Velocidade (relativa)",
+            legend=false,
             color=:steelblue)
 ```
 
@@ -139,9 +139,9 @@ p1 = plot(x, y1, label="sin(x)", linewidth=2)
 p2 = plot!(x, y2, label="cos(x)", linewidth=2)
 p3 = plot!(x, y3, label="sin(x)·e^(-x/10)", linewidth=2, linestyle=:dash)
 
-p_multi = plot(p3, 
-                title="Múltiplas Funções", 
-                xlabel="x", ylabel="y", 
+p_multi = plot(p3,
+                title="Múltiplas Funções",
+                xlabel="x", ylabel="y",
                 legend=:topright, size=(700, 500))
 ```
 
@@ -159,16 +159,16 @@ temperatura = 20 .+ 5 .* sin.(2π .* dias ./ 7) .+ randn(30) .* 0.5
 umidade = 60 .+ 20 .* sin.(2π .* dias ./ 10) .+ randn(30) .* 2
 
 # Plot com dois eixos Y
-p_temp = plot(dias, temperatura, 
+p_temp = plot(dias, temperatura,
               title="Temperatura vs Umidade",
               xlabel="Dias", ylabel="Temperatura (°C)",
-              label="Temperatura", color=:red, 
+              label="Temperatura", color=:red,
               linewidth=2, legend=:topleft)
 
 p_duplo = twinx(p_temp)
-p_salvar = plot!(p_duplo, dias, umidade, 
-      label="Umidade", color=:blue, 
-      linewidth=2, ylabel="Umidade (%)", 
+p_salvar = plot!(p_duplo, dias, umidade,
+      label="Umidade", color=:blue,
+      linewidth=2, ylabel="Umidade (%)",
       legend=:topright)
 ```
 
@@ -183,7 +183,7 @@ savefig(p_salvar, "grafico.svg")
 @info "Figura salva em: grafico.png, grafico.pdf, grafico.svg"
 ```
 
-- `@info` é um macro para logging informativo
+- `@info` é uma macro para logging informativo
 
 
 <!-- 3.316,82

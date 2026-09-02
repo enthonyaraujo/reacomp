@@ -8,8 +8,8 @@ format:
   html:
     reference-location: margin
     css: ../styles/academic.css
-filters: 
-    - quizdown    
+filters:
+    - quizdown
 ---
 
 
@@ -38,7 +38,7 @@ Essa capacidade de ajustar dinamicamente o tamanho permite que a tabela hash man
 
 ## Fator de Carga
 
-O fator de carga (load factor) determina quando uma tabela hash deve ser expandida ou contraída.
+O fator de carga (_load factor_) determina quando uma tabela hash deve ser expandida ou contraída.
 Ele é definido como a razão entre o número de elementos armazenados e o número total de buckets (ou posições disponíveis na tabela):
 $$\lambda = \frac{n}{m}$$
 onde $n$ é o número de itens atualmente armazenados e $m$ o tamanho da tabela.
@@ -113,108 +113,108 @@ o desempenho do cache da CPU temporariamente.
 
 Nesta unidade, você aprendeu
 
-✅ o que é uma tabela de dispersão dinâmica 
+✅ o que é uma tabela de dispersão dinâmica
 
-✅ a calcular o fator de carga 
+✅ a calcular o fator de carga
 
-✅ a importância do fator de carga no desempenho de uma tabela de dispersão 
- 
+✅ a importância do fator de carga no desempenho de uma tabela de dispersão
+
 ```quizdown
-# O que caracteriza uma tabela hash dinâmica? 
+# O que caracteriza uma tabela hash dinâmica?
 
 > Pense na principal diferença em relação à tabela hash estática.
 
-1. [ ] Uma tabela que nunca sofre colisões.  
-1. [x] Uma tabela que ajusta automaticamente seu tamanho conforme a quantidade de elementos.  
-1. [ ] Uma tabela que usa múltiplas funções hash ao mesmo tempo.  
-1. [ ] Uma tabela implementada apenas com encadeamento separado.  
+1. [ ] Uma tabela que nunca sofre colisões.
+1. [x] Uma tabela que ajusta automaticamente seu tamanho conforme a quantidade de elementos.
+1. [ ] Uma tabela que usa múltiplas funções hash ao mesmo tempo.
+1. [ ] Uma tabela implementada apenas com encadeamento separado.
 
-# Quando uma tabela hash deve **expandir** seu tamanho? 
+# Quando uma tabela hash deve **expandir** seu tamanho?
 
 > Observe o limite superior do fator de carga.
 
-1. [ ] Quando $\lambda < 0.25$  
-1. [x] Quando $\lambda > 0.7$  
-1. [ ] Quando $\lambda = 0$  
-1. [ ] Quando $\lambda = 1$  
+1. [ ] Quando $\lambda < 0.25$
+1. [x] Quando $\lambda > 0.7$
+1. [ ] Quando $\lambda = 0$
+1. [ ] Quando $\lambda = 1$
 
 
-# Quando uma tabela hash deve **contrair** seu tamanho?  
+# Quando uma tabela hash deve **contrair** seu tamanho?
 
 > O texto cita o limite inferior.
 
-1. [x] Quando $\lambda < 0.25$  
-1. [ ] Quando $\lambda > 0.7$  
-1. [ ] Quando $\lambda > 1$  
-1. [ ] Quando $\lambda = 0.75$  
+1. [x] Quando $\lambda < 0.25$
+1. [ ] Quando $\lambda > 0.7$
+1. [ ] Quando $\lambda > 1$
+1. [ ] Quando $\lambda = 0.75$
 
 
-# O que representa o fator de carga $\lambda$? 
+# O que representa o fator de carga $\lambda$?
 
 > Lembre-se da fórmula apresentada.
 
-1. [x] A razão entre o número de elementos armazenados e o tamanho total da tabela.  
-1. [ ] A soma dos índices ocupados da tabela.  
-1. [ ] O número de colisões dividido pelo tamanho da tabela.  
-1. [ ] O tempo médio de inserção em O(n).  
+1. [x] A razão entre o número de elementos armazenados e o tamanho total da tabela.
+1. [ ] A soma dos índices ocupados da tabela.
+1. [ ] O número de colisões dividido pelo tamanho da tabela.
+1. [ ] O tempo médio de inserção em O(n).
 
 
-# Quais são as etapas do processo de redimensionamento?   
+# Quais são as etapas do processo de redimensionamento?
 
 > Coloque as três fases na ordem correta.
 
-1. Criação de uma nova tabela.  
-2. Re-hashing dos elementos.  
-3. Substituição da tabela antiga.  
+1. Criação de uma nova tabela.
+2. Re-hashing dos elementos.
+3. Substituição da tabela antiga.
 
 
-# Quais são vantagens da tabela hash dinâmica? 
+# Quais são vantagens da tabela hash dinâmica?
 
 > Elas estão listadas na seção de “Vantagens”.
 
-- [x] Otimização do uso de memória.  
-- [x] Manutenção do desempenho médio em O(1).  
-- [x] Facilidade de uso para o programador.  
-- [ ] Nenhum custo de redimensionamento.  
+- [x] Otimização do uso de memória.
+- [x] Manutenção do desempenho médio em O(1).
+- [x] Facilidade de uso para o programador.
+- [ ] Nenhum custo de redimensionamento.
 
 
-# Quais são desvantagens da tabela hash dinâmica?  
+# Quais são desvantagens da tabela hash dinâmica?
 
 > Observe os impactos durante o redimensionamento.
 
-- [x] Custo alto durante o redimensionamento.  
-- [x] Maior complexidade de implementação.  
-- [x] Possível perda temporária de desempenho de cache.  
-- [ ] Impossibilidade de armazenar chaves duplicadas.  
+- [x] Custo alto durante o redimensionamento.
+- [x] Maior complexidade de implementação.
+- [x] Possível perda temporária de desempenho de cache.
+- [ ] Impossibilidade de armazenar chaves duplicadas.
 
 
-# Se uma tabela tem 30 elementos e 50 posições, qual é o fator de carga $\lambda$?  
+# Se uma tabela tem 30 elementos e 50 posições, qual é o fator de carga $\lambda$?
 
 > Use $\lambda = \frac{n}{m}$.
 
-1. [ ] 0,25  
-1. [x] 0,6  
-1. [ ] 1,25  
-1. [ ] 0,15  
+1. [ ] 0,25
+1. [x] 0,6
+1. [ ] 1,25
+1. [ ] 0,15
 
 
-# Qual é a consequência de um fator de carga muito alto? 
+# Qual é a consequência de um fator de carga muito alto?
 
 > Relacione com o número de colisões.
 
-1. [x] Aumento das colisões e degradação do desempenho.  
-1. [ ] Redução do número de colisões.  
-1. [ ] Melhoria no uso do cache da CPU.  
-1. [ ] Economia de memória.  
+1. [x] Aumento das colisões e degradação do desempenho.
+1. [ ] Redução do número de colisões.
+1. [ ] Melhoria no uso do cache da CPU.
+1. [ ] Economia de memória.
 
-# Qual analogia do texto representa melhor o comportamento da tabela hash dinâmica? 
+# Qual analogia do texto representa melhor o comportamento da tabela hash dinâmica?
 
 > Pense no exemplo do móvel.
 
-1. [ ] Um armário que só aumenta e nunca diminui.  
-1. [x] Um móvel que expande e contrai conforme a quantidade de relógios.  
-1. [ ] Um cofre com compartimentos fixos.  
-1. [ ] Um sistema de arquivos linear.  
+1. [ ] Um armário que só aumenta e nunca diminui.
+1. [x] Um móvel que expande e contrai conforme a quantidade de relógios.
+1. [ ] Um cofre com compartimentos fixos.
+1. [ ] Um sistema de arquivos linear.
 
 ```
 

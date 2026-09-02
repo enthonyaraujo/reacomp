@@ -8,9 +8,9 @@ format:
   html:
     reference-location: margin
 execute:
-  eval: true 
+  eval: true
   daemon: true
-  cache: true 
+  cache: true
 ---
 
 Os laços são mecanismos para iterar sobre coleções. São também chamados de _loops_.
@@ -61,7 +61,7 @@ end
 
 
 
-O loop `while` repete um bloco de código enquanto um condição é verdadeira.
+O loop `while` repete um bloco de código enquanto uma condição for verdadeira.
 
 
 ```{julia}

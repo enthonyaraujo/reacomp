@@ -8,12 +8,12 @@ format:
   html:
     reference-location: margin
     css: ../styles/academic.css
-filters: 
-    - quizdown    
+filters:
+    - quizdown
 ---
 
 ::: {.callout-note icon="false" title="Exercício 1"}
-Mostre o estado de uma tabela hash de nove entradas quando quando inserimos as chaves $5, 28, 19, 15, 20, 33, 12, 17$ e $10$, nessa ordem. Considere a função hash $h(k) = k \bmod 9$ e o tratamento de colisões por encadeamento. 
+Mostre o estado de uma tabela hash de nove entradas quando inserimos as chaves $5, 28, 19, 15, 20, 33, 12, 17$ e $10$, nessa ordem. Considere a função hash $h(k) = k \bmod 9$ e o tratamento de colisões por encadeamento.
 :::
 
 
@@ -45,7 +45,7 @@ O mecanismo mais comum utiliza uma função de hash h criptograficamente segura 
 seguinte maneira:
 
 - Para cada usuário sorteia-se um conjunto de caracteres aleatórios $S$ chamado de "sal"
-- A senha $P$ do usuário é concatenada (salgada) com o sal $S$ resultando no texto $PS$. 
+- A senha $P$ do usuário é concatenada (salgada) com o sal $S$ resultando no texto $PS$.
   + Por exemplo, se a senha $P$ do usuário Juca era "Acuj12" e o sal "UHWP*@$", então $$PS = Acuj12UHWP*@\$ $$
 - Em um arquivo são armazenados o nome do usuário, $h(PS)$ e o sal utilizado. Por exemplo:
 
@@ -64,5 +64,5 @@ Tendo em vista o mecanismo descrito acima, responda:
 (a) Por que não guardar a senha do usuário diretamente no arquivo?
 (b) Por que não guardar apenas o $h(P)$ na tabela? Por que é importante salgar a senha?
 (c) Qual é a importância de se utilizar um sal aleatório?
-(d) Por que o sal e a função de hash não precisam ser mantidas em segredo?
+(d) Por que o sal e a função de hash não precisam ser mantidos em segredo?
 :::
